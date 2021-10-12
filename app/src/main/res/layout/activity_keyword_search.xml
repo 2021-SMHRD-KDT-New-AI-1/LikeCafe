@@ -68,7 +68,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3">
 
         <Button
-            android:id="@+id/button9"
+            android:id="@+id/btn_exclusive"
             android:layout_width="70dp"
             android:layout_height="35dp"
             android:layout_marginStart="15dp"
@@ -91,7 +91,7 @@
             app:strokeWidth="1dp" />
 
         <Button
-            android:id="@+id/button13"
+            android:id="@+id/btn_group"
             android:layout_width="80dp"
             android:layout_height="35dp"
             android:layout_marginStart="10dp"
@@ -107,7 +107,7 @@
             android:textSize="9sp"
             app:cornerRadius="14dp"
             app:iconPadding="0dp"
-            app:layout_constraintStart_toEndOf="@+id/button9"
+            app:layout_constraintStart_toEndOf="@+id/btn_exclusive"
             app:layout_constraintTop_toTopOf="parent"
             app:strokeColor="#000000"
             app:strokeWidth="1dp" />
@@ -129,7 +129,7 @@
             android:textSize="10sp"
             app:cornerRadius="14dp"
             app:iconPadding="0dp"
-            app:layout_constraintStart_toEndOf="@+id/button13"
+            app:layout_constraintStart_toEndOf="@+id/btn_group"
             app:layout_constraintTop_toTopOf="parent"
             app:strokeColor="#000000"
             app:strokeWidth="1dp" />
@@ -173,7 +173,7 @@
             app:cornerRadius="14dp"
             app:iconPadding="0dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button9"
+            app:layout_constraintTop_toBottomOf="@+id/btn_exclusive"
             app:strokeColor="#000000"
             app:strokeWidth="1dp" />
 
@@ -194,7 +194,7 @@
             app:cornerRadius="14dp"
             app:iconPadding="0dp"
             app:layout_constraintStart_toEndOf="@+id/button17"
-            app:layout_constraintTop_toBottomOf="@+id/button13"
+            app:layout_constraintTop_toBottomOf="@+id/btn_group"
             app:strokeColor="#000000"
             app:strokeWidth="1dp" />
 
@@ -452,15 +452,5 @@
             app:strokeWidth="1dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
