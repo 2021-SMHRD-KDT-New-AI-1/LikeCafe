@@ -10,39 +10,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LikeCafe">
         <activity
-            android:name=".review"
-            android:exported="true" />
-        <activity
-            android:name=".zzimlist"
-            android:exported="true" />
-        <activity
-            android:name=".detail_list"
-            android:exported="true" />
-        <activity
-            android:name=".list"
-            android:exported="true" />
-        <activity
-            android:name=".r_selection"
+            android:name=".KeywordSearchActivity"
             android:exported="true" />
         <activity
             android:name=".LoginActivity"
             android:exported="true" />
         <activity
             android:name=".RegistActivity"
-            android:exported="true">
-
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
     </application>
 
