@@ -32,55 +32,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView">
 
         <Button
-            android:id="@+id/button14"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="#00FFFFFF"
-            android:drawableTop="@drawable/singlexml"
-            android:text="혼자가기\n좋은"
-            android:textColor="#494F39"
-            app:layout_constraintBottom_toBottomOf="@+id/button13"
-            app:layout_constraintStart_toEndOf="@+id/button13"
-            app:layout_constraintTop_toTopOf="@+id/button13" />
-
-        <Button
-            android:id="@+id/button13"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="#00FFFFFF"
-            android:drawableTop="@drawable/singlexml"
-            android:text="혼자가기\n좋은"
-            android:textColor="#494F39"
-            app:layout_constraintBottom_toBottomOf="@+id/button12"
-            app:layout_constraintStart_toEndOf="@+id/button12"
-            app:layout_constraintTop_toTopOf="@+id/button12" />
-
-        <Button
-            android:id="@+id/button12"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="#00FFFFFF"
-            android:drawableTop="@drawable/singlexml"
-            android:text="혼자가기\n좋은"
-            android:textColor="#494F39"
-            app:layout_constraintEnd_toEndOf="@+id/button5"
-            app:layout_constraintStart_toStartOf="@+id/button5"
-            app:layout_constraintTop_toBottomOf="@+id/button5" />
-
-        <Button
-            android:id="@+id/button11"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="#00FFFFFF"
-            android:drawableTop="@drawable/photoxml"
-            android:text="사진찍기\n좋은"
-            android:textColor="#494F39"
-            app:layout_constraintBottom_toBottomOf="@+id/button10"
-            app:layout_constraintStart_toEndOf="@+id/button10"
-            app:layout_constraintTop_toTopOf="@+id/button10" />
-
-        <Button
-            android:id="@+id/button5"
+            android:id="@+id/btn_single"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginStart="25dp"
@@ -93,16 +45,64 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button10"
+            android:id="@+id/btn_group"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:background="#00FFFFFF"
             android:drawableTop="@drawable/groupxml"
             android:text="함께가기\n좋은"
             android:textColor="#494F39"
-            app:layout_constraintBottom_toBottomOf="@+id/button5"
-            app:layout_constraintStart_toEndOf="@+id/button5"
-            app:layout_constraintTop_toTopOf="@+id/button5" />
+            app:layout_constraintBottom_toBottomOf="@+id/btn_single"
+            app:layout_constraintStart_toEndOf="@+id/btn_single"
+            app:layout_constraintTop_toTopOf="@+id/btn_single" />
+
+        <Button
+            android:id="@+id/btn_photo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="#00FFFFFF"
+            android:drawableTop="@drawable/photoxml"
+            android:text="사진찍기\n좋은"
+            android:textColor="#494F39"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_group"
+            app:layout_constraintStart_toEndOf="@+id/btn_group"
+            app:layout_constraintTop_toTopOf="@+id/btn_group" />
+
+        <Button
+            android:id="@+id/btn_coffee"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="#00FFFFFF"
+            android:drawableTop="@drawable/singlexml"
+            android:text="혼자가기\n좋은"
+            android:textColor="#494F39"
+            app:layout_constraintEnd_toEndOf="@+id/btn_single"
+            app:layout_constraintStart_toStartOf="@+id/btn_single"
+            app:layout_constraintTop_toBottomOf="@+id/btn_single" />
+
+        <Button
+            android:id="@+id/btn_dessert"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="#00FFFFFF"
+            android:drawableTop="@drawable/singlexml"
+            android:text="혼자가기\n좋은"
+            android:textColor="#494F39"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_coffee"
+            app:layout_constraintStart_toEndOf="@+id/btn_coffee"
+            app:layout_constraintTop_toTopOf="@+id/btn_coffee" />
+
+        <Button
+            android:id="@+id/btn_unique"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="#00FFFFFF"
+            android:drawableTop="@drawable/singlexml"
+            android:text="혼자가기\n좋은"
+            android:textColor="#494F39"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_dessert"
+            app:layout_constraintStart_toEndOf="@+id/btn_dessert"
+            app:layout_constraintTop_toTopOf="@+id/btn_dessert" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
