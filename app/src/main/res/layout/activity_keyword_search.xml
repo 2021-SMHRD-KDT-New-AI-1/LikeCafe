@@ -81,7 +81,7 @@
             app:strokeWidth="1dp" />
 
         <Button
-            android:id="@+id/btn_dessert"
+            android:id="@+id/button13"
             android:layout_width="80dp"
             android:layout_height="35dp"
             android:layout_marginStart="10dp"
@@ -103,7 +103,7 @@
             app:strokeWidth="1dp" />
 
         <Button
-            android:id="@+id/btn_unique"
+            android:id="@+id/button14"
             android:layout_width="70dp"
             android:layout_height="35dp"
             android:layout_marginStart="10dp"
@@ -119,13 +119,13 @@
             android:textSize="10sp"
             app:cornerRadius="14dp"
             app:iconPadding="0dp"
-            app:layout_constraintStart_toEndOf="@+id/btn_dessert"
+            app:layout_constraintStart_toEndOf="@+id/button13"
             app:layout_constraintTop_toTopOf="parent"
             app:strokeColor="#000000"
             app:strokeWidth="1dp" />
 
         <Button
-            android:id="@+id/btn_photo"
+            android:id="@+id/button11"
             android:layout_width="70dp"
             android:layout_height="35dp"
             android:layout_marginStart="10dp"
@@ -141,7 +141,7 @@
             android:textSize="10sp"
             app:cornerRadius="14dp"
             app:iconPadding="0dp"
-            app:layout_constraintStart_toEndOf="@+id/btn_unique"
+            app:layout_constraintStart_toEndOf="@+id/button14"
             app:layout_constraintTop_toTopOf="parent"
             app:strokeColor="#000000"
             app:strokeWidth="1dp" />
@@ -184,7 +184,7 @@
             app:cornerRadius="14dp"
             app:iconPadding="0dp"
             app:layout_constraintStart_toEndOf="@+id/button17"
-            app:layout_constraintTop_toBottomOf="@+id/btn_dessert"
+            app:layout_constraintTop_toBottomOf="@+id/button13"
             app:strokeColor="#000000"
             app:strokeWidth="1dp" />
 
@@ -205,12 +205,12 @@
             app:cornerRadius="14dp"
             app:iconPadding="0dp"
             app:layout_constraintStart_toEndOf="@+id/button16"
-            app:layout_constraintTop_toBottomOf="@+id/btn_unique"
+            app:layout_constraintTop_toBottomOf="@+id/button14"
             app:strokeColor="#000000"
             app:strokeWidth="1dp" />
 
         <Button
-            android:id="@+id/btn_group"
+            android:id="@+id/button10"
             android:layout_width="70dp"
             android:layout_height="35dp"
             android:layout_marginStart="10dp"
@@ -226,7 +226,7 @@
             app:cornerRadius="14dp"
             app:iconPadding="0dp"
             app:layout_constraintStart_toEndOf="@+id/button15"
-            app:layout_constraintTop_toBottomOf="@+id/btn_photo"
+            app:layout_constraintTop_toBottomOf="@+id/button11"
             app:strokeColor="#000000"
             app:strokeWidth="1dp" />
 
@@ -289,7 +289,7 @@
             app:cornerRadius="14dp"
             app:iconPadding="0dp"
             app:layout_constraintStart_toEndOf="@+id/button19"
-            app:layout_constraintTop_toBottomOf="@+id/btn_group"
+            app:layout_constraintTop_toBottomOf="@+id/button10"
             app:strokeColor="#000000"
             app:strokeWidth="1dp" />
 
@@ -357,7 +357,7 @@
             app:strokeWidth="1dp" />
 
         <Button
-            android:id="@+id/btn_coffee"
+            android:id="@+id/button12"
             android:layout_width="80dp"
             android:layout_height="35dp"
             android:layout_marginStart="10dp"

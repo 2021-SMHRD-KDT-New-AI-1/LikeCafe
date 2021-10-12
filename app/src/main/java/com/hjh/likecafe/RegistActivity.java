@@ -1,6 +1,5 @@
 package com.hjh.likecafe;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DownloadManager;
@@ -24,10 +23,19 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+import android.view.View;
+import android.widget.DatePicker;  //'생년월일'
+import android.widget.TextView;    //'생년월일'
+
 
 public class RegistActivity extends AppCompatActivity {
     RequestQueue requestQueue;
     Button button3;
+
+
+    private TextView textView_Date;//'생년월일'
+    private DatePickerDialog.OnDateSetListener callbackMethod;//'생년월일'
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +55,34 @@ public class RegistActivity extends AppCompatActivity {
                 postJson();
             }
         });
+
+        this.InitializeView();//'생년월일'
+        this.InitializeListener();//'생년월일'
+    }
+
+    public void InitializeView()//'생년월일'
+    {
+        textView_Date = (TextView)findViewById(R.id.textView_date);
+    }
+    public void InitializeListener()//'생년월일'
+    {
+        callbackMethod = new DatePickerDialog.OnDateSetListener()
+        {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth)
+            {
+                textView_Date.setText(year + "년 " + (monthOfYear+1) + "월 " + dayOfMonth + "일");
+            }
+
+        };
+    }
+    public void OnClickHandler(View view) //'생년월일'
+    {
+        DatePickerDialog dialog = new DatePickerDialog(this, callbackMethod, 1990, 7, 1);
+
+
+
+        dialog.show();
     }
 
     public void postJson() {
@@ -81,5 +117,8 @@ public class RegistActivity extends AppCompatActivity {
         };
         requestQueue.add(request);
     }
+
+
+
 
 }
