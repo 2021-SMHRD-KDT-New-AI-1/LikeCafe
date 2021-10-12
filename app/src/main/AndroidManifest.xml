@@ -10,6 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LikeCafe">
         <activity
+            android:name=".review"
+            android:exported="true" />
+        <activity
+            android:name=".zzimlist"
+            android:exported="true" />
+        <activity
+            android:name=".detail_list"
+            android:exported="true" />
+        <activity
+            android:name=".list"
+            android:exported="true" />
+        <activity
+            android:name=".r_selection"
+            android:exported="true" />
+        <activity
             android:name=".KeywordSearchActivity"
             android:exported="true" />
         <activity
