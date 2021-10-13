@@ -3,9 +3,7 @@ package com.hjh.likecafe;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
-import android.app.DownloadManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -14,17 +12,12 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.HashMap;
 import java.util.Map;
-import android.view.View;
+
 import android.widget.DatePicker;  //'생년월일'
 import android.widget.TextView;    //'생년월일'
 
@@ -43,7 +36,7 @@ public class RegistActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_regist);
 
-        button3 = findViewById(R.id.button3);
+        button3 = findViewById(R.id.btn_regist);
 
         // 서버와 통신
         if (requestQueue == null) {
@@ -53,7 +46,8 @@ public class RegistActivity extends AppCompatActivity {
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                postJson();
+
+                postRegist("test3","111","ttttt","2000-10-10","남자");
             }
         });
 
@@ -63,7 +57,7 @@ public class RegistActivity extends AppCompatActivity {
 
     public void InitializeView()//'생년월일'
     {
-        textView_Date = (TextView)findViewById(R.id.textView_date);
+        textView_Date = (TextView)findViewById(R.id.tv_birth);
     }
     public void InitializeListener()//'생년월일'
     {
@@ -86,7 +80,7 @@ public class RegistActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    public void postJson() {
+    public void postRegist(String id, String pw, String nick, String birth, String gender) {
         String url = "http://172.30.1.8:3003/MemberRegist";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
@@ -107,11 +101,11 @@ public class RegistActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("mem_id", "test");
-                params.put("pw", "1234");
-                params.put("nick", "tt");
-                params.put("birth", "1998-05-04");
-                params.put("gender", "여자");
+                params.put("mem_id", id);
+                params.put("pw", pw);
+                params.put("nick", nick);
+                params.put("birth", birth);
+                params.put("gender", gender);
 
                 return params;
             }
