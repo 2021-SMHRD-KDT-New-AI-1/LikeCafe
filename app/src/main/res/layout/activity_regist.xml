@@ -39,10 +39,10 @@
         android:hint="닉네임을 입력해주세요"
         android:inputType="textPersonName"
         android:textSize="10sp"
-        app:layout_constraintEnd_toEndOf="@+id/et_configPw"
+        app:layout_constraintEnd_toEndOf="@+id/et_checkPw"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/et_configPw"
-        app:layout_constraintTop_toBottomOf="@+id/et_configPw" />
+        app:layout_constraintStart_toStartOf="@+id/et_checkPw"
+        app:layout_constraintTop_toBottomOf="@+id/et_checkPw" />
 
     <TextView
         android:id="@+id/textView6"
@@ -57,7 +57,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <EditText
-        android:id="@+id/et_configPw"
+        android:id="@+id/et_checkPw"
         android:layout_width="260dp"
         android:layout_height="36dp"
         android:layout_marginTop="12dp"
@@ -65,10 +65,10 @@
         android:hint="비밀번호를 한 번 더 입력해주세요"
         android:inputType="textPersonName"
         android:textSize="10sp"
-        app:layout_constraintEnd_toEndOf="@+id/et_pw"
+        app:layout_constraintEnd_toEndOf="@+id/et_memPw"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/et_pw"
-        app:layout_constraintTop_toBottomOf="@+id/et_pw" />
+        app:layout_constraintStart_toStartOf="@+id/et_memPw"
+        app:layout_constraintTop_toBottomOf="@+id/et_memPw" />
 
     <TextView
         android:id="@+id/textView5"
@@ -83,7 +83,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <EditText
-        android:id="@+id/et_pw"
+        android:id="@+id/et_memPw"
         android:layout_width="260dp"
         android:layout_height="36dp"
         android:layout_marginTop="12dp"
