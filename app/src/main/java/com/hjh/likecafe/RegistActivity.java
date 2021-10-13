@@ -36,7 +36,7 @@ public class RegistActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_regist);
 
-        button3 = findViewById(R.id.button3);
+        button3 = findViewById(R.id.btn_regist);
 
         // 서버와 통신
         if (requestQueue == null) {
@@ -57,7 +57,7 @@ public class RegistActivity extends AppCompatActivity {
 
     public void InitializeView()//'생년월일'
     {
-        textView_Date = (TextView)findViewById(R.id.textView_date);
+        textView_Date = (TextView)findViewById(R.id.tv_birth);
     }
     public void InitializeListener()//'생년월일'
     {
