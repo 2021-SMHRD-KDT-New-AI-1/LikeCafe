@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+        <item
+            android:id="@+id/home"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:icon="@drawable/nd_home"
+            android:title="홈" />
+        <item
+            android:id="@+id/wishlist"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:icon="@drawable/nd_heart"
+            android:title="찜한 목록" />
+        <item
+            android:id="@+id/review"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:icon="@drawable/nd_review"
+            android:title="내가 쓴 리뷰" />
+        <item
+            android:id="@+id/edit"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:icon="@drawable/nd_mypage"
+            android:title="내 정보 수정" />
+    </group>
+</menu>
