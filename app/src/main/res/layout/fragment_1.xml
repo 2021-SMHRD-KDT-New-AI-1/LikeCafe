@@ -27,7 +27,7 @@
                 android:layout_height="match_parent">
 
                 <Button
-                    android:id="@+id/button6"
+                    android:id="@+id/s1"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
                 android:layout_height="match_parent">
 
                 <Button
-                    android:id="@+id/button25"
+                    android:id="@+id/s2"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
                 android:layout_height="match_parent">
 
                 <Button
-                    android:id="@+id/button26"
+                    android:id="@+id/s3"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -75,7 +75,7 @@
                 android:layout_height="match_parent">
 
                 <Button
-                    android:id="@+id/button27"
+                    android:id="@+id/s4"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -92,7 +92,7 @@
                 android:layout_height="match_parent">
 
                 <Button
-                    android:id="@+id/button28"
+                    android:id="@+id/s5"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -108,7 +108,7 @@
                 android:layout_height="match_parent">
 
                 <Button
-                    android:id="@+id/button30"
+                    android:id="@+id/s6"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -128,7 +128,7 @@
                 android:layout_height="match_parent">
 
                 <Button
-                    android:id="@+id/button34"
+                    android:id="@+id/s7"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -144,7 +144,7 @@
                 android:layout_height="match_parent">
 
                 <Button
-                    android:id="@+id/button35"
+                    android:id="@+id/s8"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -161,7 +161,7 @@
                 android:layout_height="match_parent">
 
                 <Button
-                    android:id="@+id/button37"
+                    android:id="@+id/s9"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -177,7 +177,7 @@
                 android:layout_height="match_parent">
 
                 <Button
-                    android:id="@+id/button38"
+                    android:id="@+id/s10"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -193,7 +193,7 @@
                 android:layout_height="match_parent">
 
                 <Button
-                    android:id="@+id/button40"
+                    android:id="@+id/s11"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -209,7 +209,7 @@
                 android:layout_height="match_parent">
 
                 <Button
-                    android:id="@+id/button41"
+                    android:id="@+id/s12"
                     style="?android:attr/borderlessButtonStyle"
                     android:backgroundTint="#00ff0000"
                     android:drawableTint="#00ff0000"
