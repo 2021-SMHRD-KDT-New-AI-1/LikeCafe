@@ -32,7 +32,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
     <Button
-        android:id="@+id/button29"
+        android:id="@+id/btn_back"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:backgroundTint="#494F39"
