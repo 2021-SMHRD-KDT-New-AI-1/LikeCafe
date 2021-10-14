@@ -115,7 +115,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView27" />
 
     <Button
-        android:id="@+id/button26"
+        android:id="@+id/s3"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:backgroundTint="#494F39"
@@ -195,7 +195,7 @@
         app:srcCompat="@drawable/star2" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/s1"
         android:layout_width="50dp"
         android:layout_height="30dp"
         android:autoText="true"

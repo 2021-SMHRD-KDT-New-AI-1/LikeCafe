@@ -12,7 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LikeCafe"
         android:usesCleartextTraffic="true">
-
+        <activity
+            android:name=".memberInfoModify"
+            android:exported="true" >
+        </activity>
         <activity
             android:name=".LoginActivity"
             android:exported="true" />
@@ -28,6 +31,11 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".detailPage"
@@ -36,6 +44,12 @@
         <activity
             android:name=".loginsucc"
             android:exported="true">
+        </activity>
+
+        <activity
+            android:name=".r_selection"
+            android:exported="true">
+
         </activity>
 
 
