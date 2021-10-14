@@ -1,6 +1,5 @@
 package com.hjh.likecafe;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
@@ -41,7 +40,6 @@ public class memberInfoModify extends AppCompatActivity {
     RadioButton rb_female, rb_male;
     Button btn_modify;
     String sex;
-    boolean modifyStatus;
 
     // '생년월일'
     private TextView textView_Date;
@@ -86,14 +84,14 @@ public class memberInfoModify extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String nick = et_changeNick.getText().toString();
-                String pw = et_changePw.getText().toString();
+                String currentPw = et_currentPw.getText().toString();
+                String changePw = et_changePw.getText().toString();
                 String birth = textView_Date.getText().toString();
 
                 // 입력값 검사 부분 (시간 남을 시 닉네임 중복검사, 빈칸 검사 코드 추가)
-                boolean chkPw = pw.equals(et_chkPw.getText().toString());
+                boolean chkPw = changePw.equals(et_chkPw.getText().toString());
                 boolean chkDuplicateNick = true;
                 boolean chkBlank = true;
-                // (보류)boolean chkcurrentPw = this.chkcurrentPw(id, pw);
 
                 if (!chkPw) { // 만약 변경비번과 확인비번의 값이 다른경우
                     Toast.makeText(memberInfoModify.this,
@@ -104,9 +102,9 @@ public class memberInfoModify extends AppCompatActivity {
                 } else if (!chkBlank) { // 빈칸검사?
                     Toast.makeText(memberInfoModify.this,
                             "모든 입력란에 입력을 완료해주세요", Toast.LENGTH_SHORT).show();
-                } // (보류) else if (!chkcurrentPw) {토스트'비밀번호가 틀렸습니다.'}
-                else {
-                    postModify(nick, pw, birth, sex);
+                } else {
+                    // id와 입력받은 값을 매개변수로 하여 modify 메소드 호출
+                    modify("test", currentPw, nick, changePw, birth, sex); // 일단 임시로 id값 대신 test를 넣어주었음
                 }
             }
         });
@@ -137,7 +135,7 @@ public class memberInfoModify extends AppCompatActivity {
 
     // Json파일을 만들어 웹 서버로 보내기
     public void postModify(String nick, String pw, String birth, String sex) {
-        String url = "http://172.30.1.12:3003/Member/Modify";
+        String url = "http://172.30.1.8:3003/Member/Modify";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 url,
@@ -147,7 +145,6 @@ public class memberInfoModify extends AppCompatActivity {
                         try {
                             JSONObject jsonObject = (JSONObject) (new JSONArray(response).get(0));
                             Log.d("status : ", jsonObject.getString("status"));
-                            modifyStatus = true;
                             Intent intent = new Intent
                                     (memberInfoModify.this, MainActivity.class);
                             startActivity(intent);
@@ -177,10 +174,50 @@ public class memberInfoModify extends AppCompatActivity {
         requestQueue.add(request);
     }
 
-    public boolean chkcurrentPw(String id, String pw) {
-        // 서버에 id를 보내서 서버로부터 pw를 받아온다.
-        // 받아온 pw와 매개변수 pw를 비교하여 같으면 t 아니면 f 리턴
-        return true;
+    public void modify(String id, String currentPw, String nick, String changePw, String birth, String sex) {
+        // 먼저 현재 비밀번호가 일치하는지부터 확인해야함
+        // 비밀번호랑 id가 매치되는지(올바른 현재 비밀번호를 입력했는지)는 로그인 요청으로 확인가능
+        String url = "http://172.30.1.8:3003/Member/Login"; // 로그인 요청 : id와 pw가 회원 테이블에 있는지 확인해줌
+        // 로그인 요청을 하면 서버에서 로그인 성공여부에 따라 status에 success 혹은 fail을 담아서 보내줌
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject = (JSONObject) (new JSONArray(response).get(0));
+                            Log.d("status : ", jsonObject.getString("status"));
+                            String status = jsonObject.getString("status");
+
+                            if (status.equals("success")) { // 로그인 성공 (비밀번호가 일치함)
+                                postModify(nick, changePw, birth, sex); // postModify 메소드 호출
+                            } else { // 로그인 실패 (비밀번호가 일치하지 않음)
+                                Toast.makeText(memberInfoModify.this, "현재 비밀번호를 확인해주세요", Toast.LENGTH_SHORT).show();
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("id", id);
+                params.put("pw", currentPw);
+
+                return params;
+            }
+        };
+        requestQueue.add(request);
     }
 
 
