@@ -31,7 +31,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
 public class RegistActivity extends AppCompatActivity {
     RequestQueue requestQueue;
     EditText et_memId, et_memPw, et_checkPw, et_nick;
@@ -43,7 +42,6 @@ public class RegistActivity extends AppCompatActivity {
 
     private TextView tv_birth;//'생년월일'
     private DatePickerDialog.OnDateSetListener callbackMethod;//'생년월일'
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btn_login"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:layout_marginBottom="190dp"
@@ -35,7 +35,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/et_id"
+        android:id="@+id/et_loginId"
         android:layout_width="300dp"
         android:layout_height="40dp"
         android:layout_marginTop="220dp"
@@ -43,11 +43,11 @@
         android:background="@drawable/round_login"
         android:elevation="10dp"
         android:ems="10"
-        android:hint="아이디나 이메일을 입력하세요"
+        android:hint="아이디를 입력하세요"
         android:inputType="textPersonName"
         android:paddingStart="15dp"
         android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPassword"
+        app:layout_constraintBottom_toTopOf="@+id/et_loginPw"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,7 +55,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/et_loginPw"
         android:layout_width="300dp"
         android:layout_height="40dp"
         android:layout_marginBottom="36dp"
@@ -66,7 +66,7 @@
         android:inputType="textPassword"
         android:paddingStart="15dp"
         android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/btn_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
@@ -82,7 +82,7 @@
         android:id="@+id/img_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/et_id"
+        app:layout_constraintBottom_toTopOf="@+id/et_loginId"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -94,7 +94,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="내가 원하는 카페 맞춤검색"
-        app:layout_constraintBottom_toTopOf="@+id/et_id"
+        app:layout_constraintBottom_toTopOf="@+id/et_loginId"
         app:layout_constraintEnd_toEndOf="@+id/img_logo"
         app:layout_constraintStart_toStartOf="@+id/img_logo"
         app:layout_constraintTop_toBottomOf="@+id/img_logo"
