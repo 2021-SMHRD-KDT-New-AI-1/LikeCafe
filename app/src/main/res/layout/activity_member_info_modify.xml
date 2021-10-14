@@ -82,12 +82,12 @@
         android:text="중복확인"
         android:textSize="12sp"
         app:iconPadding="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPassword5"
+        app:layout_constraintBottom_toBottomOf="@+id/et_changeNick"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editTextTextPassword5" />
+        app:layout_constraintTop_toTopOf="@+id/et_changeNick" />
 
     <EditText
-        android:id="@+id/editTextTextPassword5"
+        android:id="@+id/et_changeNick"
         android:layout_width="150dp"
         android:layout_height="40dp"
         android:layout_marginStart="150dp"
@@ -95,29 +95,29 @@
         android:layout_marginBottom="25dp"
         android:ems="10"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPassword4"
+        app:layout_constraintBottom_toTopOf="@+id/et_currentPw"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_profile" />
 
     <EditText
-        android:id="@+id/editTextTextPassword4"
+        android:id="@+id/et_currentPw"
         android:layout_width="200dp"
         android:layout_height="40dp"
         android:layout_marginBottom="8dp"
         android:ems="10"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPassword3"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPassword5" />
+        app:layout_constraintBottom_toTopOf="@+id/et_changePw"
+        app:layout_constraintStart_toStartOf="@+id/et_changeNick" />
 
     <EditText
-        android:id="@+id/editTextTextPassword3"
+        android:id="@+id/et_changePw"
         android:layout_width="200dp"
         android:layout_height="40dp"
         android:layout_marginBottom="8dp"
         android:ems="10"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPassword2"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPassword4" />
+        app:layout_constraintBottom_toTopOf="@+id/et_chkPw"
+        app:layout_constraintStart_toStartOf="@+id/et_currentPw" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline7"
@@ -215,10 +215,10 @@
         android:text="선택"
         app:iconPadding="0dp"
         app:layout_constraintBottom_toTopOf="@+id/rg_sex"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPassword2" />
+        app:layout_constraintStart_toStartOf="@+id/et_chkPw" />
 
     <TextView
-        android:id="@+id/tv_bday"
+        android:id="@+id/textView_Date"
         android:layout_width="130dp"
         android:layout_height="30dp"
         android:layout_marginEnd="8dp"
@@ -226,7 +226,7 @@
         android:gravity="center"
         android:text="날짜정보"
         app:layout_constraintBottom_toTopOf="@+id/rg_sex"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword2" />
+        app:layout_constraintEnd_toEndOf="@+id/et_chkPw" />
 
     <TextView
         android:id="@+id/textView34"
@@ -259,14 +259,14 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPassword2"
+        android:id="@+id/et_chkPw"
         android:layout_width="200dp"
         android:layout_height="40dp"
         android:layout_marginBottom="15dp"
         android:ems="10"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/tv_bday"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPassword3" />
+        app:layout_constraintBottom_toTopOf="@+id/textView_Date"
+        app:layout_constraintStart_toStartOf="@+id/et_changePw" />
 
     <ImageView
         android:id="@+id/imageView16"
