@@ -82,4 +82,8 @@ public class CafeVO {
     public boolean isZzimSel() {
         return zzimSel;
     }
+
+    public void setZzimSel(boolean zzimSel) {
+        this.zzimSel = zzimSel;
+    }
 }
