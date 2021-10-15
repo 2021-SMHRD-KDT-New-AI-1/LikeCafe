@@ -6,14 +6,14 @@
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
+        android:id="@+id/cafeListBody"
         android:layout_width="360dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/tv_name"
+            android:id="@+id/tv_cafeListName"
             android:layout_width="0dp"
             android:layout_height="36dp"
             android:layout_marginStart="15dp"
@@ -27,7 +27,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_address"
+            android:id="@+id/tv_cafeListAddress"
             android:layout_width="0dp"
             android:layout_height="37dp"
             android:layout_marginStart="15dp"
@@ -38,11 +38,11 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/guideline4"
-            app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_cafeListName" />
 
 
         <ImageView
-            android:id="@+id/imageView9"
+            android:id="@+id/img_cafeListImage"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -65,12 +65,12 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/constraintLayout"
+        app:layout_constraintStart_toEndOf="@id/cafeListBody"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <ImageView
-            android:id="@+id/imageView8"
+            android:id="@+id/img_cafeListZzim"
             android:layout_width="28dp"
             android:layout_height="26dp"
             android:layout_marginStart="5dp"
@@ -80,13 +80,13 @@
             app:srcCompat="@drawable/zzim" />
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/tv_cafeListZzimCnt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="32"
-            app:layout_constraintTop_toBottomOf="@id/imageView8"
-            app:layout_constraintStart_toStartOf="@id/imageView8"
-            app:layout_constraintEnd_toEndOf="@id/imageView8"/>
+            app:layout_constraintTop_toBottomOf="@id/img_cafeListZzim"
+            app:layout_constraintStart_toStartOf="@id/img_cafeListZzim"
+            app:layout_constraintEnd_toEndOf="@id/img_cafeListZzim"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
