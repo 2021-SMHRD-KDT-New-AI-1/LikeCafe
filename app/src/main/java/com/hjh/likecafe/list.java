@@ -36,10 +36,10 @@ public class list extends AppCompatActivity {
 
         // 서버 연결 x, 테스트용 임시 데이터
         Map<String, String> test = new HashMap<>();
-        CafeVO vo1 = new CafeVO(1, "테스트1", R.drawable.cafe1, "테스트1의 주소",
+        CafeVO vo1 = new CafeVO(1, "테스트1", R.drawable.cafeimagexml, "테스트1의 주소",
                 "테스트1의 운영시간", "테스트1의 휴무일", "테스트1의 전화번호",
                 "테스트1의 sns주소", "테스트1의 카테고리", test, 1, true);
-        CafeVO vo2 = new CafeVO(2, "테스트2", R.drawable.cafe1, "테스트2의 주소",
+        CafeVO vo2 = new CafeVO(2, "테스트2", R.drawable.cafeimagexml, "테스트2의 주소",
                 "테스트2의 운영시간", "테스트2의 휴무일", "테스트2의 전화번호",
                 "테스트2의 sns주소", "테스트2의 카테고리", test, 2, true);
 

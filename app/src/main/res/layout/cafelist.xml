@@ -8,7 +8,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cafeListBody"
         android:layout_width="360dp"
-        android:layout_height="wrap_content"
+        android:layout_height="120dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -17,6 +17,7 @@
             android:layout_width="0dp"
             android:layout_height="36dp"
             android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
             android:gravity="start|center_vertical"
             android:text="이이남 스튜디오"
             android:textColor="#000000"
@@ -31,11 +32,9 @@
             android:layout_width="0dp"
             android:layout_height="37dp"
             android:layout_marginStart="15dp"
-            android:layout_marginBottom="15dp"
             android:gravity="center|fill_horizontal"
             android:text="광주 남구 제중로47번길 10 이이남스튜디오"
             android:textSize="10sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/guideline4"
             app:layout_constraintTop_toBottomOf="@+id/tv_cafeListName" />
@@ -44,13 +43,12 @@
         <ImageView
             android:id="@+id/img_cafeListImage"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="100dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline4"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/cafe1" />
 
         <androidx.constraintlayout.widget.Guideline
@@ -74,7 +72,7 @@
             android:layout_width="28dp"
             android:layout_height="26dp"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/zzim" />
