@@ -68,7 +68,7 @@ public class memberInfoModify extends AppCompatActivity {
 
 
         // 로그인한 인간의 닉네임 반영하기
-        //tv_nick.setText(1,2,3);
+        // tv_nick.setText(1,2,3);
 
 
 
