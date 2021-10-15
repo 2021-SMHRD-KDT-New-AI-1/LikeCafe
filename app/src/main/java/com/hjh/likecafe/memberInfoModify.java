@@ -1,17 +1,21 @@
 package com.hjh.likecafe;
 
-import androidx.annotation.Nullable;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -29,6 +33,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,13 +46,16 @@ public class memberInfoModify extends AppCompatActivity {
     EditText et_changeNick, et_currentPw, et_changePw, et_chkPw;
     RadioGroup rg_sex;
     RadioButton rb_female, rb_male;
-    Button btn_modify;
+    Button btn_modify, btn_picChange;
     String sex;
     boolean modifyStatus;
+
+    ImageView img_profile;
 
     // '생년월일'
     private TextView textView_Date;
     private DatePickerDialog.OnDateSetListener callbackMethod;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +70,20 @@ public class memberInfoModify extends AppCompatActivity {
         rb_female = findViewById(R.id.rb_female);
         rb_male = findViewById(R.id.rb_male);
         btn_modify = findViewById(R.id.btn_modify);
+        btn_picChange = findViewById(R.id.btn_picChange);
+
+
+
+        // '사진수정'버튼 클릭 시 폰 갤러리 열기
+        btn_picChange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(intent,1);
+            }
+        });
 
 
         // 라디오 체크 리스너
@@ -115,25 +139,54 @@ public class memberInfoModify extends AppCompatActivity {
         this.InitializeListener(); // '생년월일'
     }
 
-    private void InitializeView() { // '생년월일'
-        textView_Date = (TextView) findViewById(R.id.textView_Date);
-    }
+        //선택한 사진으로 프사바꾸기
+        @Override
+        protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+            super.onActivityResult(requestCode, resultCode, data);
 
-    private void InitializeListener() { // '생년월일'
-        callbackMethod = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int year, int monthOfYear
-                    , int dayOfMonth) {
-                textView_Date.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
+            img_profile = findViewById(R.id.img_profile);
+
+            if (requestCode == 1) {
+
+                if (resultCode == RESULT_OK) {
+                    try {
+                        InputStream in = getContentResolver().openInputStream(data.getData());
+                        Bitmap img = BitmapFactory.decodeStream(in);
+                        in.close();
+
+                        img_profile.setImageBitmap(img);
+                        Toast.makeText(memberInfoModify.this,
+                                "프로필 사진이 변경되었다능!", Toast.LENGTH_SHORT).show();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
             }
-        };
-    }
+        }
 
-    public void OnClickHandler(View view) // '생년월일'
-    {
-        DatePickerDialog dialog = new DatePickerDialog(this, callbackMethod, 1990, 7, 1);
-        dialog.show();
-    }
+
+        // '생년월일'
+        private void InitializeView() { // '생년월일'
+            textView_Date = (TextView) findViewById(R.id.textView_Date);
+        }
+
+        // '생년월일'
+        private void InitializeListener() {
+            callbackMethod = new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker datePicker, int year, int monthOfYear
+                        , int dayOfMonth) {
+                    textView_Date.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
+                }
+            };
+        }
+
+        // '생년월일'
+        public void OnClickHandler(View view)
+        {
+            DatePickerDialog dialog = new DatePickerDialog(this, callbackMethod, 1990, 7, 1);
+            dialog.show();
+        }
 
     // Json파일을 만들어 웹 서버로 보내기
     public void postModify(String nick, String pw, String birth, String sex) {
@@ -182,6 +235,8 @@ public class memberInfoModify extends AppCompatActivity {
         // 받아온 pw와 매개변수 pw를 비교하여 같으면 t 아니면 f 리턴
         return true;
     }
+
+
 
 
 }
