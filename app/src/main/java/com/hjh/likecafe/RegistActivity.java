@@ -137,7 +137,7 @@ public class RegistActivity extends AppCompatActivity {
 
     // Json파일을 만들어 웹 서버로 보내기
     public void postRegist(String id, String pw, String nick, String birth, String gender) {
-        String url = "http://172.30.1.8:3003/MemberRegist";
+        String url = "http://172.30.1.8:3003/Member/Regist";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 url,

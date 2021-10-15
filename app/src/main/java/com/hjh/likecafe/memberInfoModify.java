@@ -42,7 +42,6 @@ public class memberInfoModify extends AppCompatActivity {
     Button btn_modify;
     String sex;
     boolean modifyStatus;
-    TextView tv_nick; // -> 로그인자의 닉네임 반영
 
     // '생년월일'
     private TextView textView_Date;
@@ -61,15 +60,6 @@ public class memberInfoModify extends AppCompatActivity {
         rb_female = findViewById(R.id.rb_female);
         rb_male = findViewById(R.id.rb_male);
         btn_modify = findViewById(R.id.btn_modify);
-
-        tv_nick = findViewById(R.id.tv_nick);
-
-
-
-
-        // 로그인한 인간의 닉네임 반영하기
-        // tv_nick.setText(1,2,3);
-
 
 
         // 라디오 체크 리스너
