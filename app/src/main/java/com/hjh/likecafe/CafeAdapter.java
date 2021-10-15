@@ -5,8 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-
-import androidx.recyclerview.widget.RecyclerView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -16,31 +15,67 @@ public class CafeAdapter extends BaseAdapter {
     List<CafeVO> data; // cafe item 클래스
 
     private LayoutInflater inflater; // xml파일을 View객체로 변환
-//    ViewHolder viewHolder; // ViewHolder 패턴을 활용하기 위한 변수
+    CafeViewHolder viewHolder; // ViewHolder 패턴을 활용하기 위한 변수
 
     public CafeAdapter(Context context, int layout, List<CafeVO> data) {
         this.context = context;
         this.layout = layout;
         this.data = data;
+
+        inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
     public int getCount() {
-        return 0;
+        return data.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return null;
+        return data.get(i);
     }
 
     @Override
     public long getItemId(int i) {
-        return 0;
+        return i;
     }
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        return null;
+
+        if(view == null) {
+            // xml파일(layout)을 view객체로 변환시켜 view에 저장한다.
+            view = inflater.inflate(layout, null);
+
+            viewHolder = new CafeViewHolder();
+            viewHolder.cafeListBody = view.findViewById(R.id.cafeListBody);
+            viewHolder.img_cafeListImage = view.findViewById(R.id.img_cafeListImage);
+            viewHolder.img_cafeListZzim = view.findViewById(R.id.img_cafeListZzim);
+            viewHolder.tv_cafeListName = view.findViewById(R.id.tv_cafeListName);
+            viewHolder.tv_cafeListAddress = view.findViewById(R.id.tv_cafeListAddress);
+            viewHolder.tv_cafeListZzimCnt = view.findViewById(R.id.tv_cafeListZzimCnt);
+
+            view.setTag(viewHolder);
+        }
+
+        viewHolder = (CafeViewHolder) view.getTag();
+        viewHolder.img_cafeListImage.setImageResource(data.get(i).getImage());
+        viewHolder.tv_cafeListName.setText(data.get(i).getName());
+        viewHolder.tv_cafeListAddress.setText(data.get(i).getAddress());
+        viewHolder.tv_cafeListZzimCnt.setText(data.get(i).getZzimCnt());
+        viewHolder.img_cafeListZzim.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context.getApplicationContext(), "찜 버튼 클릭!", Toast.LENGTH_SHORT).show();
+            }
+        });
+        viewHolder.cafeListBody.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context.getApplicationContext(), "카페 상세 정보로 이동!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        return view;
     }
 }
