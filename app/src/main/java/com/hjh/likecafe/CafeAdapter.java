@@ -60,14 +60,26 @@ public class CafeAdapter extends BaseAdapter {
 
         viewHolder = (CafeViewHolder) view.getTag();
         viewHolder.img_cafeListImage.setImageResource(data.get(i).getImage());
-        viewHolder.img_cafeListZzim.setImageResource(R.drawable.zzim);
         viewHolder.tv_cafeListName.setText(data.get(i).getName());
         viewHolder.tv_cafeListAddress.setText(data.get(i).getAddress());
         viewHolder.tv_cafeListZzimCnt.setText(String.valueOf(data.get(i).getZzimCnt()));
+        if(data.get(i).isZzimSel()) {
+            viewHolder.img_cafeListZzim.setImageResource(R.drawable.zzimsel);
+        } else {
+            viewHolder.img_cafeListZzim.setImageResource(R.drawable.zzim);
+        }
         viewHolder.img_cafeListZzim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context.getApplicationContext(), "찜 버튼 클릭!", Toast.LENGTH_SHORT).show();
+                if(data.get(i).isZzimSel()) {
+                    // 찜 목록에서 삭제하는 기능
+                    Toast.makeText(context.getApplicationContext(), "찜 삭제!", Toast.LENGTH_SHORT).show();
+                } else {
+                    // 찜 목록에 추가하는 기능
+                    Toast.makeText(context.getApplicationContext(), "찜 추가!", Toast.LENGTH_SHORT).show();
+                }
+                data.get(i).setZzimSel(!data.get(i).isZzimSel());
+                notifyDataSetChanged();
             }
         });
         viewHolder.cafeListBody.setOnClickListener(new View.OnClickListener() {
