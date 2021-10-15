@@ -14,6 +14,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -40,6 +41,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -58,6 +60,7 @@ public class memberInfoModify extends AppCompatActivity {
     boolean modifyStatus;
     Toolbar toolbar;
     DrawerLayout drawerLayout;
+    Bitmap image;
 
     ImageView img_profile;
 
@@ -116,8 +119,6 @@ public class memberInfoModify extends AppCompatActivity {
                 return true;
             }
         });
-
-
 
 
 
@@ -187,7 +188,7 @@ public class memberInfoModify extends AppCompatActivity {
         this.InitializeListener(); // '생년월일'
     }
 
-    //선택한 사진으로 프사바꾸기
+    // 선택한 사진으로 프사바꾸기
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -199,18 +200,29 @@ public class memberInfoModify extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 try {
                     InputStream in = getContentResolver().openInputStream(data.getData());
-                    Bitmap img = BitmapFactory.decodeStream(in);
+                    image = BitmapFactory.decodeStream(in);
                     in.close();
 
-                    img_profile.setImageBitmap(img);
+                    img_profile.setImageBitmap(image);
                     Toast.makeText(memberInfoModify.this,
-                            "프로필 사진이 변경되었다능!", Toast.LENGTH_SHORT).show();
+                            "프로필 사진이 변경되었습니다.", Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         }
     }
+
+
+    // 선택한 사진(비트맵형식)을 String형태로 변환하기
+    public static String BitmapToString (Bitmap bitmap) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 70,baos);
+        byte[] bytes = baos.toByteArray();
+        String bitString = Base64.encodeToString(bytes, Base64.DEFAULT);
+        return bitString;
+    }
+
 
 
     // '생년월일'
@@ -232,12 +244,13 @@ public class memberInfoModify extends AppCompatActivity {
     // '생년월일'
     public void OnClickHandler(View view)
     {
-        DatePickerDialog dialog = new DatePickerDialog(this, callbackMethod, 1990, 7, 1);
+        DatePickerDialog dialog = new DatePickerDialog
+                (this, callbackMethod, 1990, 7, 1);
         dialog.show();
     }
 
     // Json파일을 만들어 웹 서버로 보내기
-    public void postModify(String nick, String pw, String birth, String sex) {
+    public void postModify(String nick, String pw, String birth, String sex, Bitmap image) {
         String url = "http://172.30.1.8:3003/Member/Modify";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
@@ -270,6 +283,8 @@ public class memberInfoModify extends AppCompatActivity {
                 params.put("pw", pw);
                 params.put("birth", birth);
                 params.put("sex", sex);
+                // 짜란~
+                params.put("image", BitmapToString(image));
 
                 return params;
             }
@@ -294,7 +309,7 @@ public class memberInfoModify extends AppCompatActivity {
                             String status = jsonObject.getString("status");
 
                             if (status.equals("success")) { // 로그인 성공 (비밀번호가 일치함)
-                                postModify(nick, changePw, birth, sex); // postModify 메소드 호출
+                                postModify(nick, changePw, birth, sex, image); // postModify 메소드 호출
                             } else { // 로그인 실패 (비밀번호가 일치하지 않음)
                                 Toast.makeText(memberInfoModify.this, "현재 비밀번호를 확인해주세요", Toast.LENGTH_SHORT).show();
                             }
