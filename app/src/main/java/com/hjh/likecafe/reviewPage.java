@@ -10,14 +10,19 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RatingBar;
 import android.widget.Toast;
 
+import com.android.volley.Response;
 import com.google.android.material.navigation.NavigationView;
 
 public class reviewPage extends AppCompatActivity {
     Toolbar toolbar;
     DrawerLayout drawerLayout;
     Button btn_riviewupdate;
+    RatingBar ratingbar;
+    EditText et_review_writebox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +31,16 @@ public class reviewPage extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         drawerLayout = findViewById(R.id.drawer_layout);
         btn_riviewupdate = findViewById(R.id.btn_riviewupdate);
+        ratingbar = findViewById(R.id.ratingbar);
+        et_review_writebox = findViewById(R.id.et_review_writebox);
+
+        ratingbar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
+
+            }
+        });
+
 
         btn_riviewupdate.setOnClickListener(new View.OnClickListener() {
             @Override
