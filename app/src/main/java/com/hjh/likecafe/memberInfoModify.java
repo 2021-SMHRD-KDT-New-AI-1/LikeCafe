@@ -1,11 +1,16 @@
 package com.hjh.likecafe;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 
 import android.widget.Button;
@@ -23,6 +28,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,13 +46,15 @@ public class memberInfoModify extends AppCompatActivity {
     RadioButton rb_female, rb_male;
     Button btn_modify;
     String sex;
+    Toolbar toolbar;
+    DrawerLayout drawerLayout;
 
     // '생년월일'
     private TextView textView_Date;
     private DatePickerDialog.OnDateSetListener callbackMethod;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_member_info_modify);
 
@@ -58,9 +66,47 @@ public class memberInfoModify extends AppCompatActivity {
         rb_female = findViewById(R.id.rb_female);
         rb_male = findViewById(R.id.rb_male);
         btn_modify = findViewById(R.id.btn_modify);
+        toolbar = findViewById(R.id.toolbar);
+        drawerLayout = findViewById(R.id.drawer_layout);
+        setSupportActionBar(toolbar);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowTitleEnabled(false);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeAsUpIndicator(R.drawable.menu);
+
+        //Navigation Draewer
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem menuItem) {
+                menuItem.setChecked(true);
+                drawerLayout.closeDrawers();
+
+                int id = menuItem.getItemId();
+                String title = menuItem.getTitle().toString();
+
+                if(id == R.id.home){
+                    Toast.makeText(getApplicationContext(), title + ": 계정 정보를 확인합니다.", Toast.LENGTH_SHORT).show();
+                }
+                else if(id == R.id.wishlist){
+                    Toast.makeText(getApplicationContext(), title + ": 설정 정보를 확인합니다.", Toast.LENGTH_SHORT).show();
+                }
+                else if(id == R.id.review){
+                    Toast.makeText(getApplicationContext(), title + ": 로그아웃 시도중", Toast.LENGTH_SHORT).show();
+                }else if(id == R.id.edit){
+                    Toast.makeText(getApplicationContext(), title + ": 로그아웃 시도중", Toast.LENGTH_SHORT).show();
+                }
+
+                return true;
+            }
+        });
 
 
-        // 라디오 체크 리스너
+
+
+
+       // 라디오 체크 리스너
         rg_sex.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
@@ -219,6 +265,17 @@ public class memberInfoModify extends AppCompatActivity {
         };
         requestQueue.add(request);
     }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:{ // 뒤로가기 버튼 눌렀을 때
+                drawerLayout.openDrawer(GravityCompat.START);
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 
 
 }
