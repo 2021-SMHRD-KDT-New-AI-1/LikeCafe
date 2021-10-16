@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,7 +15,6 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
-import com.android.volley.Response;
 import com.google.android.material.navigation.NavigationView;
 
 public class reviewPage extends AppCompatActivity {
@@ -66,16 +66,20 @@ public class reviewPage extends AppCompatActivity {
                 int id = menuItem.getItemId();
                 String title = menuItem.getTitle().toString();
 
-                if(id == R.id.home){
-                    Toast.makeText(getApplicationContext(), title + ": 계정 정보를 확인합니다.", Toast.LENGTH_SHORT).show();
+                if(id == R.id.NV_home){
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
                 }
-                else if(id == R.id.wishlist){
-                    Toast.makeText(getApplicationContext(), title + ": 설정 정보를 확인합니다.", Toast.LENGTH_SHORT).show();
+                else if(id == R.id.NV_wish){
+                    Intent intent = new Intent(getApplicationContext(), zzimlist.class);
+                    startActivity(intent);
                 }
-                else if(id == R.id.review){
-                    Toast.makeText(getApplicationContext(), title + ": 로그아웃 시도중", Toast.LENGTH_SHORT).show();
-                }else if(id == R.id.edit){
-                    Toast.makeText(getApplicationContext(), title + ": 로그아웃 시도중", Toast.LENGTH_SHORT).show();
+                else if(id == R.id.NV_review){
+                    Intent intent = new Intent(getApplicationContext(), review.class);
+                    startActivity(intent);
+                }else if(id == R.id.NV_edit){
+                    Intent intent = new Intent(getApplicationContext(), memberInfoModify.class);
+                    startActivity(intent);
                 }
 
                 return true;
