@@ -130,14 +130,14 @@ public class MainActivity extends AppCompatActivity {
                 int id = menuItem.getItemId();
                 String title = menuItem.getTitle().toString();
 
-//                if(id == R.id.NV_home){
-//                }
-//                else if(id == R.id.NV_wish){
-//                }
-//                else if(id == R.id.NV_review){
-//                }
-//                else if(id == R.id.NV_edit){
-//                }
+                if(id == R.id.NV_home){
+                }
+                else if(id == R.id.NV_wish){
+                }
+                else if(id == R.id.NV_review){
+                }
+                else if(id == R.id.NV_edit){
+                }
                 return true;
             }
 
