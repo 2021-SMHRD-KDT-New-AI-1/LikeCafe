@@ -146,7 +146,7 @@ public class reviewPage extends AppCompatActivity {
 
     // Json 파일 생성 및 리뷰 웹서버 전송
     public void postReview () {
-        String url = "http://172.30.1.8:3003/Review";  // ????
+        String url = "http://172.30.1.8:3003/Review/ReviewPage";  //
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 url,
@@ -174,7 +174,12 @@ public class reviewPage extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("review", et_review_writebox.getText().toString());
+                params.put("cafe_id", "1"); // (확인용 가라정보)
+                params.put("mem_id", "test"); // (확인용 가라정보)
+                params.put("star", "star"); // (확인용 가라정보 : 별점 받아서 반영하는 거 추후 하겠음)
+                params.put("content", et_review_writebox.getText().toString());
+                params.put("review_image", "img"); // (확인용 가라정보 : 비트맵 변경 필수)
+                params.put("write_date", "2021-10-16"); // (확인용 가라정보 : 비트맵 변경 필수)
                 return params;
             }
         };
