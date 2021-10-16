@@ -8,12 +8,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -74,24 +71,17 @@ public class MainActivity extends AppCompatActivity {
                 int id = menuItem.getItemId();
                 String title = menuItem.getTitle().toString();
 
-                if(id == R.id.home){
-                    Toast.makeText(getApplicationContext(), title + ": 계정 정보를 확인합니다.", Toast.LENGTH_SHORT).show();
+                if(id == R.id.NV_home){
                 }
-                else if(id == R.id.wishlist){
-                    Toast.makeText(getApplicationContext(), title + ": 설정 정보를 확인합니다.", Toast.LENGTH_SHORT).show();
+                else if(id == R.id.NV_wish){
                 }
-                else if(id == R.id.review){
-                    Toast.makeText(getApplicationContext(), title + ": 로그아웃 시도중", Toast.LENGTH_SHORT).show();
-                }else if(id == R.id.edit){
-                    Toast.makeText(getApplicationContext(), title + ": 로그아웃 시도중", Toast.LENGTH_SHORT).show();
+                else if(id == R.id.NV_review){
                 }
-
+                else if(id == R.id.NV_edit){
+                }
                 return true;
             }
-
-
         });
-
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
