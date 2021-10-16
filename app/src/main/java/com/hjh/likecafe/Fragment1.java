@@ -1,6 +1,7 @@
 package com.hjh.likecafe;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -30,26 +31,50 @@ public class Fragment1 extends Fragment {
             btns[i] = view.findViewById(resID);
         }
 
-        btns[0].setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String gu = btns[0].getText().toString();
 
-                //buttonFragment = new ButtonFragment();
-                //Bundle bundle = new Bundle();
-                //bundle.putString("gu", gu);
-                //buttonFragment.setArguments(bundle);
+        for (int i =0; i< btns.length;i++){
+            btns[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String gu = ((Button) view).getText().toString();
 
-                Intent intent = new Intent(getActivity(), r_selection.class);
-                intent.putExtra("gu",gu);//데이터 넣기
-                startActivity(intent);
+                    // 요기 있죠 요기 이부분에서 구 정보를
+                    // Intent말고 SharedPreference 에다가 저장시키고!
 
-            }
-        });
+                    Intent intent = new Intent(getActivity(), r_selection.class);
+                    intent.putExtra("gu",gu);//데이터 넣기
+                    startActivity(intent);
 
-
+                }
+            });
+        }
+//        btns[0].setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                String gu = btns[0].getText().toString();
+//
+//                //buttonFragment = new ButtonFragment();
+//                //Bundle bundle = new Bundle();
+//                //bundle.putString("gu", gu);
+//                //buttonFragment.setArguments(bundle);
+//
+//                Intent intent = new Intent(getActivity(), r_selection.class);
+//                intent.putExtra("gu",gu);//데이터 넣기
+//                startActivity(intent);
+//
+//            }
+//        });
+//        btns[1].setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                String gu = btns[0].getText().toString();
+//                Intent intent = new Intent(getActivity(), r_selection.class);
+//                intent.putExtra("gu",gu);//데이터 넣기
+//                startActivity(intent);
+//
+//            }
+//        });
 
         return view;
     }
 }
-

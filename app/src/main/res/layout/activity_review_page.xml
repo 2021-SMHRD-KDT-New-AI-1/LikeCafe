@@ -67,7 +67,7 @@
         app:layout_constraintGuide_begin="101dp" />
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/tv_theme"
             android:layout_width="0dp"
             android:layout_height="27dp"
             android:layout_marginStart="10dp"
