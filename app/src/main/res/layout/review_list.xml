@@ -2,99 +2,126 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/imageView13"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
-        android:layout_marginEnd="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/star"
-        tools:layout_editor_absoluteY="9dp" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/reviewListBody"
+        android:layout_width="320dp"
+        android:layout_height="120dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ImageView
-        android:id="@+id/imageView12"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
-        app:layout_constraintEnd_toStartOf="@+id/imageView13"
-        app:layout_constraintTop_toTopOf="@+id/imageView13"
-        app:srcCompat="@drawable/star" />
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/guideline_reviewList"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/cafe1" />
 
-    <ImageView
-        android:id="@+id/imageView11"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
-        app:layout_constraintEnd_toStartOf="@+id/imageView12"
-        app:layout_constraintTop_toTopOf="@+id/imageView12"
-        app:srcCompat="@drawable/star" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_reviewList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="138dp" />
 
-    <TextView
-        android:id="@+id/tv_name"
-        android:layout_width="145dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="128dp"
-        android:layout_marginBottom="10dp"
-        android:gravity="start|center_vertical"
-        android:text="이이남 스튜디오"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/tv_address"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView9"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        <TextView
+            android:id="@+id/tv_reviewListName"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="5dp"
+            android:gravity="start|center_vertical"
+            android:text="이이남 스튜디오"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline_reviewList"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_address"
-        android:layout_width="181dp"
-        android:layout_height="34dp"
-        android:layout_marginBottom="8dp"
-        android:gravity="center|fill_horizontal"
-        android:text="광주 남구 제중로47번길 10 이이남스튜디오"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/tv_name" />
+        <TextView
+            android:id="@+id/tv_address"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="fill_horizontal|top"
+            android:text="리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰\n하이하이\n오호오호\n이힝힝\n야아아호"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline_reviewList"
+            app:layout_constraintTop_toBottomOf="@id/tv_reviewListName" />
 
-    <ImageView
-        android:id="@+id/imageView9"
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/cafe1" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="138dp" />
-
-    <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
-        app:layout_constraintEnd_toStartOf="@+id/imageView11"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/tv_name"
-        app:layout_constraintTop_toTopOf="@+id/imageView11"
-        app:srcCompat="@drawable/star" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="58dp"
-        android:layout_height="31dp"
-        android:text="삭제"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_address"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tv_address"
-        app:layout_constraintTop_toTopOf="@+id/tv_address" />
+        app:layout_constraintStart_toEndOf="@+id/reviewListBody"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/img_star5"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/star" />
+
+        <ImageView
+            android:id="@+id/img_star4"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            app:srcCompat="@drawable/star"
+            app:layout_constraintStart_toEndOf="@+id/img_star5"
+            app:layout_constraintTop_toTopOf="@+id/img_star5"
+            app:layout_constraintBottom_toBottomOf="@+id/img_star5"/>
+
+        <ImageView
+            android:id="@+id/img_star3"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            app:srcCompat="@drawable/star"
+            app:layout_constraintStart_toEndOf="@+id/img_star4"
+            app:layout_constraintTop_toTopOf="@+id/img_star4"
+            app:layout_constraintBottom_toBottomOf="@+id/img_star4"/>
+
+        <ImageView
+            android:id="@+id/img_star2"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            app:srcCompat="@drawable/star"
+            app:layout_constraintStart_toEndOf="@+id/img_star3"
+            app:layout_constraintTop_toTopOf="@+id/img_star3"
+            app:layout_constraintBottom_toBottomOf="@+id/img_star3"/>
+
+        <ImageView
+            android:id="@+id/img_star1"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            app:srcCompat="@drawable/star"
+            app:layout_constraintStart_toEndOf="@+id/img_star2"
+            app:layout_constraintTop_toTopOf="@+id/img_star2"
+            app:layout_constraintBottom_toBottomOf="@+id/img_star2"/>
+
+        <Button
+            android:id="@+id/btn_reviewDelete"
+            android:layout_width="55dp"
+            android:layout_height="33dp"
+            android:layout_marginBottom="5dp"
+            android:text="삭제"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/img_star1" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

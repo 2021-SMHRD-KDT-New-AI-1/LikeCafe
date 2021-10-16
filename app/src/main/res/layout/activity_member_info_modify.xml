@@ -55,7 +55,7 @@
         <Button
             android:id="@+id/btn_picChange"
             android:layout_width="66dp"
-            android:layout_height="30dp"
+            android:layout_height="33dp"
 
             android:layout_marginTop="4dp"
             android:backgroundTint="#494F39"
@@ -101,24 +101,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="56dp"
-            android:layout_marginBottom="27dp"
+            android:layout_marginTop="30dp"
             android:letterSpacing="-0.05"
             android:text="변경할 비밀번호"
-            app:layout_constraintBottom_toTopOf="@+id/textView34"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView38" />
 
         <EditText
             android:id="@+id/et_changePw"
             android:layout_width="200dp"
             android:layout_height="40dp"
+            android:layout_marginTop="5dp"
             android:ems="10"
             android:inputType="textPassword"
             app:layout_constraintBottom_toBottomOf="@+id/textView36"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/et_currentPw"
-            app:layout_constraintTop_toTopOf="@+id/textView36"
-            app:layout_constraintVertical_bias="0.666" />
+            app:layout_constraintTop_toBottomOf="@+id/et_currentPw"
+            app:layout_constraintVertical_bias="0.0" />
 
         <EditText
             android:id="@+id/et_currentPw"
@@ -131,25 +132,26 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/et_changeNick"
             app:layout_constraintTop_toTopOf="@+id/textView38"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="0.476" />
 
         <EditText
             android:id="@+id/et_chkPw"
             android:layout_width="200dp"
             android:layout_height="40dp"
+            android:layout_marginTop="5dp"
             android:ems="10"
             android:inputType="textPassword"
             app:layout_constraintBottom_toBottomOf="@+id/textView34"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/et_changePw"
-            app:layout_constraintTop_toTopOf="@+id/textView34"
-            app:layout_constraintVertical_bias="0.952" />
+            app:layout_constraintTop_toBottomOf="@+id/et_changePw"
+            app:layout_constraintVertical_bias="0.0" />
 
         <Button
             android:id="@+id/btn_checkDupli"
-            android:layout_width="66dp"
-            android:layout_height="30dp"
+            android:layout_width="60dp"
+            android:layout_height="33dp"
 
             android:layout_marginEnd="40dp"
             android:backgroundTint="#494F39"
@@ -163,10 +165,10 @@
             app:iconPadding="0dp"
             app:layout_constraintBottom_toBottomOf="@+id/et_changeNick"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.12"
             app:layout_constraintStart_toEndOf="@+id/et_changeNick"
             app:layout_constraintTop_toTopOf="@+id/et_changeNick"
-            app:layout_constraintVertical_bias="0.4" />
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/textView31"
@@ -177,20 +179,21 @@
             android:letterSpacing="-0.05"
             android:text="성별 선택"
             app:layout_constraintBottom_toTopOf="@+id/guideline7"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView32"
+            app:layout_constraintVertical_bias="1.0" />
 
         <EditText
             android:id="@+id/et_changeNick"
-            android:layout_width="150dp"
+            android:layout_width="130dp"
             android:layout_height="40dp"
             android:ems="10"
             android:inputType="text"
             app:layout_constraintBottom_toBottomOf="@+id/textView40"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.375"
+            app:layout_constraintHorizontal_bias="0.351"
             app:layout_constraintStart_toEndOf="@+id/textView40"
-            app:layout_constraintTop_toTopOf="@+id/textView40"
-            app:layout_constraintVertical_bias="0.666" />
+            app:layout_constraintTop_toTopOf="@+id/textView40" />
 
         <Button
             android:id="@+id/btn_birthSe"
@@ -217,44 +220,44 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="56dp"
-            android:layout_marginBottom="27dp"
+            android:layout_marginTop="30dp"
             android:letterSpacing="-0.05"
             android:text="비밀번호 확인"
-            app:layout_constraintBottom_toTopOf="@+id/textView32"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView36" />
 
         <TextView
             android:id="@+id/textView40"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="56dp"
-            android:layout_marginBottom="27dp"
+            android:layout_marginTop="260dp"
             android:letterSpacing="-0.05"
             android:text="닉네임"
-            app:layout_constraintBottom_toTopOf="@+id/textView38"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView38"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="56dp"
-            android:layout_marginBottom="27dp"
+            android:layout_marginTop="30dp"
             android:letterSpacing="-0.05"
             android:text="현재 비밀번호"
-            app:layout_constraintBottom_toTopOf="@+id/textView36"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView40" />
 
         <TextView
             android:id="@+id/textView32"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="56dp"
-            android:layout_marginBottom="36dp"
+            android:layout_marginTop="30dp"
             android:letterSpacing="-0.05"
             android:text="생년월일"
-            app:layout_constraintBottom_toTopOf="@+id/textView31"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView34" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline7"
