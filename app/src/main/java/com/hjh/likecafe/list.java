@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
@@ -15,7 +16,7 @@ import java.util.Map;
 
 public class list extends AppCompatActivity {
     ListView lv_cafe;
-
+    TextView tv_detailResult, tv_theme;
     RequestQueue requestQueue;
     List<CafeVO> data;
 
@@ -47,6 +48,18 @@ public class list extends AppCompatActivity {
         data.add(vo2);
 
         adapter.notifyDataSetChanged();
+
+        tv_detailResult = findViewById(R.id.tv_detailResult);
+        ArrayList<String> detail = getIntent().getStringArrayListExtra("detail");
+        String result = "";
+        for (String keyword:detail) {
+            result += "#"+keyword+" ";
+        }
+        tv_detailResult.setText(result);
+
+        tv_theme = findViewById(R.id.tv_theme);
+        tv_theme.setText(result);
+
 
 
     }
