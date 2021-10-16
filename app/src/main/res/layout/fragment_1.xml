@@ -27,7 +27,7 @@
                 android:layout_height="match_parent">
 
                 <Button
-                    android:id="@+id/s1"
+                    android:id="@+id/btn_s1"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

@@ -261,6 +261,8 @@ public class memberInfoModify extends AppCompatActivity {
 
 
 
+
+
     // '생년월일'
     private void InitializeView() { // '생년월일'
         textView_Date = (TextView) findViewById(R.id.textView_Date);
@@ -286,7 +288,7 @@ public class memberInfoModify extends AppCompatActivity {
     }
 
     // Json파일을 만들어 웹 서버로 보내기
-    public void postModify(String nick, String pw, String birth, String sex, Bitmap image) {
+    public void postModify(String nick, String pw, String birth, String sex, Bitmap img_profile) {
         String url = "http://172.30.1.8:3003/Member/Modify";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
@@ -315,11 +317,12 @@ public class memberInfoModify extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
+
                 params.put("nick", nick);
                 params.put("pw", pw);
                 params.put("birth", birth);
                 params.put("gender", sex);
-                params.put("mem_image", BitmapToString(image));
+                params.put("mem_image", BitmapToString(img_profile));
 
                 return params;
             }
