@@ -13,6 +13,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="33dp"
         android:text="성별"
+        android:textColor="#000000"
         android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,6 +26,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="33dp"
         android:text="생년월일"
+        android:textColor="#000000"
         android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,6 +53,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="33dp"
         android:text="닉네임"
+        android:textColor="#000000"
         android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -77,6 +80,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="32dp"
         android:text="비밀번호 확인"
+        android:textColor="#000000"
         android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -103,6 +107,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="31dp"
         android:text="비밀번호"
+        android:textColor="#000000"
         android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -136,6 +141,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="35dp"
         android:text="아이디"
+        android:textColor="#000000"
         android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -143,7 +149,7 @@
 
     <EditText
         android:id="@+id/et_memId"
-        android:layout_width="260dp"
+        android:layout_width="190dp"
         android:layout_height="36dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="40dp"
@@ -152,8 +158,9 @@
         android:inputType="textPersonName"
         android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/tv_limit"
-        app:layout_constraintTop_toBottomOf="@+id/tv_limit" />
+        app:layout_constraintHorizontal_bias="0.111"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
@@ -166,17 +173,20 @@
         android:id="@+id/btn_submit"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:backgroundTint="#D00C0101"
+        android:backgroundTint="#494F39"
 
         android:insetTop="0dp"
         android:insetBottom="0dp"
 
+        android:letterSpacing="-0.05"
         android:padding="0dp"
         android:paddingLeft="0dp"
         android:paddingTop="0dp"
         android:paddingRight="0dp"
         android:paddingBottom="0dp"
         android:text="가입하기"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:cornerRadius="0dp"
         app:iconPadding="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -216,16 +226,18 @@
 
     <Button
         android:id="@+id/btn_birth"
-        android:layout_width="49dp"
+        android:layout_width="50dp"
         android:layout_height="33dp"
         android:layout_marginTop="15dp"
-        android:backgroundTint="#D00C0101"
+        android:backgroundTint="#494F39"
+        android:letterSpacing="-0.05"
         android:onClick="OnClickHandler"
         android:paddingLeft="0dp"
         android:paddingTop="0dp"
         android:paddingRight="0dp"
         android:paddingBottom="0dp"
         android:text="선택"
+        android:textSize="12sp"
         app:iconPadding="0dp"
         app:layout_constraintStart_toStartOf="@+id/et_nick"
         app:layout_constraintTop_toBottomOf="@+id/et_nick" />
@@ -239,6 +251,24 @@
         android:text="날짜 정보"
         app:layout_constraintEnd_toEndOf="@+id/et_nick"
         app:layout_constraintTop_toBottomOf="@+id/et_nick" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="60dp"
+        android:layout_height="33dp"
+        android:layout_marginEnd="44dp"
+        android:backgroundTint="#494F39"
+        android:letterSpacing="-0.05"
+        android:paddingLeft="0dp"
+        android:paddingTop="0dp"
+        android:paddingRight="0dp"
+        android:paddingBottom="0dp"
+        android:text="중복확인"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/et_memId"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/et_memId"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
