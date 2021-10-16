@@ -283,7 +283,7 @@ public class memberInfoModify extends AppCompatActivity {
                 params.put("pw", pw);
                 params.put("birth", birth);
                 params.put("sex", sex);
-                // 짜란~
+
                 params.put("image", BitmapToString(image));
 
                 return params;

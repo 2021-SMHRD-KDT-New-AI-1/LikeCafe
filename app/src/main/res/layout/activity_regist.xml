@@ -109,7 +109,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_limit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
@@ -139,7 +139,7 @@
         android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_limit" />
 
     <EditText
         android:id="@+id/et_memId"
@@ -152,8 +152,8 @@
         android:inputType="textPersonName"
         android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintStart_toStartOf="@+id/tv_limit"
+        app:layout_constraintTop_toBottomOf="@+id/tv_limit" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
