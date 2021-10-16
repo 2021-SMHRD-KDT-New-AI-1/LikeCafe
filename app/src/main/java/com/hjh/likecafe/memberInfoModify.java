@@ -7,7 +7,10 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -49,6 +52,7 @@ public class memberInfoModify extends AppCompatActivity {
 
     RequestQueue requestQueue;
     EditText et_changeNick, et_currentPw, et_changePw, et_chkPw;
+    TextView tv_quit;
     RadioGroup rg_sex;
     RadioButton rb_female, rb_male;
     Button btn_modify, btn_picChange;
@@ -81,6 +85,7 @@ public class memberInfoModify extends AppCompatActivity {
         btn_picChange = findViewById(R.id.btn_picChange);
         toolbar = findViewById(R.id.toolbar);
         drawerLayout = findViewById(R.id.drawer_layout);
+        tv_quit = findViewById(R.id.tv_quit);
         setSupportActionBar(toolbar);
 
         ActionBar actionBar = getSupportActionBar();
@@ -186,7 +191,38 @@ public class memberInfoModify extends AppCompatActivity {
 
         this.InitializeView(); // '생년월일'
         this.InitializeListener(); // '생년월일'
-    }
+
+
+        //'탈퇴하기' 누르기
+        tv_quit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder alert_confirm = new AlertDialog.Builder(view.getContext());
+                // 메세지
+                alert_confirm.setMessage("탈퇴하시겠습니까?");
+                // 확인 버튼 리스너
+                alert_confirm.setNegativeButton("취소", null);
+                alert_confirm.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // 탈퇴시키기
+                    }
+                });
+
+                // 다이얼로그 생성
+                AlertDialog alert = alert_confirm.create();
+
+                // 다이얼로그 타이틀
+                //alert.setTitle("탈퇴하기");
+                // 다이얼로그 보기
+                alert.show();
+            }
+        });
+
+
+
+            }
+
 
     // 선택한 사진으로 프사바꾸기
     @Override
@@ -347,7 +383,6 @@ public class memberInfoModify extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 
 
 
