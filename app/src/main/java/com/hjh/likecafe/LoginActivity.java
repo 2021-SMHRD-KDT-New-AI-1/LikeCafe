@@ -2,6 +2,7 @@ package com.hjh.likecafe;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,10 +32,14 @@ public class LoginActivity extends AppCompatActivity {
     EditText et_loginId, et_loginPw;
     Button btn_login, btn_regist;
 
+    Context mContext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        mContext = this;
 
         et_loginId = findViewById(R.id.et_loginId);
         et_loginPw = findViewById(R.id.et_loginPw);
@@ -81,6 +86,7 @@ public class LoginActivity extends AppCompatActivity {
                             Log.d("status : ", jsonObject.getString("status"));
                             String status = jsonObject.getString("status");
                             if (status.equals("success")) {
+                                PreferenceManager.setString(mContext, "mem_id", id);
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                 startActivity(intent);
                             }else{
