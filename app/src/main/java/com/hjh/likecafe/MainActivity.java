@@ -8,12 +8,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -74,13 +71,13 @@ public class MainActivity extends AppCompatActivity {
                 int id = menuItem.getItemId();
                 String title = menuItem.getTitle().toString();
 
-                if(id == R.id.home){
+                if(id == R.id.NV_home){
                 }
-                else if(id == R.id.wishlist){
+                else if(id == R.id.NV_wish){
                 }
-                else if(id == R.id.review){
+                else if(id == R.id.NV_review){
                 }
-                else if(id == R.id.edit){
+                else if(id == R.id.NV_edit){
                 }
                 return true;
             }

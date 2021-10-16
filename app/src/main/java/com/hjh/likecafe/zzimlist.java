@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -74,13 +75,20 @@ public class zzimlist extends AppCompatActivity {
                 int id = menuItem.getItemId();
                 String title = menuItem.getTitle().toString();
 
-                if(id == R.id.home){
+                if(id == R.id.NV_home){
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
                 }
-                else if(id == R.id.wishlist){
+                else if(id == R.id.NV_wish){
+                    Intent intent = new Intent(getApplicationContext(), zzimlist.class);
+                    startActivity(intent);
                 }
-                else if(id == R.id.review){
-                }
-                else if(id == R.id.edit){
+                else if(id == R.id.NV_review){
+                    Intent intent = new Intent(getApplicationContext(), review.class);
+                    startActivity(intent);
+                }else if(id == R.id.NV_edit){
+                    Intent intent = new Intent(getApplicationContext(), memberInfoModify.class);
+                    startActivity(intent);
                 }
                 return true;
             }
