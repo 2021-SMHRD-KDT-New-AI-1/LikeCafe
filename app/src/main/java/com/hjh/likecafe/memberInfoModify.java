@@ -318,9 +318,8 @@ public class memberInfoModify extends AppCompatActivity {
                 params.put("nick", nick);
                 params.put("pw", pw);
                 params.put("birth", birth);
-                params.put("sex", sex);
-
-                params.put("image", BitmapToString(image));
+                params.put("gender", sex);
+                params.put("mem_image", BitmapToString(image));
 
                 return params;
             }
@@ -331,7 +330,7 @@ public class memberInfoModify extends AppCompatActivity {
     public void modify(String id, String currentPw, String nick, String changePw, String birth, String sex) {
         // 먼저 현재 비밀번호가 일치하는지부터 확인해야함
         // 비밀번호랑 id가 매치되는지(올바른 현재 비밀번호를 입력했는지)는 로그인 요청으로 확인가능
-        String url = "http://172.30.1.8:3003/Member/Login"; // 로그인 요청 : id와 pw가 회원 테이블에 있는지 확인해줌
+        String url = "http://172.30.1.8:3003/Member/Modify"; // 로그인 요청 : id와 pw가 회원 테이블에 있는지 확인해줌
         // 로그인 요청을 하면 서버에서 로그인 성공여부에 따라 status에 success 혹은 fail을 담아서 보내줌
         StringRequest request = new StringRequest(
                 Request.Method.POST,

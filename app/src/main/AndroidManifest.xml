@@ -25,14 +25,11 @@
         <activity
             android:name=".memberInfoModify"
             android:exported="true" >
-
         </activity>
 
         <activity
             android:name=".LoginActivity"
             android:exported="true" >
-
-
         </activity>
 
         <activity
@@ -63,6 +60,7 @@
         <activity
             android:name=".reviewPage"
             android:exported="true">
+
         </activity>
 
         <activity android:name=".list"
@@ -77,6 +75,7 @@
             android:name=".review"
             android:exported="true" >
         </activity>
+
     </application>
 
 </manifest>
