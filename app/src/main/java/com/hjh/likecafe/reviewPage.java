@@ -30,6 +30,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.navigation.NavigationView;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -101,7 +102,10 @@ public class reviewPage extends AppCompatActivity {
         btn_riviewupdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String review = et_review_writebox.getText().toString();
+
                 Toast.makeText(getApplicationContext(), "리뷰 등록이 완료되었습니다.", Toast.LENGTH_SHORT).show();
+                postReview(et_review_writebox);
             }
         });
 
@@ -145,7 +149,7 @@ public class reviewPage extends AppCompatActivity {
     }
 
     // Json 파일 생성 및 리뷰 웹서버 전송
-    public void postReview () {
+    public void postReview (EditText et_review_writebox) {
         String url = "http://172.30.1.8:3003/Review/ReviewPage";  //
         StringRequest request = new StringRequest(
                 Request.Method.POST,
@@ -180,10 +184,11 @@ public class reviewPage extends AppCompatActivity {
                 params.put("content", et_review_writebox.getText().toString());
                 params.put("review_image", "img"); // (확인용 가라정보 : 비트맵 변경 필수)
                 params.put("write_date", "2021-10-16"); // (확인용 가라정보 : 비트맵 변경 필수)
+
                 return params;
             }
         };
-
+        requestQueue.add(request);
     }
 
 
