@@ -43,6 +43,29 @@
             app:layout_constraintStart_toEndOf="@+id/imageView7"
             app:layout_constraintTop_toTopOf="@+id/imageView7"
             app:layout_constraintVertical_bias="0.75" />
+    <TextView
+        android:id="@+id/tv_theme"
+        android:layout_width="132dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="10dp"
+        android:text="내가 쓴 리뷰"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+        app:layout_constraintStart_toEndOf="@+id/imageView7"
+        app:layout_constraintTop_toTopOf="@+id/imageView7" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="39dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.89"
+        app:layout_constraintStart_toEndOf="@+id/tv_theme"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/list" />
 
         <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"

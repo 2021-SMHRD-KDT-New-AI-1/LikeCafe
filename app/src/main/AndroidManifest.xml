@@ -12,14 +12,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LikeCafe"
         android:usesCleartextTraffic="true">
+
+        <activity android:name=".FirstPage"
+            android:exported="true">
+        </activity>
+
         <activity
             android:name=".memberInfoModify"
             android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <activity
             android:name=".LoginActivity"
-            android:exported="true">
+            android:exported="true" >
         </activity>
 
         <activity
@@ -58,18 +68,12 @@
 
         <activity android:name=".zzimlist"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
-
         <activity
             android:name=".review"
             android:exported="true" >
         </activity>
-
     </application>
 
 </manifest>
