@@ -68,7 +68,7 @@ public class memberInfoModify extends AppCompatActivity {
     // '생년월일'
     private TextView textView_Date;
     private DatePickerDialog.OnDateSetListener callbackMethod;
-
+    
     Context mContext;
 
 
@@ -90,7 +90,7 @@ public class memberInfoModify extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
         tv_quit = findViewById(R.id.tv_quit);
         setSupportActionBar(toolbar);
-
+        
         mContext = this;
 
         ActionBar actionBar = getSupportActionBar();
@@ -257,6 +257,9 @@ public class memberInfoModify extends AppCompatActivity {
 
     // 선택한 사진(비트맵형식)을 String형태로 변환하기
     public static String BitmapToString (Bitmap bitmap) {
+        if(bitmap == null) {
+            return "디폴트 이미지";
+        }
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 70,baos);
         byte[] bytes = baos.toByteArray();
@@ -291,7 +294,7 @@ public class memberInfoModify extends AppCompatActivity {
     }
 
     // Json파일을 만들어 웹 서버로 보내기
-    public void postModify(String nick, String pw, String birth, String sex, Bitmap image) {
+    public void postModify(String id, String nick, String pw, String birth, String sex, Bitmap image) {
         String url = "http://172.30.1.8:3003/Member/Modify";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
@@ -320,6 +323,7 @@ public class memberInfoModify extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
+                params.put("id", id);
                 params.put("nick", nick);
                 params.put("pw", pw);
                 params.put("birth", birth);
@@ -335,7 +339,7 @@ public class memberInfoModify extends AppCompatActivity {
     public void modify(String id, String currentPw, String nick, String changePw, String birth, String sex) {
         // 먼저 현재 비밀번호가 일치하는지부터 확인해야함
         // 비밀번호랑 id가 매치되는지(올바른 현재 비밀번호를 입력했는지)는 로그인 요청으로 확인가능
-        String url = "http://172.30.1.8:3003/Member/Modify"; // 로그인 요청 : id와 pw가 회원 테이블에 있는지 확인해줌
+        String url = "http://172.30.1.8:3003/Member/Login"; // 로그인 요청 : id와 pw가 회원 테이블에 있는지 확인해줌
         // 로그인 요청을 하면 서버에서 로그인 성공여부에 따라 status에 success 혹은 fail을 담아서 보내줌
         StringRequest request = new StringRequest(
                 Request.Method.POST,
@@ -345,11 +349,12 @@ public class memberInfoModify extends AppCompatActivity {
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonObject = (JSONObject) (new JSONArray(response).get(0));
-                            Log.d("status : ", jsonObject.getString("status"));
-                            String status = jsonObject.getString("status");
+                            Log.d("json ???", jsonObject.toString());
+                            Log.d("result : ", jsonObject.getString("result"));
+                            String status = jsonObject.getString("result");
 
                             if (status.equals("success")) { // 로그인 성공 (비밀번호가 일치함)
-                                postModify(nick, changePw, birth, sex, image); // postModify 메소드 호출
+                                postModify(id, nick, changePw, birth, sex, image); // postModify 메소드 호출
                             } else { // 로그인 실패 (비밀번호가 일치하지 않음)
                                 Toast.makeText(memberInfoModify.this, "현재 비밀번호를 확인해주세요", Toast.LENGTH_SHORT).show();
                             }
