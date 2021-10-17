@@ -10,6 +10,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -68,6 +69,8 @@ public class memberInfoModify extends AppCompatActivity {
     private TextView textView_Date;
     private DatePickerDialog.OnDateSetListener callbackMethod;
 
+    Context mContext;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +90,8 @@ public class memberInfoModify extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
         tv_quit = findViewById(R.id.tv_quit);
         setSupportActionBar(toolbar);
+
+        mContext = this;
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowTitleEnabled(false);
@@ -184,7 +189,7 @@ public class memberInfoModify extends AppCompatActivity {
                 }
                 else {
                     // id와 입력받은 값을 매개변수로 하여 modify 메소드 호출
-                    modify("test", currentPw, nick, changePw, birth, sex); // 일단 임시로 id값 대신 test를 넣어주었음
+                    modify(PreferenceManager.getString(mContext, "mem_id"), currentPw, nick, changePw, birth, sex); // 일단 임시로 id값 대신 test를 넣어주었음
                 }
             }
         });
