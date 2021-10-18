@@ -35,6 +35,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.navigation.NavigationView;
@@ -53,15 +54,17 @@ public class memberInfoModify extends AppCompatActivity {
 
     RequestQueue requestQueue;
     EditText et_changeNick, et_currentPw, et_changePw, et_chkPw;
-    TextView tv_quit;
+    TextView tv_quit, tv_nick; // tv_nick : 로그인 사용자의 닉네임 반영관련
     RadioGroup rg_sex;
     RadioButton rb_female, rb_male;
     Button btn_modify, btn_picChange;
-    String sex;
+    String sex, nick; // String : nick : 로그인 사용자의 닉네임 반영
     boolean modifyStatus;
     Toolbar toolbar;
     DrawerLayout drawerLayout;
     Bitmap image;
+
+    private static final String TAG = "MAIN"; //로그인 사용자의 닉네임 반영관련
 
     ImageView img_profile;
 
@@ -91,6 +94,8 @@ public class memberInfoModify extends AppCompatActivity {
         tv_quit = findViewById(R.id.tv_quit);
         setSupportActionBar(toolbar);
 
+
+
         mContext = this;
 
         ActionBar actionBar = getSupportActionBar();
@@ -98,7 +103,36 @@ public class memberInfoModify extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeAsUpIndicator(R.drawable.menu);
 
-        //Navigation Draewer
+        // 닉네임 반영하기 (값을 받아오기///// 아니된다)
+        requestQueue = Volley.newRequestQueue(this);
+        String url = "http://172.30.1.8:3003/Member/Nick";
+
+        final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                   nick =  response.getString("nick");
+                   tv_nick.setText(nick + "ㅇㅇㅇㅇㅇ");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        jsonObjectRequest.setTag(TAG);
+        requestQueue.add(jsonObjectRequest);
+
+
+
+
+
+
+        //Navigation Drawer
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -163,7 +197,7 @@ public class memberInfoModify extends AppCompatActivity {
             requestQueue = Volley.newRequestQueue(getApplicationContext());
         }
 
-        // '수정하기' 버튼 클릭 리스너
+        // '수정하기' 버튼 클릭 리스너 (-> 수정완료되면 메인페이지로 이동함)
         btn_modify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -188,9 +222,14 @@ public class memberInfoModify extends AppCompatActivity {
                             "모든 입력란에 입력을 완료해주세요", Toast.LENGTH_SHORT).show();
                 }
                 else {
+                    Toast.makeText(memberInfoModify.this,
+                            "변경이 완료되었습니다.", Toast.LENGTH_SHORT).show();
                     // id와 입력받은 값을 매개변수로 하여 modify 메소드 호출
                     //PreferenceManager.getString(mContext, "mem_id")
                     modify("test", currentPw, nick, changePw, birth, sex); // 일단 임시로 id값 대신 test를 넣어주었음
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class );
+                    startActivity(intent);
+
                 }
             }
         });
