@@ -26,9 +26,11 @@ public class MainActivity extends AppCompatActivity {
     static boolean click_r;
     Toolbar toolbar;
     DrawerLayout drawerLayout;
+    Intent theme_intent;
 
     //    ArrayList<Object> detaiList = new ArrayList<Object>();
     ArrayList<String> detail;
+    String theme;
 
     Button btn_search,
             btn_exclusive, btn_group, btn_reserve, btn_field, btn_parking, btn_nokids, btn_toil,
@@ -83,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         detail = new ArrayList<>();
+        theme = "";
 
         tv_r_choice.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -463,44 +466,50 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.btn_single:
                 detail.clear();
-                detail.add("혼자가기 좋은");
+               // detail.add("혼자가기 좋은");
+                theme = "혼자가기 좋은";
                 Intent intent = new Intent(MainActivity.this, list.class);
-                intent.putExtra("detail", detail);//데이터 넣기
+                intent.putExtra("theme", theme);//데이터 넣기
                 startActivity(intent);
                 break;
             case R.id.btn_together  :
                 detail.clear();
-                detail.add("함께가기 좋은");
+                //detail.add("함께가기 좋은");
+                theme = "함께가기 좋은";
                 intent = new Intent(MainActivity.this, list.class);
-                intent.putExtra("detail", detail);//데이터 넣기
+                intent.putExtra("theme", theme);//데이터 넣기
                 startActivity(intent);
                 break;
             case R.id.btn_photo    :
                 detail.clear();
-                detail.add("사진찍기 좋은");
+                //detail.add("사진찍기 좋은");
+                theme = "사진찍기 좋은";
                 intent = new Intent(MainActivity.this, list.class);
-                intent.putExtra("detail", detail);//데이터 넣기
+                intent.putExtra("theme", theme);//데이터 넣기
                 startActivity(intent);
                 break;
             case R.id.btn_coffee    :
                 detail.clear();
-                detail.add("커피맛이 좋은");
+                //detail.add("커피맛이 좋은");
+                theme = "커피맛이 좋은";
                 intent = new Intent(MainActivity.this, list.class);
-                intent.putExtra("detail", detail);//데이터 넣기
+                intent.putExtra("theme", theme);//데이터 넣기
                 startActivity(intent);
                 break;
             case R.id.btn_dessert      :
                 detail.clear();
-                detail.add("디저트가 맛있는");
+                //detail.add("디저트가 맛있는");
+                theme = "디저트가 맛있는";
                 intent = new Intent(MainActivity.this, list.class);
-                intent.putExtra("detail", detail);//데이터 넣기
+                intent.putExtra("theme", theme);//데이터 넣기
                 startActivity(intent);
                 break;
             case R.id.btn_unique    :
                 detail.clear();
-                detail.add("이색적인");
+                //detail.add("이색적인");
+                theme = "이색적인";
                 intent = new Intent(MainActivity.this, list.class);
-                intent.putExtra("detail", detail);//데이터 넣기
+                intent.putExtra("theme", theme);//데이터 넣기
                 startActivity(intent);
                 break;
 
