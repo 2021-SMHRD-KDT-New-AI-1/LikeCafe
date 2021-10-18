@@ -75,7 +75,8 @@ public class list extends AppCompatActivity {
         tv_detailResult = findViewById(R.id.tv_detailResult);
         ArrayList<String> detail = getIntent().getStringArrayListExtra("detail");
         String theme = getIntent().getStringExtra("theme");
-
+        String region = getIntent().getStringExtra("region");
+        Log.d("지역을 리스트에 가져왔다  -> ", region);
 
         String result = "";
         if (detail != null) {
@@ -87,7 +88,7 @@ public class list extends AppCompatActivity {
             result = "";
             Log.d("theme : ", theme);
             result += "#" + theme;
-            searchByCategory(theme, "광주 동구");
+            searchByCategory(theme, region);
         }
         tv_detailResult.setText(result);
         adapter.notifyDataSetChanged();

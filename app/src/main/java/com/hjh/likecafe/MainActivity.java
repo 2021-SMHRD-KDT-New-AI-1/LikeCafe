@@ -96,19 +96,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        String region = getIntent().getStringExtra("region");
-//        if(region.equals("")) {
-//            tv_r_choice.setText("지역선택");
-//        } else {
-//            tv_r_choice.setText(region);
-//        }
-
-
         if (click_r) {
             String region = getIntent().getStringExtra("region");
             PreferenceManager.setString(this,"gu","");
-
-            tv_r_choice.setText(region);
+            if (region == null || region.equals("null")) {
+                tv_r_choice.setText("지역선택");
+            } else {
+                tv_r_choice.setText(region);
+            }
         } else {
             tv_r_choice.setText("지역선택");
         }
@@ -476,6 +471,7 @@ public class MainActivity extends AppCompatActivity {
                 theme = "혼자가기 좋은";
                 Intent intent = new Intent(MainActivity.this, list.class);
                 intent.putExtra("theme", theme);//데이터 넣기
+                intent.putExtra("region", tv_r_choice.getText().toString());
                 startActivity(intent);
                 break;
             case R.id.btn_together  :
@@ -484,6 +480,7 @@ public class MainActivity extends AppCompatActivity {
                 theme = "함께가기 좋은";
                 intent = new Intent(MainActivity.this, list.class);
                 intent.putExtra("theme", theme);//데이터 넣기
+                intent.putExtra("region", tv_r_choice.getText().toString());
                 startActivity(intent);
                 break;
             case R.id.btn_photo    :
@@ -492,6 +489,7 @@ public class MainActivity extends AppCompatActivity {
                 theme = "사진찍기 좋은";
                 intent = new Intent(MainActivity.this, list.class);
                 intent.putExtra("theme", theme);//데이터 넣기
+                intent.putExtra("region", tv_r_choice.getText().toString());
                 startActivity(intent);
                 break;
             case R.id.btn_coffee    :
@@ -500,6 +498,7 @@ public class MainActivity extends AppCompatActivity {
                 theme = "커피맛이 좋은";
                 intent = new Intent(MainActivity.this, list.class);
                 intent.putExtra("theme", theme);//데이터 넣기
+                intent.putExtra("region", tv_r_choice.getText().toString());
                 startActivity(intent);
                 break;
             case R.id.btn_dessert      :
@@ -508,6 +507,7 @@ public class MainActivity extends AppCompatActivity {
                 theme = "디저트가 맛있는";
                 intent = new Intent(MainActivity.this, list.class);
                 intent.putExtra("theme", theme);//데이터 넣기
+                intent.putExtra("region", tv_r_choice.getText().toString());
                 startActivity(intent);
                 break;
             case R.id.btn_unique    :
@@ -516,9 +516,9 @@ public class MainActivity extends AppCompatActivity {
                 theme = "이색적인";
                 intent = new Intent(MainActivity.this, list.class);
                 intent.putExtra("theme", theme);//데이터 넣기
+                intent.putExtra("region", tv_r_choice.getText().toString());
                 startActivity(intent);
                 break;
-
 
         }
 

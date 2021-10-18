@@ -276,9 +276,6 @@ public class memberInfoModify extends AppCompatActivity {
                 alert.show();
             }
         });
-
-
-
             }
 
 
