@@ -243,14 +243,25 @@ public class memberInfoModify extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder alert_confirm = new AlertDialog.Builder(view.getContext());
+                final EditText quitPassword = new EditText(view.getContext());
+                alert_confirm.setView(quitPassword);
                 // 메세지
-                alert_confirm.setMessage("탈퇴하시겠습니까?");
+                alert_confirm.setMessage("비밀번호를 입력하세요");
                 // 확인 버튼 리스너
                 alert_confirm.setNegativeButton("취소", null);
                 alert_confirm.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         // 탈퇴시키기
+
+                        if(quitPassword.equals(et_currentPw)){
+
+
+                        }else{
+                            Toast.makeText(memberInfoModify.this,
+                                    "비밀번호를 다시 입력하세요.", Toast.LENGTH_SHORT).show();
+                        }
+
                     }
                 });
 

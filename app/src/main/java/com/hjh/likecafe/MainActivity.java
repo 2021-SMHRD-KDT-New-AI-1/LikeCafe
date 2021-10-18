@@ -20,7 +20,6 @@ import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 
-
 public class MainActivity extends AppCompatActivity {
     TextView tv_r_choice;
     static boolean click_r;
@@ -128,12 +127,19 @@ public class MainActivity extends AppCompatActivity {
                 String title = menuItem.getTitle().toString();
 
                 if(id == R.id.NV_home){
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
                 }
                 else if(id == R.id.NV_wish){
+                    Intent intent = new Intent(getApplicationContext(), zzimlist.class);
+                    startActivity(intent);
                 }
                 else if(id == R.id.NV_review){
-                }
-                else if(id == R.id.NV_edit){
+                    Intent intent = new Intent(getApplicationContext(), review.class);
+                    startActivity(intent);
+                }else if(id == R.id.NV_edit){
+                    Intent intent = new Intent(getApplicationContext(), memberInfoModify.class);
+                    startActivity(intent);
                 }
                 return true;
             }
