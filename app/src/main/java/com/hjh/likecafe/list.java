@@ -133,7 +133,7 @@ public class list extends AppCompatActivity {
     }
 
     public void searchByCategory(String theme, String region) {
-        String url = "http://172.30.1.8:3003/Cafe/searchByCategory";
+        String url = "http://172.30.1.8:3003/Cafe/SearchByCategory";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 url,
