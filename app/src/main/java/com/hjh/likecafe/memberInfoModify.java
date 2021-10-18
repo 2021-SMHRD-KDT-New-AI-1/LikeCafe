@@ -189,7 +189,8 @@ public class memberInfoModify extends AppCompatActivity {
                 }
                 else {
                     // id와 입력받은 값을 매개변수로 하여 modify 메소드 호출
-                    modify(PreferenceManager.getString(mContext, "mem_id"), currentPw, nick, changePw, birth, sex); // 일단 임시로 id값 대신 test를 넣어주었음
+                    //PreferenceManager.getString(mContext, "mem_id")
+                    modify("test", currentPw, nick, changePw, birth, sex); // 일단 임시로 id값 대신 test를 넣어주었음
                 }
             }
         });

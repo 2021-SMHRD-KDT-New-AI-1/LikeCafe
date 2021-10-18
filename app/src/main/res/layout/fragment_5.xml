@@ -25,6 +25,7 @@
             android:layout_height="match_parent">
 
             <Button
+                android:id="@+id/i1"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -41,6 +42,7 @@
             android:layout_height="match_parent">
 
             <Button
+                android:id="@+id/i2"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -56,6 +58,7 @@
             android:layout_height="match_parent">
 
             <Button
+                android:id="@+id/i3"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -71,6 +74,7 @@
             android:layout_height="match_parent">
 
             <Button
+                android:id="@+id/i4"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -86,6 +90,7 @@
             android:layout_height="match_parent">
 
             <Button
+                android:id="@+id/i5"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -101,6 +106,7 @@
             android:layout_height="match_parent">
 
             <Button
+                android:id="@+id/i6"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -116,6 +122,7 @@
             android:layout_height="match_parent">
 
             <Button
+                android:id="@+id/i7"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -131,6 +138,7 @@
             android:layout_height="match_parent">
 
             <Button
+                android:id="@+id/i8"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -146,6 +154,7 @@
             android:layout_height="match_parent">
 
             <Button
+                android:id="@+id/i9"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -161,13 +170,14 @@
             android:layout_height="match_parent">
 
             <Button
+                android:id="@+id/i10"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:backgroundTint="#00ff0000"
                 android:drawableTint="#00ff0000"
-                android:textColor="#5D5D5D"
-                android:layout_height="wrap_content"
                 android:text="옹진군"
+                android:textColor="#5D5D5D"
                 android:textSize="16sp" />
 
         </TableRow>
