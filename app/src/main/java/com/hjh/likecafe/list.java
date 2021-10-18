@@ -57,8 +57,8 @@ public class list extends AppCompatActivity {
         }
         tv_detailResult.setText(result);
 
-        tv_theme = findViewById(R.id.tv_theme);
-        tv_theme.setText(result);
+//        tv_theme = findViewById(R.id.tv_theme);
+//        tv_theme.setText(result);
 
 
 

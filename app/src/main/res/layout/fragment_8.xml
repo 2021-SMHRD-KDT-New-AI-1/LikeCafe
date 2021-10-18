@@ -25,6 +25,7 @@
             android:layout_height="match_parent">
 
             <Button
+                android:id="@+id/u1"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -41,6 +42,7 @@
             android:layout_height="match_parent">
 
             <Button
+                android:id="@+id/u2"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -56,6 +58,7 @@
             android:layout_height="match_parent">
 
             <Button
+                android:id="@+id/u3"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -71,6 +74,7 @@
             android:layout_height="match_parent">
 
             <Button
+                android:id="@+id/u4"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -86,6 +90,7 @@
             android:layout_height="match_parent">
 
             <Button
+                android:id="@+id/u5"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
