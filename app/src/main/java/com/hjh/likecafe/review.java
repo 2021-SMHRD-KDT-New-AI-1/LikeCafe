@@ -9,10 +9,21 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.ListView;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class review extends AppCompatActivity {
+    ListView lv_review;
+    RequestQueue requestQueue;
+    List<ReviewVO> data;
 
     Toolbar toolbar;
     DrawerLayout drawerLayout;
@@ -60,6 +71,31 @@ public class review extends AppCompatActivity {
                 return true;
             }
         });
+
+
+        // 리뷰 리스트 생성
+        lv_review = findViewById(R.id.lv_review);
+        data = new ArrayList<ReviewVO>();
+
+        ReviewAdapter adapter = new ReviewAdapter(getApplicationContext(), R.layout.review_list, data);
+        lv_review.setAdapter(adapter);
+
+        if(requestQueue == null) {
+            requestQueue = Volley.newRequestQueue(getApplicationContext());
+        }
+
+        // 서버 연결 x, 테스트용 임시 데이터
+        Map<String, String> test = new HashMap<>();
+        ReviewVO vo1 = new ReviewVO(1,1,"test1",
+                PreferenceManager.getString(this, "mem_id"),4,"test1\ntest1\nttttttttttttttt", R.drawable.cafeimagexml);
+        ReviewVO vo2 = new ReviewVO(2, 2, "test2",
+                PreferenceManager.getString(this, "mem_id"), 3.5, "test2", R.drawable.cafeimagexml);
+
+        data.add(vo1);
+        data.add(vo2);
+
+        adapter.notifyDataSetChanged();
+
 
     }
 

@@ -33,6 +33,7 @@
             android:id="@+id/tv_reviewListName"
             android:layout_width="0dp"
             android:layout_height="36dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="5dp"
             android:gravity="start|center_vertical"
             android:text="이이남 스튜디오"
@@ -44,9 +45,10 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_reviewListAddress"
+            android:id="@+id/tv_reviewListContent"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_marginStart="15dp"
             android:layout_marginBottom="10dp"
             android:gravity="fill_horizontal|top"
             android:text="리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰리뷰\n하이하이\n오호오호\n이힝힝\n야아아호"
@@ -68,35 +70,35 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/img_star5"
+            android:id="@+id/img_star1"
             android:layout_width="15dp"
             android:layout_height="15dp"
             android:layout_marginStart="5dp"
             android:layout_marginTop="15dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/star" />
+            app:srcCompat="@drawable/star2" />
 
         <ImageView
-            android:id="@+id/img_star4"
+            android:id="@+id/img_star2"
             android:layout_width="15dp"
             android:layout_height="15dp"
             app:srcCompat="@drawable/star"
-            app:layout_constraintStart_toEndOf="@+id/img_star5"
-            app:layout_constraintTop_toTopOf="@+id/img_star5"
-            app:layout_constraintBottom_toBottomOf="@+id/img_star5"/>
+            app:layout_constraintStart_toEndOf="@+id/img_star1"
+            app:layout_constraintTop_toTopOf="@+id/img_star1"
+            app:layout_constraintBottom_toBottomOf="@+id/img_star1"/>
 
         <ImageView
             android:id="@+id/img_star3"
             android:layout_width="15dp"
             android:layout_height="15dp"
             app:srcCompat="@drawable/star"
-            app:layout_constraintStart_toEndOf="@+id/img_star4"
-            app:layout_constraintTop_toTopOf="@+id/img_star4"
-            app:layout_constraintBottom_toBottomOf="@+id/img_star4"/>
+            app:layout_constraintStart_toEndOf="@+id/img_star2"
+            app:layout_constraintTop_toTopOf="@+id/img_star2"
+            app:layout_constraintBottom_toBottomOf="@+id/img_star2"/>
 
         <ImageView
-            android:id="@+id/img_star2"
+            android:id="@+id/img_star4"
             android:layout_width="15dp"
             android:layout_height="15dp"
             app:srcCompat="@drawable/star"
@@ -105,13 +107,13 @@
             app:layout_constraintBottom_toBottomOf="@+id/img_star3"/>
 
         <ImageView
-            android:id="@+id/img_star1"
+            android:id="@+id/img_star5"
             android:layout_width="15dp"
             android:layout_height="15dp"
             app:srcCompat="@drawable/star"
-            app:layout_constraintStart_toEndOf="@+id/img_star2"
-            app:layout_constraintTop_toTopOf="@+id/img_star2"
-            app:layout_constraintBottom_toBottomOf="@+id/img_star2"/>
+            app:layout_constraintStart_toEndOf="@+id/img_star4"
+            app:layout_constraintTop_toTopOf="@+id/img_star4"
+            app:layout_constraintBottom_toBottomOf="@+id/img_star4"/>
 
         <Button
             android:id="@+id/btn_reviewDelete"
@@ -121,7 +123,7 @@
             android:text="삭제"
             android:textSize="10sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/img_star1" />
+            app:layout_constraintEnd_toEndOf="@+id/img_star5" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
