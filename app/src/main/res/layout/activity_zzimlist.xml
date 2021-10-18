@@ -33,45 +33,23 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="25dp"
             android:text="찜한 목록"
-            android:textColor="#000000"
-            android:textSize="20sp"
+            android:textColor="#494F39"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView7"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView7"
             app:layout_constraintTop_toTopOf="@+id/imageView7" />
-    <TextView
-        android:id="@+id/tv_theme"
-        android:layout_width="94dp"
-        android:layout_height="27dp"
-        android:layout_marginStart="10dp"
-        android:text="찜한 목록"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
-        app:layout_constraintStart_toEndOf="@+id/imageView7"
-        app:layout_constraintTop_toTopOf="@+id/imageView7" />
 
         <ImageView
             android:id="@+id/imageView7"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginStart="264dp"
+            android:layout_marginStart="280dp"
             app:layout_constraintBottom_toTopOf="@+id/guideline3"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.376"
+            app:layout_constraintVertical_bias="0.353"
             app:srcCompat="@drawable/zzim_list" />
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="39dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.89"
-        app:layout_constraintStart_toEndOf="@+id/tv_theme"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/list" />
 
         <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
