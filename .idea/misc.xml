@@ -3,14 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/SM210703/Desktop/AndroidStudy/LikeCafe/app/src/main/res/drawable/button_back.xml" value="0.11851851851851852" />
+        <entry key="..\:/Users/SM210703/Desktop/AndroidStudy/LikeCafe/app/src/main/res/drawable/ic_launcher_background.xml" value="0.20052083333333334" />
         <entry key="..\:/Users/SM210703/Desktop/AndroidStudy/LikeCafe/app/src/main/res/drawable/round_layout.xml" value="0.31666666666666665" />
+        <entry key="..\:/Users/SM210703/Desktop/AndroidStudy/LikeCafe/app/src/main/res/drawable/uniquexml.xml" value="0.20052083333333334" />
         <entry key="..\:/Users/SM210703/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/activity_detail_list.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/SM210703/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/activity_detail_page.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/SM210703/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/activity_first_page.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/SM210703/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/activity_keyword_search.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/SM210703/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/activity_list.xml" value="0.33" />
         <entry key="..\:/Users/SM210703/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/activity_login.xml" value="0.2957427536231884" />
-        <entry key="..\:/Users/SM210703/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/SM210703/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/activity_loginsucc.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/SM210703/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/activity_main.xml" value="0.45433526011560693" />
+        <entry key="..\:/Users/SM210703/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/activity_member_info_modify.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/SM210703/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/activity_regist.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/SM210703/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/activity_review.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/SM210703/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/activity_review_page.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/SM210703/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/activity_rselection.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/SM210703/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/activity_zzimlist.xml" value="0.1" />
         <entry key="..\:/Users/SM210703/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/cafelist.xml" value="0.5" />
@@ -38,16 +46,14 @@
         <entry key="..\:/Users/smhrd/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/activity_detail_list.xml" value="0.2234375" />
         <entry key="..\:/Users/smhrd/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/activity_detail_page.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/smhrd/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/activity_keyword_search.xml" value="0.2833333333333333" />
-        <entry key="..\:/Users/smhrd/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/activity_list.xml" value="0.33" />
+        <entry key="..\:/Users/smhrd/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/activity_list.xml" value="0.2234375" />
         <entry key="..\:/Users/smhrd/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/activity_login.xml" value="0.31875" />
         <entry key="..\:/Users/smhrd/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/activity_loginsucc.xml" value="0.24791666666666667" />
         <entry key="..\:/Users/smhrd/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="..\:/Users/smhrd/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/activity_member_info_modify.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/smhrd/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/activity_regist.xml" value="0.31875" />
-        <entry key="..\:/Users/smhrd/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/activity_review.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/smhrd/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/activity_zzimlist.xml" value="0.2234375" />
         <entry key="..\:/Users/smhrd/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/cafelist.xml" value="0.5" />
-        <entry key="..\:/Users/smhrd/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/review_list.xml" value="0.5" />
+        <entry key="..\:/Users/smhrd/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/review_list.xml" value="0.2234375" />
         <entry key="..\:/Users/smhrd/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/zzimlist.xml" value="0.2234375" />
       </map>
     </option>
