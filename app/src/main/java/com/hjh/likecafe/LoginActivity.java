@@ -73,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
 
     // Json파일을 만들어 웹 서버로 보내기
     public void postLogin(String id, String pw) {
-        String url = "http://172.30.1.8:3003/Member/Login";
+        String url = "http://172.30.1.8:3003/Member/quit";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 url,
@@ -83,8 +83,8 @@ public class LoginActivity extends AppCompatActivity {
                         // 응답 성공 응답 성공 이야후~~!!
                         try {
                             JSONObject jsonObject = (JSONObject) (new JSONArray(response).get(0));
-                            Log.d("status : ", jsonObject.getString("status"));
-                            String status = jsonObject.getString("status");
+                            Log.d("result : ", jsonObject.getString("result"));
+                            String status = jsonObject.getString("result");
                             if (status.equals("success")) {
                                 PreferenceManager.setString(mContext, "mem_id", id);
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);

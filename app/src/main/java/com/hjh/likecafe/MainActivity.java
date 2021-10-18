@@ -20,7 +20,6 @@ import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 
-
 public class MainActivity extends AppCompatActivity {
     TextView tv_r_choice;
     static boolean click_r;
@@ -104,11 +103,8 @@ public class MainActivity extends AppCompatActivity {
 
         if (click_r) {
             String region = getIntent().getStringExtra("region");
+            PreferenceManager.setString(this,"gu","");
 
-            // 요기서 꺼낼때 intent말고 SharedPreference에서 꺼내주면 돼요!
-            // 이해이해??
-            //넵넵 한번 해보겠습니;당~~ 굿굿 조아용! 감사합니당^^*
-            // String region = getSharedPreferences().getStringExtra("region");
             tv_r_choice.setText(region);
         } else {
             tv_r_choice.setText("지역선택");
@@ -131,12 +127,19 @@ public class MainActivity extends AppCompatActivity {
                 String title = menuItem.getTitle().toString();
 
                 if(id == R.id.NV_home){
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
                 }
                 else if(id == R.id.NV_wish){
+                    Intent intent = new Intent(getApplicationContext(), zzimlist.class);
+                    startActivity(intent);
                 }
                 else if(id == R.id.NV_review){
-                }
-                else if(id == R.id.NV_edit){
+                    Intent intent = new Intent(getApplicationContext(), review.class);
+                    startActivity(intent);
+                }else if(id == R.id.NV_edit){
+                    Intent intent = new Intent(getApplicationContext(), memberInfoModify.class);
+                    startActivity(intent);
                 }
                 return true;
             }
@@ -452,9 +455,13 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btn_search:
 
 //                Toast.makeText(MainActivity.this, detail.get(0), Toast.LENGTH_SHORT).show();
+
                 Intent intent_detail = new Intent(MainActivity.this, list.class);
                 intent_detail.putExtra("detail", detail);//데이터 넣기
                 startActivity(intent_detail);
+                detail.clear();
+                // 선택된 버튼 색을 다시 바꿔놔야됨.
+
 
 //                Intent intent_move = new Intent(MainActivity.this, detail_list.class);
 //                startActivity(intent_move);

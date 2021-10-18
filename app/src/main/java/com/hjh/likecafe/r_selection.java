@@ -2,6 +2,7 @@ package com.hjh.likecafe;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,12 +15,15 @@ public class r_selection extends AppCompatActivity {
     Button btn_r1,btn_r2,btn_r3,btn_r4,btn_r5,btn_r6,btn_r7,btn_r8,btn_r_choice;
     String region;
     private Object view;
+    Context mContext;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rselection);
+
+        mContext = this;
 
         btn_r1 = findViewById(R.id.btn_r1);
         btn_r2 = findViewById(R.id.btn_r2);
@@ -31,20 +35,11 @@ public class r_selection extends AppCompatActivity {
         btn_r8 = findViewById(R.id.btn_r8);
         btn_r_choice = findViewById(R.id.btn_r_choice);
 
-
-
-        // 여기가 서울 강동구를 눌렀을 때 인가요?
-        // 여기는 서울만 눌렀을때입니당
-//        btn_r1.setOnClickListener(view -> {
-//            getSupportFragmentManager().beginTransaction().replace(R.id.fl, new Fragment1()).commit();
-//            region = "서울 ";
-//            Log.d("gugugu---", region);
-//            //프래그먼트에서 강남구를 받아와서
-//            String gu = getIntent().getStringExtra("gu");
-//            region += gu;
-//            Log.d("gugugu---", region);
-//
-//        });
+        btn_r1.setOnClickListener(view -> {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fl, new Fragment1()).commit();
+            region = "서울 ";
+            Log.d("gugugu---", region);
+        });
 //        btn_r2.setOnClickListener(view -> {
 //
 //                getSupportFragmentManager().beginTransaction().replace(R.id.fl,new Fragment2()).commit();
@@ -98,18 +93,20 @@ public class r_selection extends AppCompatActivity {
 //            }
 //        });
 //
-//        btn_r_choice.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                //Intent(출발 Activity.this, 도착 Activity.class)
-//                Log.d("gugu choice", region);
-//                Intent intent = new Intent(r_selection.this,MainActivity.class);
-//                intent.putExtra("region",region);
-//                startActivity(intent);
-//
-//            }
-//        });
+        btn_r_choice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String gu = PreferenceManager.getString(mContext,"gu");
+                region += gu;
+                Log.d("gugu choice", region);
+
+                Intent intent = new Intent(r_selection.this,MainActivity.class);
+                intent.putExtra("region",region);
+                startActivity(intent);
+
+            }
+        });
 
 
 
