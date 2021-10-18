@@ -93,8 +93,7 @@ public class CafeAdapter extends BaseAdapter {
             public void onClick(View view) {
                 if(data.get(i).isZzimSel()) {
                     // 찜 목록에서 삭제하는 기능
-
-                    Toast.makeText(context.getApplicationContext(), "찜 삭제!", Toast.LENGTH_SHORT).show();
+                    zzimDelete("test", data.get(i).getId(), i);
                 } else {
                     // 찜 목록에 추가하는 기능
                     zzimInsert("test", data.get(i).getId(), i);
@@ -127,6 +126,47 @@ public class CafeAdapter extends BaseAdapter {
                             Toast.makeText(context.getApplicationContext(), "찜 추가!", Toast.LENGTH_SHORT).show();
                             data.get(i).setZzimSel(true);
                             data.get(i).setZzimCnt(data.get(i).getZzimCnt() + 1);
+                            notifyDataSetChanged();
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("cafe_id", String.valueOf(cafe_id));
+                params.put("mem_id", mem_id);
+
+                return params;
+            }
+        };
+        requestQueue.add(request);
+    }
+
+    public void zzimDelete(String mem_id, int cafe_id, int i) {
+        String url = "http://172.30.1.8:3003/Zzim/Delete";
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // 응답 성공 응답 성공 이야후~~!!
+                        try {
+                            JSONObject jsonObject = (JSONObject) (new JSONArray(response).get(0));
+                            String status = jsonObject.getString("status");
+                            Toast.makeText(context.getApplicationContext(), "찜 삭제!", Toast.LENGTH_SHORT).show();
+                            data.get(i).setZzimSel(false);
+                            data.get(i).setZzimCnt(data.get(i).getZzimCnt() - 1);
                             notifyDataSetChanged();
 
                         } catch (JSONException e) {
