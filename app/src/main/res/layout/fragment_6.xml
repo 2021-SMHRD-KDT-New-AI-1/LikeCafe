@@ -25,6 +25,7 @@
             android:layout_height="match_parent">
 
             <Button
+                android:id="@+id/k1"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -42,6 +43,7 @@
             android:layout_height="match_parent">
 
             <Button
+                android:id="@+id/k2"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -57,6 +59,7 @@
             android:layout_height="match_parent">
 
             <Button
+                android:id="@+id/k3"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -72,6 +75,7 @@
             android:layout_height="match_parent">
 
             <Button
+                android:id="@+id/k4"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -87,13 +91,14 @@
             android:layout_height="match_parent">
 
             <Button
+                android:id="@+id/k5"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#00ff0000"
                 android:drawableTint="#00ff0000"
-                android:textColor="#5D5D5D"
                 android:text="광산구"
+                android:textColor="#5D5D5D"
                 android:textSize="16sp" />
 
         </TableRow>

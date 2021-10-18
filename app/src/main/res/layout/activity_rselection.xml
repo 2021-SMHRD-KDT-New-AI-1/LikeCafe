@@ -159,7 +159,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.9" />
+        app:layout_constraintGuide_begin="580dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline9"
@@ -173,6 +173,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:backgroundTint="#494F39"
+
         android:text="지역 선택"
 
         android:insetTop="0dp"

@@ -40,59 +40,43 @@ public class r_selection extends AppCompatActivity {
             region = "서울 ";
             Log.d("gugugu---", region);
         });
-//        btn_r2.setOnClickListener(view -> {
-//
-//                getSupportFragmentManager().beginTransaction().replace(R.id.fl,new Fragment2()).commit();
-//                region = "경기";
-//                Log.d("gugugu---", region);
-//                String gu = getIntent().getStringExtra("gu");
-//                region += gu;
-//                Log.d("gugugu---", region);
-//            });
-//
-//        btn_r3.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                getSupportFragmentManager().beginTransaction().replace(R.id.fl,new Fragment3()).commit();
-//                region = "부산";
-//            }
-//        });
-//        btn_r4.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                getSupportFragmentManager().beginTransaction().replace(R.id.fl,new Fragment4()).commit();
-//                region = "대구";
-//            }
-//        });
-//        btn_r5.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                getSupportFragmentManager().beginTransaction().replace(R.id.fl,new Fragment5()).commit();
-//                region = "인천";
-//            }
-//        });
-//        btn_r6.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                getSupportFragmentManager().beginTransaction().replace(R.id.fl,new Fragment6()).commit();
-//                region = "광주";
-//            }
-//        });
-//        btn_r7.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                getSupportFragmentManager().beginTransaction().replace(R.id.fl,new Fragment7()).commit();
-//                region = "대전";
-//            }
-//        });
-//        btn_r8.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                getSupportFragmentManager().beginTransaction().replace(R.id.fl,new Fragment8()).commit();
-//                region = "울산";
-//            }
-//        });
-//
+        btn_r2.setOnClickListener(view -> {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fl,new Fragment2()).commit();
+                region = "경기 ";
+                Log.d("gugugu---", region);
+            });
+        btn_r3.setOnClickListener(view -> {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fl,new Fragment3()).commit();
+                region = "부산 ";
+                Log.d("gugugu---", region);
+            });
+        btn_r4.setOnClickListener(view -> {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fl,new Fragment4()).commit();
+                region = "대구 ";
+                Log.d("gugugu---", region);
+            });
+        btn_r5.setOnClickListener(view -> {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fl,new Fragment5()).commit();
+                region = "인천 ";
+                Log.d("gugugu---", region);
+            });
+        btn_r6.setOnClickListener(view -> {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fl,new Fragment6()).commit();
+                region = "광주 ";
+                Log.d("gugugu---", region);
+            });
+        btn_r7.setOnClickListener(view -> {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fl,new Fragment7()).commit();
+                region = "대전 ";
+                Log.d("gugugu---", region);
+            });
+        btn_r8.setOnClickListener(view -> {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fl,new Fragment8()).commit();
+                region = "울산 ";
+                Log.d("gugugu---", region);
+            });
+
+
         btn_r_choice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
