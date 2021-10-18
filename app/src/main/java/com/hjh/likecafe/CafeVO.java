@@ -83,6 +83,10 @@ public class CafeVO {
         return zzimSel;
     }
 
+    public void setZzimCnt(int zzimCnt) {
+        this.zzimCnt = zzimCnt;
+    }
+
     public void setZzimSel(boolean zzimSel) {
         this.zzimSel = zzimSel;
     }
