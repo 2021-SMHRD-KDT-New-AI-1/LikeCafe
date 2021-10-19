@@ -113,7 +113,7 @@ public class memberInfoModify extends AppCompatActivity {
             public void onResponse(JSONObject response) {
                 try {
                    nick =  response.getString("nick");
-                   tv_nick.setText(nick + "ㅇㅇㅇㅇㅇ");
+                   tv_nick.setText(nick);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

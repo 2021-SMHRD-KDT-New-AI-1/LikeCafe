@@ -53,6 +53,7 @@ public class reviewPage extends AppCompatActivity {
     TextView tv_limit;
     ImageView img_picture;
     Bitmap cafeImage;
+    Float rate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,8 +115,8 @@ public class reviewPage extends AppCompatActivity {
         // 별점 박기(by 강성희)
         ratingbar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
-            public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
-
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                rate = rating;
             }
         });
 
@@ -240,7 +241,7 @@ public class reviewPage extends AppCompatActivity {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("cafe_id", "1"); // (확인용 가라정보)
                 params.put("mem_id", "test"); // (확인용 가라정보)
-                params.put("star", "star"); // (확인용 가라정보 : 별점 받아서 반영하는 거 추후 하겠음)
+                params.put("star", Float.toString(rate));
                 params.put("content", review);
                 params.put("review_image", BitmapToString(cafeImage));
                 params.put("write_date", "2021-10-16"); // (확인용 가라정보)
