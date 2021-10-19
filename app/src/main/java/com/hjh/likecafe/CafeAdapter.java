@@ -79,7 +79,7 @@ public class CafeAdapter extends BaseAdapter {
         }
 
         viewHolder = (CafeViewHolder) view.getTag();
-        viewHolder.img_cafeListImage.setImageResource(data.get(i).getImage());
+        viewHolder.img_cafeListImage.setImageBitmap(data.get(i).getImage());
         viewHolder.tv_cafeListName.setText(data.get(i).getName());
         viewHolder.tv_cafeListAddress.setText(data.get(i).getAddress());
         viewHolder.tv_cafeListZzimCnt.setText(String.valueOf(data.get(i).getZzimCnt()));
@@ -192,4 +192,5 @@ public class CafeAdapter extends BaseAdapter {
         };
         requestQueue.add(request);
     }
+
 }

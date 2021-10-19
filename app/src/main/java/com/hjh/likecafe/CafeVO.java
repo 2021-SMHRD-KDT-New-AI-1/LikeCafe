@@ -1,12 +1,14 @@
 package com.hjh.likecafe;
 
+import android.graphics.Bitmap;
+
 import java.util.Map;
 
 public class CafeVO {
 
     private int id;
     private String name;
-    private int image;
+    private Bitmap image;
     private String address;
     private String business_hour;
     private String holiday;
@@ -18,7 +20,7 @@ public class CafeVO {
     private int zzimCnt; // 해당 카페를 찜한 수
     private boolean zzimSel; // 해당 유저가 이 카페를 찜했는지 여부
 
-    public CafeVO(int id, String name, int image, String address, String business_hour,
+    public CafeVO(int id, String name, Bitmap image, String address, String business_hour,
                   String holiday, String tel, String sns, String category,
                   Map<String, String> keyword, int zzimCnt, boolean zzimSel) {
         this.id = id;
@@ -43,7 +45,7 @@ public class CafeVO {
         return name;
     }
 
-    public int getImage() {
+    public Bitmap getImage() {
         return image;
     }
 

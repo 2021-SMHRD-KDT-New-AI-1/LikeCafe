@@ -7,7 +7,10 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -27,6 +30,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -111,24 +119,24 @@ public class list extends AppCompatActivity {
                 int id = menuItem.getItemId();
                 String title = menuItem.getTitle().toString();
 
-                if(id == R.id.NV_home){
+                if (id == R.id.NV_home) {
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
-                }
-                else if(id == R.id.NV_wish){
+                } else if (id == R.id.NV_wish) {
                     Intent intent = new Intent(getApplicationContext(), zzimlist.class);
                     startActivity(intent);
-                }
-                else if(id == R.id.NV_review){
+                } else if (id == R.id.NV_review) {
                     Intent intent = new Intent(getApplicationContext(), review.class);
                     startActivity(intent);
-                }else if(id == R.id.NV_edit){
+                } else if (id == R.id.NV_edit) {
                     Intent intent = new Intent(getApplicationContext(), memberInfoModify.class);
                     startActivity(intent);
                 }
                 return true;
             }
         });
+
+
 
 
     }
@@ -151,7 +159,7 @@ public class list extends AppCompatActivity {
                                 // CafeVO 생성
                                 int cafe_id = jsonObject.getInt("cafe_id");
                                 String name = jsonObject.getString("cafe_name");
-                                int image = R.drawable.cafeimagexml; // 임시 이미지
+                                String image = jsonObject.getString("cafe_image");
                                 String address = jsonObject.getString("address");
                                 String business_hour = jsonObject.getString("business_hours");
                                 String holiday = jsonObject.getString("holiday");
@@ -161,7 +169,9 @@ public class list extends AppCompatActivity {
                                 //키워드, 찜정보도 가져와야함
                                 Map<String, String> test = new HashMap<>();
 
-                                CafeVO vo = new CafeVO(cafe_id, name, image, address,
+                                Bitmap imageBitmap = StringToBitmap(image);
+
+                                CafeVO vo = new CafeVO(cafe_id, name, imageBitmap, address,
                                         business_hour, holiday, tel,
                                         sns, category, test, 1, true);
 
@@ -250,7 +260,7 @@ public class list extends AppCompatActivity {
                             JSONObject jsonObject = (JSONObject) (new JSONArray(response).get(0));
                             int zzimSel = jsonObject.getInt("zzimSel");
                             Log.d("zzimSel in method > ", String.valueOf(zzimSel));
-                            if(zzimSel == 0) {
+                            if (zzimSel == 0) {
                                 vo.setZzimSel(false);
                             } else {
                                 vo.setZzimSel(true);
@@ -282,8 +292,8 @@ public class list extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case android.R.id.home:{ // 뒤로가기 버튼 눌렀을 때
+        switch (item.getItemId()) {
+            case android.R.id.home: { // 뒤로가기 버튼 눌렀을 때
                 drawerLayout.openDrawer(GravityCompat.START);
                 return true;
             }
@@ -291,6 +301,16 @@ public class list extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public static Bitmap StringToBitmap(String encodedString) {
+        try {
+            byte[] encodeByte = Base64.decode(encodedString, Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+            return bitmap;
+        } catch (Exception e) {
+            e.getMessage();
+            return null;
+        }
+    }
 
 
 }
