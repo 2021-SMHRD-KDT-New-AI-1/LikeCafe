@@ -8,15 +8,19 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
+import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,6 +38,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -41,10 +47,13 @@ public class reviewPage extends AppCompatActivity {
     RequestQueue requestQueue;
     Toolbar toolbar;
     DrawerLayout drawerLayout;
-    Button btn_riviewupdate;
+    Button btn_riviewupdate, btn_s1;
     RatingBar ratingbar;
     EditText et_review_writebox;
     TextView tv_limit;
+    ImageView img_picture;
+    Bitmap cafeImage;
+    Float rate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +65,19 @@ public class reviewPage extends AppCompatActivity {
         ratingbar = findViewById(R.id.ratingbar);
         et_review_writebox = findViewById(R.id.et_review_writebox);
         tv_limit = findViewById(R.id.tv_limit);
+        btn_s1 = findViewById(R.id.btn_s1);
+
+
+        // '사진등록' 버튼 클릭 시 폰 갤러리 열기(by.안영상)
+        btn_s1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(intent,1);
+            }
+        });
 
 
         // 서버와 통신
@@ -90,22 +112,22 @@ public class reviewPage extends AppCompatActivity {
         });
 
 
-
+        // 별점 박기(by 강성희)
         ratingbar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
-            public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
-
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                rate = rating;
             }
         });
 
-
+        // 리뷰 등록하기
         btn_riviewupdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String review = et_review_writebox.getText().toString();
 
                 Toast.makeText(getApplicationContext(), "리뷰 등록이 완료되었습니다.", Toast.LENGTH_SHORT).show();
-                postReview(et_review_writebox);
+                postReview(review);
             }
         });
 
@@ -148,8 +170,47 @@ public class reviewPage extends AppCompatActivity {
 
     }
 
+
+    // 선택한 사진 등록하기(리뷰 작성 시 박을 카페사진), 비트맵 형식으로 변환
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        img_picture = findViewById(R.id.img_picture);
+
+        if (requestCode == 1) {
+
+            if (resultCode == RESULT_OK) {
+                try {
+                    InputStream in = getContentResolver().openInputStream(data.getData());
+                    cafeImage = BitmapFactory.decodeStream(in);
+                    in.close();
+
+                    img_picture.setImageBitmap(cafeImage);
+
+                    Toast.makeText(reviewPage.this,
+                            "사진이 등록되었습니다.", Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    // 업로드한 사진(비트맵형식)을 String형태로 변환하기 (DB에 전송 목적)
+    public static String BitmapToString (Bitmap bitmap) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 70,baos);
+        byte[] bytes = baos.toByteArray();
+        String bitString = Base64.encodeToString(bytes, Base64.DEFAULT);
+        return bitString;
+    }
+
+
+
+
     // Json 파일 생성 및 리뷰 웹서버 전송
-    public void postReview (EditText et_review_writebox) {
+    public void postReview (String review) {
         String url = "http://172.30.1.8:3003/Review/ReviewPage";  //
         StringRequest request = new StringRequest(
                 Request.Method.POST,
@@ -180,10 +241,10 @@ public class reviewPage extends AppCompatActivity {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("cafe_id", "1"); // (확인용 가라정보)
                 params.put("mem_id", "test"); // (확인용 가라정보)
-                params.put("star", "star"); // (확인용 가라정보 : 별점 받아서 반영하는 거 추후 하겠음)
-                params.put("content", et_review_writebox.getText().toString());
-                params.put("review_image", "img"); // (확인용 가라정보 : 비트맵 변경 필수)
-                params.put("write_date", "2021-10-16"); // (확인용 가라정보 : 비트맵 변경 필수)
+                params.put("star", Float.toString(rate));
+                params.put("content", review);
+                params.put("review_image", BitmapToString(cafeImage));
+                params.put("write_date", "2021-10-16"); // (확인용 가라정보)
 
                 return params;
             }
