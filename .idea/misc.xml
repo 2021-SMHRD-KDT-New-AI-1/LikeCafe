@@ -26,22 +26,10 @@
         <entry key="..\:/Users/SM210703/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/review.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/SM210703/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/review_list.xml" value="0.5" />
         <entry key="..\:/Users/SM210703/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/zzimlist.xml" value="0.45433526011560693" />
-<<<<<<<<< Temporary merge branch 1
-=========
-        <entry key="..\:/Users/SM210704/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/activity_detail_page.xml" value="0.284375" />
-        <entry key="..\:/Users/SM210704/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/activity_first_page.xml" value="0.26666666666666666" />
-        <entry key="..\:/Users/SM210704/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/activity_login.xml" value="0.5" />
-        <entry key="..\:/Users/SM210704/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/activity_main.xml" value="0.284375" />
-        <entry key="..\:/Users/SM210704/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/activity_member_info_modify.xml" value="0.33" />
-        <entry key="..\:/Users/SM210704/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/activity_regist.xml" value="0.5" />
-        <entry key="..\:/Users/SM210704/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/activity_review.xml" value="0.35104166666666664" />
-        <entry key="..\:/Users/SM210704/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/activity_review_page.xml" value="0.33" />
-        <entry key="..\:/Users/SM210704/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/activity_zzimlist.xml" value="0.5" />
-        <entry key="..\:/Users/SM210704/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/navi_header.xml" value="0.35104166666666664" />
-        <entry key="..\:/Users/SM210704/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/review_list.xml" value="0.35104166666666664" />
-        <entry key="..\:/Users/SM210704/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/zzimlist.xml" value="0.3671875" />
-        <entry key="..\:/Users/SM210704/Desktop/AndroidStudy/LikeCafe/app/src/main/res/menu/navi_menu.xml" value="0.5" />
->>>>>>>>> Temporary merge branch 2
+        <entry key="..\:/Users/smhrd/Desktop/Android/LikeCafe/app/src/main/res/layout/activity_member_info_modify.xml" value="0.35989583333333336" />
+        <entry key="..\:/Users/smhrd/Desktop/Android/LikeCafe/app/src/main/res/layout/activity_review_page.xml" value="0.35989583333333336" />
+        <entry key="..\:/Users/smhrd/Desktop/Android/LikeCafe/app/src/main/res/layout/navi_header.xml" value="0.33" />
+        <entry key="..\:/Users/smhrd/Desktop/Android/LikeCafe/app/src/main/res/menu/navi_menu.xml" value="0.2630208333333333" />
         <entry key="..\:/Users/smhrd/Desktop/AndroidStudy/LikeCafe/app/src/main/res/drawable/cafeimagexml.xml" value="0.23958333333333334" />
         <entry key="..\:/Users/smhrd/Desktop/AndroidStudy/LikeCafe/app/src/main/res/drawable/coffeexml.xml" value="0.23958333333333334" />
         <entry key="..\:/Users/smhrd/Desktop/AndroidStudy/LikeCafe/app/src/main/res/drawable/drawerxml.xml" value="0.23958333333333334" />
@@ -60,9 +48,10 @@
         <entry key="..\:/Users/smhrd/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/smhrd/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/activity_member_info_modify.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/smhrd/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/activity_regist.xml" value="0.31875" />
+        <entry key="..\:/Users/smhrd/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/activity_review.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/smhrd/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/activity_zzimlist.xml" value="0.2234375" />
         <entry key="..\:/Users/smhrd/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/cafelist.xml" value="0.5" />
-        <entry key="..\:/Users/smhrd/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/review_list.xml" value="0.2234375" />
+        <entry key="..\:/Users/smhrd/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/review_list.xml" value="0.5" />
         <entry key="..\:/Users/smhrd/Desktop/AndroidStudy/LikeCafe/app/src/main/res/layout/zzimlist.xml" value="0.2234375" />
       </map>
     </option>

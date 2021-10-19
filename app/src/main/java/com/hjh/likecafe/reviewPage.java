@@ -85,6 +85,8 @@ public class reviewPage extends AppCompatActivity {
             requestQueue = Volley.newRequestQueue(getApplicationContext());
         }
 
+
+
         // 리뷰 텍스트 글자수 제한(by.안영상)
         et_review_writebox.addTextChangedListener(new TextWatcher() {
             @Override
@@ -199,12 +201,17 @@ public class reviewPage extends AppCompatActivity {
 
     // 업로드한 사진(비트맵형식)을 String형태로 변환하기 (DB에 전송 목적)
     public static String BitmapToString (Bitmap bitmap) {
+        if(bitmap == null) {
+            return "디폴트 이미지";
+        }
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 70,baos);
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100,baos);
         byte[] bytes = baos.toByteArray();
         String bitString = Base64.encodeToString(bytes, Base64.DEFAULT);
         return bitString;
     }
+
+
 
 
 
@@ -239,12 +246,13 @@ public class reviewPage extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
+                params.put("review_id", "2"); // (확인용 가라정보)
                 params.put("cafe_id", "1"); // (확인용 가라정보)
                 params.put("mem_id", "test"); // (확인용 가라정보)
                 params.put("star", Float.toString(rate));
                 params.put("content", review);
                 params.put("review_image", BitmapToString(cafeImage));
-                params.put("write_date", "2021-10-16"); // (확인용 가라정보)
+                params.put("write_date", "2021-10-19"); // (확인용 가라정보)
 
                 return params;
             }

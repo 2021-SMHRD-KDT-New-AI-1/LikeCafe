@@ -7,7 +7,6 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
@@ -35,7 +34,6 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.navigation.NavigationView;
@@ -46,6 +44,7 @@ import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -54,17 +53,17 @@ public class memberInfoModify extends AppCompatActivity {
 
     RequestQueue requestQueue;
     EditText et_changeNick, et_currentPw, et_changePw, et_chkPw;
-    TextView tv_quit, tv_nick; // tv_nick : 로그인 사용자의 닉네임 반영관련
+    TextView tv_quit, tv_nick, tv_birthDate; // tv_nick : 로그인 사용자의 닉네임 반영관련
     RadioGroup rg_sex;
     RadioButton rb_female, rb_male;
     Button btn_modify, btn_picChange;
-    String sex, nick; // String : nick : 로그인 사용자의 닉네임 반영
+    String sex;
     boolean modifyStatus;
     Toolbar toolbar;
     DrawerLayout drawerLayout;
     Bitmap image;
 
-    private static final String TAG = "MAIN"; //로그인 사용자의 닉네임 반영관련
+
 
     ImageView img_profile;
 
@@ -80,6 +79,7 @@ public class memberInfoModify extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_member_info_modify);
 
+        tv_birthDate = findViewById(R.id.tv_birthDate);
         tv_nick = findViewById(R.id.tv_nick);
         et_changeNick = findViewById(R.id.et_changeNick);
         et_currentPw = findViewById(R.id.et_currentPw);
@@ -93,6 +93,7 @@ public class memberInfoModify extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         drawerLayout = findViewById(R.id.drawer_layout);
         tv_quit = findViewById(R.id.tv_quit);
+        img_profile = findViewById(R.id.img_profile);
         setSupportActionBar(toolbar);
 
         mContext = this;
@@ -107,33 +108,10 @@ public class memberInfoModify extends AppCompatActivity {
             requestQueue = Volley.newRequestQueue(getApplicationContext());
         }
 
-//        // 닉네임 반영하기 (값을 받아오기///// 아니된다)
-//        requestQueue = Volley.newRequestQueue(this);
-//        String url = "http://172.30.1.8:3003/Member/Nick";
-//
-//        final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-//                Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-//            @Override
-//            public void onResponse(JSONObject response) {
-//                try {
-//                   nick =  response.getString("nick");
-//                   tv_nick.setText(nick + "ㅇㅇㅇㅇㅇ");
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//
-//            }
-//        });
-//        jsonObjectRequest.setTag(TAG);
-//        requestQueue.add(jsonObjectRequest);
 
 
-        //
-        getMemberInfo("test2");
+
+        getMemberInfo("test");
 
 
 
@@ -318,13 +296,11 @@ public class memberInfoModify extends AppCompatActivity {
     }
 
 
-
     // '생년월일'
     private void InitializeView() { // '생년월일'
-        textView_Date = (TextView) findViewById(R.id.textView_Date);
+        textView_Date = (TextView) findViewById(R.id.tv_birthDate);
     }
 
-    // '생년월일'
     private void InitializeListener() {
         callbackMethod = new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -335,7 +311,6 @@ public class memberInfoModify extends AppCompatActivity {
         };
     }
 
-    // '생년월일'
     public void OnClickHandler(View view)
     {
         DatePickerDialog dialog = new DatePickerDialog
@@ -444,10 +419,20 @@ public class memberInfoModify extends AppCompatActivity {
                     public void onResponse(String response) {
                         // 응답 성공 응답 성공 이야후~~!!
                         try {
+
+                            Log.v("asdf", response);
                             JSONObject jsonObject = (JSONObject) (new JSONArray(response)).get(0);
                             String nick = jsonObject.getString("nick"); // 닉네임만 받아옴 일단
-
                             tv_nick.setText(nick);
+
+                            String birth = jsonObject.getString("birth"); // 생년월일 받아오기
+                            tv_birthDate.setText(birth);
+
+                            String img = jsonObject.getString("mem_image"); // 기존프로필이미지가져오기
+                            Bitmap bitmap = StringToBitmap(img);
+                            img_profile.setImageBitmap(bitmap);
+
+
 
 
                         } catch (JSONException e) {
@@ -481,6 +466,17 @@ public class memberInfoModify extends AppCompatActivity {
             }
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public static Bitmap StringToBitmap(String encodedString) {
+        try {
+            byte[] encodeByte = Base64.decode(encodedString, Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+            return bitmap;
+        } catch (Exception e) {
+            e.getMessage();
+            return null;
+        }
     }
 
 
