@@ -101,6 +101,7 @@ public class CafeAdapter extends BaseAdapter {
                 notifyDataSetChanged();
             }
         });
+
         viewHolder.cafeListBody.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
