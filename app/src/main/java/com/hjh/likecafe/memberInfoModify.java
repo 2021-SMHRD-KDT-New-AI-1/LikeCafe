@@ -509,7 +509,8 @@ public class memberInfoModify extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public static Bitmap StringToBitmap(String encodedString) { // 서버로부터 받아온 이미지 스트링 -> 비트맵 변환
+    // 서버로부터 받아온 이미지 스트링 -> 비트맵 변환
+    public static Bitmap StringToBitmap(String encodedString) {
         try {
             byte[] encodeByte = Base64.decode(encodedString, Base64.DEFAULT);
             Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
