@@ -75,7 +75,8 @@ public class list extends AppCompatActivity {
         tv_detailResult = findViewById(R.id.tv_detailResult);
         ArrayList<String> detail = getIntent().getStringArrayListExtra("detail");
         String theme = getIntent().getStringExtra("theme");
-
+        String region = getIntent().getStringExtra("region");
+        Log.d("지역을 리스트에 가져왔다  -> ", region);
 
         String result = "";
         if (detail != null) {
@@ -87,7 +88,7 @@ public class list extends AppCompatActivity {
             result = "";
             Log.d("theme : ", theme);
             result += "#" + theme;
-            searchByCategory(theme, "광주 동구");
+            searchByCategory(theme, region);
         }
         tv_detailResult.setText(result);
         adapter.notifyDataSetChanged();
@@ -133,7 +134,7 @@ public class list extends AppCompatActivity {
     }
 
     public void searchByCategory(String theme, String region) {
-        String url = "http://172.30.1.8:3003/Cafe/searchByCategory";
+        String url = "http://172.30.1.8:3003/Cafe/SearchByCategory";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 url,
@@ -148,7 +149,7 @@ public class list extends AppCompatActivity {
                                 Log.d("cafe item" + i + " : ", jsonObject.toString());
                                 // 값 받아서 변수에 저장
                                 // CafeVO 생성
-                                int id = jsonObject.getInt("cafe_id");
+                                int cafe_id = jsonObject.getInt("cafe_id");
                                 String name = jsonObject.getString("cafe_name");
                                 int image = R.drawable.cafeimagexml; // 임시 이미지
                                 String address = jsonObject.getString("address");
@@ -157,15 +158,18 @@ public class list extends AppCompatActivity {
                                 String tel = jsonObject.getString("tel");
                                 String sns = jsonObject.getString("sns");
                                 String category = jsonObject.getString("category");
-
+                                //키워드, 찜정보도 가져와야함
                                 Map<String, String> test = new HashMap<>();
 
-                                CafeVO vo = new CafeVO(id, name, image, address,
+                                CafeVO vo = new CafeVO(cafe_id, name, image, address,
                                         business_hour, holiday, tel,
                                         sns, category, test, 1, true);
 
+                                getZzimCnt(cafe_id, vo);
+                                getZzimSel(cafe_id, "test", vo);
                                 data.add(vo);
                                 adapter.notifyDataSetChanged();
+
                             }
 
 
@@ -187,6 +191,89 @@ public class list extends AppCompatActivity {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("category", theme);
                 params.put("region", region);
+
+                return params;
+            }
+        };
+        requestQueue.add(request);
+    }
+
+    public void getZzimCnt(int cafe_id, CafeVO vo) {
+        String url = "http://172.30.1.8:3003/Zzim/ZzimCnt";
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // 응답 성공 응답 성공 이야후~~!!
+                        try {
+                            JSONObject jsonObject = (JSONObject) (new JSONArray(response).get(0));
+                            int zzimCnt = jsonObject.getInt("zzimCnt");
+                            Log.d("zzimCnt in method > ", String.valueOf(zzimCnt));
+                            vo.setZzimCnt(zzimCnt);
+                            adapter.notifyDataSetChanged();
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("cafe_id", String.valueOf(cafe_id));
+
+                return params;
+            }
+        };
+        requestQueue.add(request);
+    }
+
+    public void getZzimSel(int cafe_id, String mem_id, CafeVO vo) {
+        String url = "http://172.30.1.8:3003/Zzim/ZzimSel";
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // 응답 성공 응답 성공 이야후~~!!
+                        try {
+                            JSONObject jsonObject = (JSONObject) (new JSONArray(response).get(0));
+                            int zzimSel = jsonObject.getInt("zzimSel");
+                            Log.d("zzimSel in method > ", String.valueOf(zzimSel));
+                            if(zzimSel == 0) {
+                                vo.setZzimSel(false);
+                            } else {
+                                vo.setZzimSel(true);
+                            }
+                            adapter.notifyDataSetChanged();
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("cafe_id", String.valueOf(cafe_id));
+                params.put("mem_id", mem_id);
 
                 return params;
             }

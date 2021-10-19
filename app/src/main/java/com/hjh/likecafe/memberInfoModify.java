@@ -80,6 +80,7 @@ public class memberInfoModify extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_member_info_modify);
 
+        tv_nick = findViewById(R.id.tv_nick);
         et_changeNick = findViewById(R.id.et_changeNick);
         et_currentPw = findViewById(R.id.et_currentPw);
         et_changePw = findViewById(R.id.et_changePw);
@@ -94,8 +95,6 @@ public class memberInfoModify extends AppCompatActivity {
         tv_quit = findViewById(R.id.tv_quit);
         setSupportActionBar(toolbar);
 
-
-
         mContext = this;
 
         ActionBar actionBar = getSupportActionBar();
@@ -103,32 +102,38 @@ public class memberInfoModify extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeAsUpIndicator(R.drawable.menu);
 
-        // 닉네임 반영하기 (값을 받아오기///// 아니된다)
-        requestQueue = Volley.newRequestQueue(this);
-        String url = "http://172.30.1.8:3003/Member/Nick";
+        // 서버와 통신
+        if (requestQueue == null) {
+            requestQueue = Volley.newRequestQueue(getApplicationContext());
+        }
 
-        final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                try {
-                   nick =  response.getString("nick");
-                   tv_nick.setText(nick);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
+//        // 닉네임 반영하기 (값을 받아오기///// 아니된다)
+//        requestQueue = Volley.newRequestQueue(this);
+//        String url = "http://172.30.1.8:3003/Member/Nick";
+//
+//        final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+//                Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+//            @Override
+//            public void onResponse(JSONObject response) {
+//                try {
+//                   nick =  response.getString("nick");
+//                   tv_nick.setText(nick + "ㅇㅇㅇㅇㅇ");
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//
+//            }
+//        });
+//        jsonObjectRequest.setTag(TAG);
+//        requestQueue.add(jsonObjectRequest);
 
-            }
-        });
-        jsonObjectRequest.setTag(TAG);
-        requestQueue.add(jsonObjectRequest);
 
-
-
+        //
+        getMemberInfo("test2");
 
 
 
@@ -192,10 +197,7 @@ public class memberInfoModify extends AppCompatActivity {
             }
         });
 
-        // 서버와 통신
-        if (requestQueue == null) {
-            requestQueue = Volley.newRequestQueue(getApplicationContext());
-        }
+
 
         // '수정하기' 버튼 클릭 리스너 (-> 수정완료되면 메인페이지로 이동함)
         btn_modify.setOnClickListener(new View.OnClickListener() {
@@ -274,9 +276,6 @@ public class memberInfoModify extends AppCompatActivity {
                 alert.show();
             }
         });
-
-
-
             }
 
 
@@ -427,6 +426,46 @@ public class memberInfoModify extends AppCompatActivity {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("id", id);
                 params.put("pw", currentPw);
+
+                return params;
+            }
+        };
+        requestQueue.add(request);
+    }
+
+    // 회원 정보를 서버에 요청하여 받아오는 메소드
+    public void getMemberInfo(String id) {
+        String url = "http://172.30.1.8:3003/Member/MemberInfo";
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // 응답 성공 응답 성공 이야후~~!!
+                        try {
+                            JSONObject jsonObject = (JSONObject) (new JSONArray(response)).get(0);
+                            String nick = jsonObject.getString("nick"); // 닉네임만 받아옴 일단
+
+                            tv_nick.setText(nick);
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("mem_id", id);
 
                 return params;
             }
