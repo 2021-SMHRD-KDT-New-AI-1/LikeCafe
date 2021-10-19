@@ -1,5 +1,6 @@
 package com.hjh.likecafe;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -111,7 +112,7 @@ public class memberInfoModify extends AppCompatActivity {
 
 
 
-        getMemberInfo("test");
+        getMemberInfo("home");
 
 
 
@@ -235,7 +236,11 @@ public class memberInfoModify extends AppCompatActivity {
                         // 탈퇴시키기
 
                         if(quitPassword.equals(et_currentPw)){
-
+                            Toast.makeText(memberInfoModify.this,
+                                    "탈퇴되었습니다.", Toast.LENGTH_SHORT).show();
+                            postDelete("home");
+                            Intent intent = new Intent(memberInfoModify.this, FirstPage.class);
+                            startActivity(intent);
 
                         }else{
                             Toast.makeText(memberInfoModify.this,
@@ -361,6 +366,42 @@ public class memberInfoModify extends AppCompatActivity {
         requestQueue.add(request);
     }
 
+    // 회원삭제 웹 서버 보내기
+    public void postDelete (String id) {
+        String url = "http://172.30.1.8:3003/Member/Delete";
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject = (JSONObject) (new JSONArray(response).get(0));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+               Map<String, String> params = new HashMap<String, String>();
+               params.put("mem_id", id);
+
+                return params;
+            }
+        };
+        requestQueue.add(request);
+    }
+
+
+
     public void modify(String id, String currentPw, String nick, String changePw, String birth, String sex) {
         // 먼저 현재 비밀번호가 일치하는지부터 확인해야함
         // 비밀번호랑 id가 매치되는지(올바른 현재 비밀번호를 입력했는지)는 로그인 요청으로 확인가능
@@ -468,6 +509,7 @@ public class memberInfoModify extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    // 서버로부터 받아온 이미지 스트링 -> 비트맵 변환
     public static Bitmap StringToBitmap(String encodedString) {
         try {
             byte[] encodeByte = Base64.decode(encodedString, Base64.DEFAULT);
