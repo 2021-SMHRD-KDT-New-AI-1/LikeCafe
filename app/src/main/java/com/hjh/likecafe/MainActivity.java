@@ -83,6 +83,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
+
+
         detail = new ArrayList<>();
         theme = "";
 
@@ -165,7 +167,9 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.btn_exclusive:
                 // 눌렀을때 처리??
+                //detail.clear();
                 if (isClick[0]) { // 눌렸을때 누르면
+                    detail.clear();
                     btn_exclusive.setTextColor(Color.BLACK);
                     btn_exclusive.setBackgroundColor(Color.parseColor("#FAF8F8"));
                     isClick[0] = false;
@@ -173,6 +177,7 @@ public class MainActivity extends AppCompatActivity {
                     detail.remove(((Button) view).getText().toString());
 
                 } else { // 안눌려있을때 누르면
+
                     btn_exclusive.setTextColor(Color.WHITE);
                     btn_exclusive.setBackgroundColor(Color.parseColor("#494F39"));
                     isClick[0] = true;
@@ -184,11 +189,13 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.btn_group:
                 if (isClick[1]) { // 눌렸을때 누르면
+                    detail.clear();
                     btn_group.setTextColor(Color.BLACK);
                     btn_group.setBackgroundColor(Color.parseColor("#FAF8F8"));
                     isClick[1] = false;
                     detail.remove(((Button) view).getText().toString());
                 } else { // 안눌려있을때 누르면
+
                     btn_group.setTextColor(Color.WHITE);
                     btn_group.setBackgroundColor(Color.parseColor("#494F39"));
                     isClick[1] = true;
@@ -198,11 +205,13 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn_reserve:
                 if (isClick[2]) { // 눌렸을때 누르면
+                    detail.clear();
                     btn_reserve.setTextColor(Color.BLACK);
                     btn_reserve.setBackgroundColor(Color.parseColor("#FAF8F8"));
                     isClick[2] = false;
                     detail.remove(((Button) view).getText().toString());
                 } else { // 안눌려있을때 누르면
+
                     btn_reserve.setTextColor(Color.WHITE);
                     btn_reserve.setBackgroundColor(Color.parseColor("#494F39"));
                     isClick[2] = true;
@@ -212,11 +221,13 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn_field:
                 if (isClick[3]) { // 눌렸을때 누르면
+                    detail.clear();
                     btn_field.setTextColor(Color.BLACK);
                     btn_field.setBackgroundColor(Color.parseColor("#FAF8F8"));
                     isClick[3] = false;
                     detail.remove(((Button) view).getText().toString());
                 } else { // 안눌려있을때 누르면
+
                     btn_field.setTextColor(Color.WHITE);
                     btn_field.setBackgroundColor(Color.parseColor("#494F39"));
                     isClick[3] = true;
@@ -226,11 +237,13 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn_parking:
                 if (isClick[4]) { // 눌렸을때 누르면
+                    detail.clear();
                     btn_parking.setTextColor(Color.BLACK);
                     btn_parking.setBackgroundColor(Color.parseColor("#FAF8F8"));
                     isClick[4] = false;
                     detail.remove(((Button) view).getText().toString());
                 } else { // 안눌려있을때 누르면
+
                     btn_parking.setTextColor(Color.WHITE);
                     btn_parking.setBackgroundColor(Color.parseColor("#494F39"));
                     isClick[4] = true;
@@ -240,11 +253,13 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn_nokids:
                 if (isClick[5]) { // 눌렸을때 누르면
+                    detail.clear();
                     btn_nokids.setTextColor(Color.BLACK);
                     btn_nokids.setBackgroundColor(Color.parseColor("#FAF8F8"));
                     isClick[5] = false;
                     detail.remove(((Button) view).getText().toString());
                 } else { // 안눌려있을때 누르면
+
                     btn_nokids.setTextColor(Color.WHITE);
                     btn_nokids.setBackgroundColor(Color.parseColor("#494F39"));
                     isClick[5] = true;
@@ -254,11 +269,13 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn_toil:
                 if (isClick[6]) { // 눌렸을때 누르면
+                    detail.clear();
                     btn_toil.setTextColor(Color.BLACK);
                     btn_toil.setBackgroundColor(Color.parseColor("#FAF8F8"));
                     isClick[6] = false;
                     detail.remove(((Button) view).getText().toString());
                 } else { // 안눌려있을때 누르면
+
                     btn_toil.setTextColor(Color.WHITE);
                     btn_toil.setBackgroundColor(Color.parseColor("#494F39"));
                     isClick[6] = true;
@@ -268,11 +285,13 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn_con:
                 if (isClick[7]) { // 눌렸을때 누르면
+                    detail.clear();
                     btn_con.setTextColor(Color.BLACK);
                     btn_con.setBackgroundColor(Color.parseColor("#FAF8F8"));
                     isClick[7] = false;
                     detail.remove(((Button) view).getText().toString());
                 } else { // 안눌려있을때 누르면
+
                     btn_con.setTextColor(Color.WHITE);
                     btn_con.setBackgroundColor(Color.parseColor("#494F39"));
                     isClick[7] = true;
@@ -282,11 +301,13 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn_qui:
                 if (isClick[8]) { // 눌렸을때 누르면
+                    detail.clear();
                     btn_qui.setTextColor(Color.BLACK);
                     btn_qui.setBackgroundColor(Color.parseColor("#FAF8F8"));
                     isClick[8] = false;
                     detail.remove(((Button) view).getText().toString());
                 } else { // 안눌려있을때 누르면
+
                     btn_qui.setTextColor(Color.WHITE);
                     btn_qui.setBackgroundColor(Color.parseColor("#494F39"));
                     isClick[8] = true;
@@ -296,11 +317,13 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn_bgm:
                 if (isClick[9]) { // 눌렸을때 누르면
+                    detail.clear();
                     btn_bgm.setTextColor(Color.BLACK);
                     btn_bgm.setBackgroundColor(Color.parseColor("#FAF8F8"));
                     isClick[9] = false;
                     detail.remove(((Button) view).getText().toString());
                 } else { // 안눌려있을때 누르면
+
                     btn_bgm.setTextColor(Color.WHITE);
                     btn_bgm.setBackgroundColor(Color.parseColor("#494F39"));
                     isClick[9] = true;
@@ -310,11 +333,13 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn_com:
                 if (isClick[10]) { // 눌렸을때 누르면
+                    detail.clear();
                     btn_com.setTextColor(Color.BLACK);
                     btn_com.setBackgroundColor(Color.parseColor("#FAF8F8"));
                     isClick[10] = false;
                     detail.remove(((Button) view).getText().toString());
                 } else { // 안눌려있을때 누르면
+
                     btn_com.setTextColor(Color.WHITE);
                     btn_com.setBackgroundColor(Color.parseColor("#494F39"));
                     isClick[10] = true;
@@ -324,11 +349,13 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn_cou:
                 if (isClick[11]) { // 눌렸을때 누르면
+                    detail.clear();
                     btn_cou.setTextColor(Color.BLACK);
                     btn_cou.setBackgroundColor(Color.parseColor("#FAF8F8"));
                     isClick[11] = false;
                     detail.remove(((Button) view).getText().toString());
                 } else { // 안눌려있을때 누르면
+
                     btn_cou.setTextColor(Color.WHITE);
                     btn_cou.setBackgroundColor(Color.parseColor("#494F39"));
                     isClick[11] = true;
@@ -338,11 +365,13 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn_zer:
                 if (isClick[12]) { // 눌렸을때 누르면
+                    detail.clear();
                     btn_zer.setTextColor(Color.BLACK);
                     btn_zer.setBackgroundColor(Color.parseColor("#FAF8F8"));
                     isClick[12] = false;
                     detail.remove(((Button) view).getText().toString());
                 } else { // 안눌려있을때 누르면
+
                     btn_zer.setTextColor(Color.WHITE);
                     btn_zer.setBackgroundColor(Color.parseColor("#494F39"));
                     isClick[12] = true;
@@ -352,11 +381,13 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn_veg:
                 if (isClick[13]) { // 눌렸을때 누르면
+                    detail.clear();
                     btn_veg.setTextColor(Color.BLACK);
                     btn_veg.setBackgroundColor(Color.parseColor("#FAF8F8"));
                     isClick[13] = false;
                     detail.remove(((Button) view).getText().toString());
                 } else { // 안눌려있을때 누르면
+
                     btn_veg.setTextColor(Color.WHITE);
                     btn_veg.setBackgroundColor(Color.parseColor("#494F39"));
                     isClick[13] = true;
@@ -366,11 +397,13 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn_alcohol:
                 if (isClick[14]) { // 눌렸을때 누르면
+                    detail.clear();
                     btn_alcohol.setTextColor(Color.BLACK);
                     btn_alcohol.setBackgroundColor(Color.parseColor("#FAF8F8"));
                     isClick[14] = false;
                     detail.remove(((Button) view).getText().toString());
                 } else { // 안눌려있을때 누르면
+
                     btn_alcohol.setTextColor(Color.WHITE);
                     btn_alcohol.setBackgroundColor(Color.parseColor("#494F39"));
                     isClick[14] = true;
@@ -380,11 +413,13 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn_beans:
                 if (isClick[15]) { // 눌렸을때 누르면
+                    detail.clear();
                     btn_beans.setTextColor(Color.BLACK);
                     btn_beans.setBackgroundColor(Color.parseColor("#FAF8F8"));
                     isClick[15] = false;
                     detail.remove(((Button) view).getText().toString());
                 } else { // 안눌려있을때 누르면
+
                     btn_beans.setTextColor(Color.WHITE);
                     btn_beans.setBackgroundColor(Color.parseColor("#494F39"));
                     isClick[15] = true;
@@ -394,11 +429,13 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn_decaffe:
                 if (isClick[16]) { // 눌렸을때 누르면
+                    detail.clear();
                     btn_decaffe.setTextColor(Color.BLACK);
                     btn_decaffe.setBackgroundColor(Color.parseColor("#FAF8F8"));
                     isClick[16] = false;
                     detail.remove(((Button) view).getText().toString());
                 } else { // 안눌려있을때 누르면
+
                     btn_decaffe.setTextColor(Color.WHITE);
                     btn_decaffe.setBackgroundColor(Color.parseColor("#494F39"));
                     isClick[16] = true;
@@ -408,11 +445,13 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn_wf:
                 if (isClick[17]) { // 눌렸을때 누르면
+                    detail.clear();
                     btn_wf.setTextColor(Color.BLACK);
                     btn_wf.setBackgroundColor(Color.parseColor("#FAF8F8"));
                     isClick[17] = false;
                     detail.remove(((Button) view).getText().toString());
                 } else { // 안눌려있을때 누르면
+
                     btn_wf.setTextColor(Color.WHITE);
                     btn_wf.setBackgroundColor(Color.parseColor("#494F39"));
                     isClick[17] = true;
@@ -422,11 +461,13 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn_darkmood:
                 if (isClick[18]) { // 눌렸을때 누르면
+                    detail.clear();
                     btn_darkmood.setTextColor(Color.BLACK);
                     btn_darkmood.setBackgroundColor(Color.parseColor("#FAF8F8"));
                     isClick[18] = false;
                     detail.remove(((Button) view).getText().toString());
                 } else { // 안눌려있을때 누르면
+
                     btn_darkmood.setTextColor(Color.WHITE);
                     btn_darkmood.setBackgroundColor(Color.parseColor("#494F39"));
                     isClick[18] = true;
@@ -436,11 +477,13 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn_outf:
                 if (isClick[19]) { // 눌렸을때 누르면
+                    detail.clear();
                     btn_outf.setTextColor(Color.BLACK);
                     btn_outf.setBackgroundColor(Color.parseColor("#FAF8F8"));
                     isClick[19] = false;
                     detail.remove(((Button) view).getText().toString());
                 } else { // 안눌려있을때 누르면
+
                     btn_outf.setTextColor(Color.WHITE);
                     btn_outf.setBackgroundColor(Color.parseColor("#494F39"));
                     isClick[19] = true;
@@ -448,7 +491,6 @@ public class MainActivity extends AppCompatActivity {
                 }
                 Log.d("isClick", String.valueOf(isClick[19]));
                 break;
-
 
             case R.id.btn_search:
 
@@ -460,9 +502,6 @@ public class MainActivity extends AppCompatActivity {
                 detail.clear();
                 // 선택된 버튼 색을 다시 바꿔놔야됨.
 
-
-//                Intent intent_move = new Intent(MainActivity.this, detail_list.class);
-//                startActivity(intent_move);
                 break;
 
             case R.id.btn_single:
@@ -524,6 +563,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
 
 
 }
