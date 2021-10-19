@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:text="강성희 님"
+            android:text="오함마 님"
             android:textColor="#000000" />
     </LinearLayout>
 

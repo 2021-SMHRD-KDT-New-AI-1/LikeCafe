@@ -93,6 +93,7 @@ public class memberInfoModify extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         drawerLayout = findViewById(R.id.drawer_layout);
         tv_quit = findViewById(R.id.tv_quit);
+        img_profile = findViewById(R.id.img_profile);
         setSupportActionBar(toolbar);
 
         mContext = this;
@@ -110,7 +111,7 @@ public class memberInfoModify extends AppCompatActivity {
 
 
 
-        getMemberInfo("test2");
+        getMemberInfo("test");
 
 
 
@@ -418,11 +419,20 @@ public class memberInfoModify extends AppCompatActivity {
                     public void onResponse(String response) {
                         // 응답 성공 응답 성공 이야후~~!!
                         try {
+
+                            Log.v("asdf", response);
                             JSONObject jsonObject = (JSONObject) (new JSONArray(response)).get(0);
                             String nick = jsonObject.getString("nick"); // 닉네임만 받아옴 일단
                             tv_nick.setText(nick);
-                            String birth = jsonObject.getString("birth");
+
+                            String birth = jsonObject.getString("birth"); // 생년월일 받아오기
                             tv_birthDate.setText(birth);
+
+                            String img = jsonObject.getString("mem_image"); // 기존프로필이미지가져오기
+                            Bitmap bitmap = StringToBitmap(img);
+                            img_profile.setImageBitmap(bitmap);
+
+
 
 
                         } catch (JSONException e) {
@@ -456,6 +466,17 @@ public class memberInfoModify extends AppCompatActivity {
             }
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public static Bitmap StringToBitmap(String encodedString) {
+        try {
+            byte[] encodeByte = Base64.decode(encodedString, Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+            return bitmap;
+        } catch (Exception e) {
+            e.getMessage();
+            return null;
+        }
     }
 
 

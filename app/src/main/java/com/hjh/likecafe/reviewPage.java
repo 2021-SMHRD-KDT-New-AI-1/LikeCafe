@@ -205,11 +205,13 @@ public class reviewPage extends AppCompatActivity {
             return "디폴트 이미지";
         }
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 70,baos);
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100,baos);
         byte[] bytes = baos.toByteArray();
         String bitString = Base64.encodeToString(bytes, Base64.DEFAULT);
         return bitString;
     }
+
+
 
 
 
@@ -250,7 +252,7 @@ public class reviewPage extends AppCompatActivity {
                 params.put("star", Float.toString(rate));
                 params.put("content", review);
                 params.put("review_image", BitmapToString(cafeImage));
-                params.put("write_date", "2021-10-16"); // (확인용 가라정보)
+                params.put("write_date", "2021-10-19"); // (확인용 가라정보)
 
                 return params;
             }
