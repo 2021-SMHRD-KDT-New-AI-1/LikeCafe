@@ -454,8 +454,7 @@ public class memberInfoModify extends AppCompatActivity {
     }
 
 
-    // 날자 형식 포멧
-    SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-MM-dd");
+
 
 
     // 회원 정보를 서버에 요청하여 받아오는 메소드
@@ -476,7 +475,9 @@ public class memberInfoModify extends AppCompatActivity {
                             tv_nick.setText(nick);
 
                             String birth = jsonObject.getString("birth"); // 생년월일 받아오기
-                            tv_birthDate.setText(mFormat.format(birth));
+                            String birthdate = birth.substring(0,10); // 받아온 날짜중 년월일만 표시
+                            tv_birthDate.setText(birthdate);
+
 
 
                             String img = jsonObject.getString("mem_image"); // 기존프로필이미지가져오기
