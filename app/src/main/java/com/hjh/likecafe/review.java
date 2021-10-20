@@ -99,7 +99,8 @@ public class review extends AppCompatActivity {
             requestQueue = Volley.newRequestQueue(getApplicationContext());
         }
 
-        getMyReview("test");
+        String mem_id = PreferenceManager.getString(this, "mem_id");
+        getMyReview(mem_id);
         adapter.notifyDataSetChanged();
 
 

@@ -6,7 +6,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -56,6 +58,8 @@ public class reviewPage extends AppCompatActivity {
 
     TextView tv_reviewCafeName, tv_reviewAddress;
 
+    Context mContext;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +85,8 @@ public class reviewPage extends AppCompatActivity {
         img_reviewPicture.setImageBitmap(cafeImage);
         tv_reviewCafeName.setText(cafe_name);
         tv_reviewAddress.setText(cafe_address);
+
+        mContext = this;
 
 
         // '사진등록' 버튼 클릭 시 폰 갤러리 열기(by.안영상)
@@ -142,9 +148,10 @@ public class reviewPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String review = et_review_writebox.getText().toString();
+                String mem_id = PreferenceManager.getString(mContext, "mem_id");
 
                 Toast.makeText(getApplicationContext(), "리뷰 등록이 완료되었습니다.", Toast.LENGTH_SHORT).show();
-                postReview(cafe_id, review);
+                postReview(mem_id, cafe_id, review);
             }
         });
 
@@ -227,7 +234,7 @@ public class reviewPage extends AppCompatActivity {
     }
 
     // Json 파일 생성 및 리뷰 웹서버 전송
-    public void postReview (int cafe_id, String review) {
+    public void postReview (String mem_id, int cafe_id, String review) {
         String url = "http://172.30.1.8:3003/Review/ReviewPage";  //
         StringRequest request = new StringRequest(
                 Request.Method.POST,
@@ -256,8 +263,8 @@ public class reviewPage extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("cafe_id", String.valueOf(cafe_id)); // (확인용 가라정보)
-                params.put("mem_id", "test"); // (확인용 가라정보)
+                params.put("cafe_id", String.valueOf(cafe_id));
+                params.put("mem_id", mem_id);
                 params.put("star", Double.toString(rate));
                 params.put("content", review);
                 params.put("review_image", BitmapToString(cafeImage));

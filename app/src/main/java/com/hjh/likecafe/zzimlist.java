@@ -61,7 +61,8 @@ public class zzimlist extends AppCompatActivity {
             requestQueue = Volley.newRequestQueue(getApplicationContext());
         }
 
-        getMyZzim("test");
+        String mem_id = PreferenceManager.getString(this, "mem_id");
+        getMyZzim(mem_id);
         adapter.notifyDataSetChanged();
 
 
@@ -135,7 +136,7 @@ public class zzimlist extends AppCompatActivity {
 
                                 getKeywords(cafe_id, vo);
                                 getZzimCnt(cafe_id, vo);
-                                getZzimSel(cafe_id, "test", vo);
+                                getZzimSel(cafe_id, id, vo);
                                 data.add(vo);
                                 adapter.notifyDataSetChanged();
 

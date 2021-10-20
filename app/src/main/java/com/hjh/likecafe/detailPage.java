@@ -184,6 +184,7 @@ public class detailPage extends AppCompatActivity {
         getDetailInfo(cafe_id);
         tv_detailKeyword.setText(textKeyword);
 
+        String mem_id = PreferenceManager.getString(this, "mem_id");
         if(zzimSel) {
             img_detailZzim.setImageResource(R.drawable.zzimsel);
         } else {
@@ -195,10 +196,10 @@ public class detailPage extends AppCompatActivity {
             public void onClick(View view) {
                 if(PreferenceManager.getBoolean(mContext, "zzimSel")) {
                     // 찜 목록에서 삭제하는 기능
-                    zzimDelete("test", cafe_id);
+                    zzimDelete(mem_id, cafe_id);
                 } else {
                     // 찜 목록에 추가하는 기능
-                    zzimInsert("test", cafe_id);
+                    zzimInsert(mem_id, cafe_id);
                 }
             }
         });

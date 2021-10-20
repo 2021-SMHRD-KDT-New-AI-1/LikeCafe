@@ -111,18 +111,19 @@ public class list extends AppCompatActivity {
         String region = getIntent().getStringExtra("region");
         Log.d("지역을 리스트에 가져왔다  -> ", region);
 
+        String mem_id = PreferenceManager.getString(this, "mem_id");
         String result = "";
         if (detail != null) {
             result = "";
             for (String keyword : detail) {
                 result += "#" + keyword + " ";
             }
-            searchByKeyword(detail, region);
+            searchByKeyword(detail, region, mem_id);
         } else if (theme != null) {
             result = "";
             Log.d("theme : ", theme);
             result += "#" + theme;
-            searchByCategory(theme, region);
+            searchByCategory(theme, region, mem_id);
         }
         tv_detailResult.setText(result);
         adapter.notifyDataSetChanged();
@@ -130,7 +131,7 @@ public class list extends AppCompatActivity {
 
     }
 
-    public void searchByCategory(String theme, String region) {
+    public void searchByCategory(String theme, String region, String mem_id) {
         String url = "http://172.30.1.8:3003/Cafe/SearchByCategory";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
@@ -164,7 +165,7 @@ public class list extends AppCompatActivity {
 
                                 getKeywords(cafe_id, vo);
                                 getZzimCnt(cafe_id, vo);
-                                getZzimSel(cafe_id, "test", vo);
+                                getZzimSel(cafe_id, mem_id, vo);
                                 data.add(vo);
                                 adapter.notifyDataSetChanged();
 
@@ -196,7 +197,7 @@ public class list extends AppCompatActivity {
         requestQueue.add(request);
     }
 
-    public void searchByKeyword(ArrayList<String> detail, String region) {
+    public void searchByKeyword(ArrayList<String> detail, String region, String mem_id) {
         String url = "http://172.30.1.8:3003/Cafe/SearchByKeyword";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
@@ -230,7 +231,7 @@ public class list extends AppCompatActivity {
 
                                 getKeywords(cafe_id, vo);
                                 getZzimCnt(cafe_id, vo);
-                                getZzimSel(cafe_id, "test", vo);
+                                getZzimSel(cafe_id, mem_id, vo);
                                 data.add(vo);
                                 adapter.notifyDataSetChanged();
 

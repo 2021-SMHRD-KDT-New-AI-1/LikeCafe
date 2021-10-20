@@ -46,7 +46,7 @@
         android:paddingTop="0dp"
         android:paddingRight="0dp"
         android:paddingBottom="0dp"
-        android:text="가입하기"
+        android:text="확인"
         android:textSize="20sp"
         android:textStyle="bold"
         app:cornerRadius="0dp"

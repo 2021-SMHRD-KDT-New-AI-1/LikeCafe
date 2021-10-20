@@ -83,6 +83,8 @@ public class CafeAdapter extends BaseAdapter {
             view.setTag(viewHolder);
         }
 
+        String mem_id = PreferenceManager.getString(context, "mem_id");
+
         viewHolder = (CafeViewHolder) view.getTag();
         viewHolder.img_cafeListImage.setImageBitmap(data.get(i).getImage());
         viewHolder.tv_cafeListName.setText(data.get(i).getName());
@@ -98,10 +100,10 @@ public class CafeAdapter extends BaseAdapter {
             public void onClick(View view) {
                 if(data.get(i).isZzimSel()) {
                     // 찜 목록에서 삭제하는 기능
-                    zzimDelete("test", data.get(i).getId(), i);
+                    zzimDelete(mem_id, data.get(i).getId(), i);
                 } else {
                     // 찜 목록에 추가하는 기능
-                    zzimInsert("test", data.get(i).getId(), i);
+                    zzimInsert(mem_id, data.get(i).getId(), i);
                 }
                 notifyDataSetChanged();
             }

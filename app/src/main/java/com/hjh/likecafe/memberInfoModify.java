@@ -113,7 +113,8 @@ public class memberInfoModify extends AppCompatActivity {
         }
 
 
-        getMemberInfo("home");
+        String mem_id = PreferenceManager.getString(this,"mem_id");
+        getMemberInfo(mem_id);
 
 
         //Navigation Drawer
@@ -203,7 +204,7 @@ public class memberInfoModify extends AppCompatActivity {
                             "변경이 완료되었습니다.", Toast.LENGTH_SHORT).show();
                     // id와 입력받은 값을 매개변수로 하여 modify 메소드 호출
                     //PreferenceManager.getString(mContext, "mem_id")
-                    modify("test", currentPw, nick, changePw, birth, sex); // 일단 임시로 id값 대신 test를 넣어주었음
+                    modify(mem_id, currentPw, nick, changePw, birth, sex);
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
 
