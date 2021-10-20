@@ -16,6 +16,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
@@ -45,8 +46,11 @@ import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 
@@ -449,6 +453,11 @@ public class memberInfoModify extends AppCompatActivity {
         requestQueue.add(request);
     }
 
+
+    // 날자 형식 포멧
+    SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+
     // 회원 정보를 서버에 요청하여 받아오는 메소드
     public void getMemberInfo(String id) {
         String url = "http://172.30.1.8:3003/Member/MemberInfo";
@@ -467,7 +476,8 @@ public class memberInfoModify extends AppCompatActivity {
                             tv_nick.setText(nick);
 
                             String birth = jsonObject.getString("birth"); // 생년월일 받아오기
-                            tv_birthDate.setText(birth);
+                            tv_birthDate.setText(mFormat.format(birth));
+
 
                             String img = jsonObject.getString("mem_image"); // 기존프로필이미지가져오기
                             Bitmap bitmap = StringToBitmap(img);
@@ -520,6 +530,10 @@ public class memberInfoModify extends AppCompatActivity {
             return null;
         }
     }
+
+
+
+
 
 
 
