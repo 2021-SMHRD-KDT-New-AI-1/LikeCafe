@@ -498,6 +498,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent intent_detail = new Intent(MainActivity.this, list.class);
                 intent_detail.putExtra("detail", detail);//데이터 넣기
+                intent_detail.putExtra("region", tv_r_choice.getText().toString());
                 startActivity(intent_detail);
                 detail.clear();
                 // 선택된 버튼 색을 다시 바꿔놔야됨.
