@@ -6,14 +6,21 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,14 +37,20 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class detailPage extends AppCompatActivity {
     Toolbar toolbar;
     DrawerLayout drawerLayout;
 
+    ListView lv_reviewList;
+    List<ReviewVO> data;
     RequestQueue requestQueue;
+
+    ReviewAdapter adapter;
 
     TextView tv_detailName, tv_detailAddress, tv_detailBusiness, tv_detailTel, tv_detailSns;
     TextView tv_space, tv_parking, tv_tableNum, tv_floor, tv_detailKeyword;
@@ -91,12 +104,22 @@ public class detailPage extends AppCompatActivity {
             }
         });
 
+        // 전역변수 초기화
         mContext = this;
+
+        lv_reviewList = findViewById(R.id.lv_reviewList);
+        data = new ArrayList<ReviewVO>();
+
+        adapter = new ReviewAdapter(getApplicationContext(), R.layout.review_list, data);
+        lv_reviewList.setAdapter(adapter);
+        //setListViewHeightBasedOnChildren(lv_reviewList);
 
         // 서버와 통신
         if (requestQueue == null) {
             requestQueue = Volley.newRequestQueue(getApplicationContext());
         }
+
+
 
         // 카페 상세 페이지 생성
         // 뷰 초기화
@@ -165,15 +188,11 @@ public class detailPage extends AppCompatActivity {
                     // 찜 목록에 추가하는 기능
                     zzimInsert("test", cafe_id);
                 }
-
-
             }
         });
 
-
-
-
-
+        getCafeReview(cafe_id);
+        adapter.notifyDataSetChanged();
 
     }
 
@@ -266,7 +285,6 @@ public class detailPage extends AppCompatActivity {
         requestQueue.add(request);
     }
 
-
     public void getDetailInfo(int cafe_id){
         String url = "http://172.30.1.8:3003/Detail/DetailInfo";
         StringRequest request = new StringRequest(
@@ -309,6 +327,91 @@ public class detailPage extends AppCompatActivity {
             }
         };
         requestQueue.add(request);
+    }
+
+    public void getCafeReview(int cafe_id) {
+        String url = "http://172.30.1.8:3003/Review/SelectByCafeId";
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // 응답 성공 응답 성공 이야후~~!!
+                        try {
+                            JSONArray jsonArray = new JSONArray(response);
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject jsonObject = (JSONObject) jsonArray.get(i);
+
+                                int review_id = jsonObject.getInt("review_id");
+                                int cafe_id = jsonObject.getInt("cafe_id");
+                                String cafe_name = jsonObject.getString("cafe_name");
+                                String mem_id = jsonObject.getString("mem_id");
+                                Double star = jsonObject.getDouble("star");
+                                String content = jsonObject.getString("content");
+                                String review_image = jsonObject.getString("review_image");
+                                Bitmap imageBitmap = StringToBitmap(review_image);
+
+                                ReviewVO vo = new ReviewVO(review_id, cafe_id, cafe_name, mem_id, star, content, imageBitmap);
+
+                                data.add(vo);
+                                adapter.notifyDataSetChanged();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("cafe_id", String.valueOf(cafe_id));
+
+                return params;
+            }
+        };
+        requestQueue.add(request);
+    }
+
+//    public static void setListViewHeightBasedOnChildren(ListView listView) {
+//        ListAdapter reviewAdapter = listView.getAdapter();
+//        if (reviewAdapter == null) {
+//            // pre-condition
+//            return;
+//        }
+//
+//        int totalHeight = 0;
+//        int desiredWidth = View.MeasureSpec.makeMeasureSpec(listView.getWidth(), View.MeasureSpec.AT_MOST);
+//
+//        for (int i = 0; i < reviewAdapter.getCount(); i++) {
+//            View listItem = reviewAdapter.getView(i, null, listView);
+//            listItem.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED);
+//            totalHeight += listItem.getMeasuredHeight();
+//        }
+//
+//        ViewGroup.LayoutParams params = listView.getLayoutParams();
+//        params.height = totalHeight + (listView.getDividerHeight() * (reviewAdapter.getCount() - 1));
+//        listView.setLayoutParams(params);
+//        listView.requestLayout();
+//    }
+
+
+    public static Bitmap StringToBitmap(String encodedString) {
+        try {
+            byte[] encodeByte = Base64.decode(encodedString, Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+            return bitmap;
+        } catch (Exception e) {
+            e.getMessage();
+            return null;
+        }
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {

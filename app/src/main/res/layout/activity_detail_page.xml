@@ -25,6 +25,33 @@
             tools:context=".detailPage">
 
 
+            <Button
+                android:id="@+id/btn_review"
+                android:layout_width="414dp"
+                android:layout_height="55dp"
+                android:backgroundTint="#494F39"
+
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+
+                android:letterSpacing="-0.05"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                android:text="리뷰작성"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:cornerRadius="0dp"
+                app:iconPadding="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lv_reviewList"
+                 />
+
             <ImageView
                 android:id="@+id/imageView5"
                 android:layout_width="0dp"
@@ -379,6 +406,17 @@
                 app:layout_constraintEnd_toEndOf="@+id/img_detailZzim"
                 app:layout_constraintStart_toStartOf="@+id/img_detailZzim"
                 app:layout_constraintTop_toBottomOf="@+id/img_detailZzim" />
+
+            <ListView
+                android:id="@+id/lv_reviewList"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView26" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -100,17 +100,6 @@ public class review extends AppCompatActivity {
         }
 
         getMyReview("test");
-
-//        // 서버 연결 x, 테스트용 임시 데이터
-//        Map<String, String> test = new HashMap<>();
-//        ReviewVO vo1 = new ReviewVO(1,1,"test1",
-//                PreferenceManager.getString(this, "mem_id"),4,"test1\ntest1\nttttttttttttttt", R.drawable.cafeimagexml);
-//        ReviewVO vo2 = new ReviewVO(2, 2, "test2",
-//                PreferenceManager.getString(this, "mem_id"), 3.5, "test2", R.drawable.cafeimagexml);
-//
-//        data.add(vo1);
-//        data.add(vo2);
-
         adapter.notifyDataSetChanged();
 
 

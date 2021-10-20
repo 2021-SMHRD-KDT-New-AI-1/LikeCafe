@@ -1,6 +1,5 @@
 package com.hjh.likecafe;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -53,7 +52,7 @@ public class reviewPage extends AppCompatActivity {
     TextView tv_limit;
     ImageView img_picture;
     Bitmap cafeImage;
-    Float rate;
+    Double rate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,7 +117,7 @@ public class reviewPage extends AppCompatActivity {
         ratingbar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                rate = rating;
+                rate = (double) rating;
             }
         });
 
@@ -226,7 +225,7 @@ public class reviewPage extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         try {
-                            JSONObject jsonObject = new JSONObject();
+                            JSONObject jsonObject = (JSONObject) (new JSONArray(response).get(0));
                             Log.d("status : ", jsonObject.getString("status"));
                             Intent intent = new Intent(
                                     reviewPage.this, MainActivity.class);
@@ -246,10 +245,9 @@ public class reviewPage extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("review_id", "2"); // (확인용 가라정보)
-                params.put("cafe_id", "1"); // (확인용 가라정보)
+                params.put("cafe_id", "12"); // (확인용 가라정보)
                 params.put("mem_id", "test"); // (확인용 가라정보)
-                params.put("star", Float.toString(rate));
+                params.put("star", Double.toString(rate));
                 params.put("content", review);
                 params.put("review_image", BitmapToString(cafeImage));
                 params.put("write_date", "2021-10-19"); // (확인용 가라정보)
