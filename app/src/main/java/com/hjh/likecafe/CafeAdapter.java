@@ -118,6 +118,7 @@ public class CafeAdapter extends BaseAdapter {
                 intent.putExtra("holiday", data.get(i).getHoliday());
                 intent.putExtra("tel", data.get(i).getTel());
                 intent.putExtra("sns", data.get(i).getSns());
+                intent.putExtra("keywords", data.get(i).getKeywords());
                 context.startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
             }
         });

@@ -2,8 +2,6 @@ package com.hjh.likecafe;
 
 import android.graphics.Bitmap;
 
-import java.util.Map;
-
 public class CafeVO {
 
     private int id;
@@ -15,14 +13,14 @@ public class CafeVO {
     private String tel;
     private String sns;
     private String category;
-    private Map<String, String> keyword; // 키워드 이름, 키워드 상세 내용을 저장하는 hashmap
+    private String[] keywords; // 키워드 이름, 키워드 상세 내용을 저장하는 hashmap
 
     private int zzimCnt; // 해당 카페를 찜한 수
     private boolean zzimSel; // 해당 유저가 이 카페를 찜했는지 여부
 
     public CafeVO(int id, String name, Bitmap image, String address, String business_hour,
                   String holiday, String tel, String sns, String category,
-                  Map<String, String> keyword, int zzimCnt, boolean zzimSel) {
+                  String[] keywords, int zzimCnt, boolean zzimSel) {
         this.id = id;
         this.name = name;
         this.image = image;
@@ -32,7 +30,7 @@ public class CafeVO {
         this.tel = tel;
         this.sns = sns;
         this.category = category;
-        this.keyword = keyword;
+        this.keywords = keywords;
         this.zzimCnt = zzimCnt;
         this.zzimSel = zzimSel;
     }
@@ -73,8 +71,8 @@ public class CafeVO {
         return category;
     }
 
-    public Map<String, String> getKeyword() {
-        return keyword;
+    public String[] getKeywords() {
+        return keywords;
     }
 
     public int getZzimCnt() {
@@ -91,5 +89,9 @@ public class CafeVO {
 
     public void setZzimSel(boolean zzimSel) {
         this.zzimSel = zzimSel;
+    }
+
+    public void setKeywords(String[] keywords) {
+        this.keywords = keywords;
     }
 }

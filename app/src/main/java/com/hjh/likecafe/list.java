@@ -15,7 +15,6 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -30,11 +29,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -155,15 +149,14 @@ public class list extends AppCompatActivity {
                                 String tel = jsonObject.getString("tel");
                                 String sns = jsonObject.getString("sns");
                                 String category = jsonObject.getString("category");
-                                //키워드, 찜정보도 가져와야함
-                                Map<String, String> test = new HashMap<>();
-
+                                String[] test = new String[1];
                                 Bitmap imageBitmap = StringToBitmap(image);
 
                                 CafeVO vo = new CafeVO(cafe_id, name, imageBitmap, address,
                                         business_hour, holiday, tel,
                                         sns, category, test, 1, true);
 
+                                getKeywords(cafe_id, vo);
                                 getZzimCnt(cafe_id, vo);
                                 getZzimSel(cafe_id, "test", vo);
                                 data.add(vo);
@@ -222,15 +215,14 @@ public class list extends AppCompatActivity {
                                 String tel = jsonObject.getString("tel");
                                 String sns = jsonObject.getString("sns");
                                 String category = jsonObject.getString("category");
-                                //키워드, 찜정보도 가져와야함
-                                Map<String, String> test = new HashMap<>();
-
+                                String[] test = new String[1];
                                 Bitmap imageBitmap = StringToBitmap(image);
 
                                 CafeVO vo = new CafeVO(cafe_id, name, imageBitmap, address,
                                         business_hour, holiday, tel,
                                         sns, category, test, 1, true);
 
+                                getKeywords(cafe_id, vo);
                                 getZzimCnt(cafe_id, vo);
                                 getZzimSel(cafe_id, "test", vo);
                                 data.add(vo);
@@ -261,6 +253,45 @@ public class list extends AppCompatActivity {
                 }
                 params.put("keyword", keyword);
                 params.put("region", region);
+
+                return params;
+            }
+        };
+        requestQueue.add(request);
+    }
+
+    public void getKeywords(int cafe_id, CafeVO vo){
+        String url = "http://172.30.1.8:3003/Detail/GetKeywords";
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // 응답 성공 응답 성공 이야후~~!!
+                        try {
+                            JSONObject jsonObject = (JSONObject) (new JSONArray(response)).get(0);
+                            String keywords = jsonObject.getString("keywords");
+                            String[] keywords_arr = keywords.split(",");
+                            vo.setKeywords(keywords_arr);
+                            adapter.notifyDataSetChanged();
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("cafe_id", String.valueOf(cafe_id));
 
                 return params;
             }

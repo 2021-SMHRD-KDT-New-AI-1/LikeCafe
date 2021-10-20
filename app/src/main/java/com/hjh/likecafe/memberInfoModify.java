@@ -65,7 +65,6 @@ public class memberInfoModify extends AppCompatActivity {
     Bitmap image;
 
 
-
     ImageView img_profile;
 
     // '생년월일'
@@ -110,10 +109,7 @@ public class memberInfoModify extends AppCompatActivity {
         }
 
 
-
-
         getMemberInfo("home");
-
 
 
         //Navigation Drawer
@@ -128,18 +124,16 @@ public class memberInfoModify extends AppCompatActivity {
                 int id = menuItem.getItemId();
                 String title = menuItem.getTitle().toString();
 
-                if(id == R.id.NV_home){
-                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                     startActivity(intent);
-                }
-                else if(id == R.id.NV_wish){
+                if (id == R.id.NV_home) {
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                } else if (id == R.id.NV_wish) {
                     Intent intent = new Intent(getApplicationContext(), zzimlist.class);
                     startActivity(intent);
-                }
-                else if(id == R.id.NV_review){
+                } else if (id == R.id.NV_review) {
                     Intent intent = new Intent(getApplicationContext(), review.class);
                     startActivity(intent);
-                }else if(id == R.id.NV_edit){
+                } else if (id == R.id.NV_edit) {
                     Intent intent = new Intent(getApplicationContext(), memberInfoModify.class);
                     startActivity(intent);
                 }
@@ -149,7 +143,6 @@ public class memberInfoModify extends AppCompatActivity {
         });
 
 
-
         // '사진수정'버튼 클릭 시 폰 갤러리 열기
         btn_picChange.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -157,7 +150,7 @@ public class memberInfoModify extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(intent,1);
+                startActivityForResult(intent, 1);
             }
         });
 
@@ -175,7 +168,6 @@ public class memberInfoModify extends AppCompatActivity {
                 }
             }
         });
-
 
 
         // '수정하기' 버튼 클릭 리스너 (-> 수정완료되면 메인페이지로 이동함)
@@ -201,14 +193,13 @@ public class memberInfoModify extends AppCompatActivity {
                 } else if (!chkBlank) { // 빈칸검사?
                     Toast.makeText(memberInfoModify.this,
                             "모든 입력란에 입력을 완료해주세요", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     Toast.makeText(memberInfoModify.this,
                             "변경이 완료되었습니다.", Toast.LENGTH_SHORT).show();
                     // id와 입력받은 값을 매개변수로 하여 modify 메소드 호출
                     //PreferenceManager.getString(mContext, "mem_id")
                     modify("test", currentPw, nick, changePw, birth, sex); // 일단 임시로 id값 대신 test를 넣어주었음
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class );
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
 
                 }
@@ -235,14 +226,14 @@ public class memberInfoModify extends AppCompatActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         // 탈퇴시키기
 
-                        if(quitPassword.equals(et_currentPw)){
+                        if (quitPassword.equals(et_currentPw)) {
                             Toast.makeText(memberInfoModify.this,
                                     "탈퇴되었습니다.", Toast.LENGTH_SHORT).show();
                             postDelete("home");
                             Intent intent = new Intent(memberInfoModify.this, FirstPage.class);
                             startActivity(intent);
 
-                        }else{
+                        } else {
                             Toast.makeText(memberInfoModify.this,
                                     "비밀번호를 다시 입력하세요.", Toast.LENGTH_SHORT).show();
                         }
@@ -259,7 +250,7 @@ public class memberInfoModify extends AppCompatActivity {
                 alert.show();
             }
         });
-            }
+    }
 
 
     // 선택한 사진으로 프사바꾸기
@@ -289,12 +280,12 @@ public class memberInfoModify extends AppCompatActivity {
 
 
     // 선택한 사진(비트맵형식)을 String형태로 변환하기
-    public static String BitmapToString (Bitmap bitmap) {
-        if(bitmap == null) {
+    public static String BitmapToString(Bitmap bitmap) {
+        if (bitmap == null) {
             return "디폴트 이미지";
         }
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 70,baos);
+        bitmap.compress(Bitmap.CompressFormat.PNG, 70, baos);
         byte[] bytes = baos.toByteArray();
         String bitString = Base64.encodeToString(bytes, Base64.DEFAULT);
         return bitString;
@@ -316,8 +307,7 @@ public class memberInfoModify extends AppCompatActivity {
         };
     }
 
-    public void OnClickHandler(View view)
-    {
+    public void OnClickHandler(View view) {
         DatePickerDialog dialog = new DatePickerDialog
                 (this, callbackMethod, 1990, 7, 1);
         dialog.show();
@@ -367,7 +357,7 @@ public class memberInfoModify extends AppCompatActivity {
     }
 
     // 회원삭제 웹 서버 보내기
-    public void postDelete (String id) {
+    public void postDelete(String id) {
         String url = "http://172.30.1.8:3003/Member/Delete";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
@@ -391,15 +381,14 @@ public class memberInfoModify extends AppCompatActivity {
         ) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-               Map<String, String> params = new HashMap<String, String>();
-               params.put("mem_id", id);
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("mem_id", id);
 
                 return params;
             }
         };
         requestQueue.add(request);
     }
-
 
 
     public void modify(String id, String currentPw, String nick, String changePw, String birth, String sex) {
@@ -474,8 +463,6 @@ public class memberInfoModify extends AppCompatActivity {
                             img_profile.setImageBitmap(bitmap);
 
 
-
-
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -500,8 +487,8 @@ public class memberInfoModify extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case android.R.id.home:{ // 뒤로가기 버튼 눌렀을 때
+        switch (item.getItemId()) {
+            case android.R.id.home: { // 뒤로가기 버튼 눌렀을 때
                 drawerLayout.openDrawer(GravityCompat.START);
                 return true;
             }
@@ -520,7 +507,6 @@ public class memberInfoModify extends AppCompatActivity {
             return null;
         }
     }
-
 
 
 }

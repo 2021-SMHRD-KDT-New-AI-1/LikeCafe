@@ -215,7 +215,7 @@
                 app:layout_constraintTop_toTopOf="@+id/img_dist" />
 
             <TextView
-                android:id="@+id/textView22"
+                android:id="@+id/tv_space"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1.2 ~ 1.5m"
@@ -235,7 +235,7 @@
                 app:srcCompat="@drawable/runparking" />
 
             <TextView
-                android:id="@+id/textView23"
+                android:id="@+id/tv_parking"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="14대(장애인 주차장)"
@@ -278,7 +278,7 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/textView25"
+                android:id="@+id/tv_floor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="2층"
@@ -308,7 +308,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.055"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView11"
+                app:layout_constraintTop_toBottomOf="@+id/tv_detailKeyword"
                 app:srcCompat="@drawable/runbar" />
 
             <ImageView
@@ -335,7 +335,7 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/textView24"
+                android:id="@+id/tv_tableNum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="23개"
@@ -351,16 +351,18 @@
                 app:layout_constraintGuide_percent="0.12" />
 
             <TextView
-                android:id="@+id/textView11"
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_detailKeyword"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
                 android:text="#구분 화장실 #조용한"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/img_table"
                 app:layout_constraintTop_toBottomOf="@+id/img_table" />
 
             <ImageView
-                android:id="@+id/imageView8"
+                android:id="@+id/img_detailZzim"
                 android:layout_width="26dp"
                 android:layout_height="28dp"
                 android:layout_marginTop="18dp"
@@ -370,13 +372,13 @@
                 app:srcCompat="@drawable/runheart" />
 
             <TextView
-                android:id="@+id/textView12"
+                android:id="@+id/tv_detailZzimCnt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="10"
-                app:layout_constraintEnd_toEndOf="@+id/imageView8"
-                app:layout_constraintStart_toStartOf="@+id/imageView8"
-                app:layout_constraintTop_toBottomOf="@+id/imageView8" />
+                app:layout_constraintEnd_toEndOf="@+id/img_detailZzim"
+                app:layout_constraintStart_toStartOf="@+id/img_detailZzim"
+                app:layout_constraintTop_toBottomOf="@+id/img_detailZzim" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
