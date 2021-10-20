@@ -46,13 +46,16 @@ public class reviewPage extends AppCompatActivity {
     RequestQueue requestQueue;
     Toolbar toolbar;
     DrawerLayout drawerLayout;
-    Button btn_riviewupdate, btn_s1;
+    Button btn_reviewUpdate, btn_reviewPictureUpload;
     RatingBar ratingbar;
     EditText et_review_writebox;
     TextView tv_limit;
-    ImageView img_picture;
+    ImageView img_reviewPicture;
     Bitmap cafeImage;
     Double rate;
+
+    TextView tv_reviewCafeName, tv_reviewAddress;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,15 +63,28 @@ public class reviewPage extends AppCompatActivity {
         setContentView(R.layout.activity_review_page);
         toolbar = findViewById(R.id.toolbar);
         drawerLayout = findViewById(R.id.drawer_layout);
-        btn_riviewupdate = findViewById(R.id.btn_riviewupdate);
+        btn_reviewUpdate = findViewById(R.id.btn_reviewUpdate);
         ratingbar = findViewById(R.id.ratingbar);
         et_review_writebox = findViewById(R.id.et_review_writebox);
         tv_limit = findViewById(R.id.tv_limit);
-        btn_s1 = findViewById(R.id.btn_s1);
+        btn_reviewPictureUpload = findViewById(R.id.btn_reviewPictureUpload);
+        img_reviewPicture = findViewById(R.id.img_reviewPicture);
+        tv_reviewCafeName = findViewById(R.id.tv_reviewCafeName);
+        tv_reviewAddress = findViewById(R.id.tv_reviewAddress);
+
+        int cafe_id = getIntent().getIntExtra("cafe_id", 1);
+        String cafe_image = getIntent().getStringExtra("cafe_image");
+        cafeImage = StringToBitmap(cafe_image);
+        String cafe_name = getIntent().getStringExtra("cafe_name");
+        String cafe_address = getIntent().getStringExtra("cafe_address");
+
+        img_reviewPicture.setImageBitmap(cafeImage);
+        tv_reviewCafeName.setText(cafe_name);
+        tv_reviewAddress.setText(cafe_address);
 
 
         // '사진등록' 버튼 클릭 시 폰 갤러리 열기(by.안영상)
-        btn_s1.setOnClickListener(new View.OnClickListener() {
+        btn_reviewPictureUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent();
@@ -122,13 +138,13 @@ public class reviewPage extends AppCompatActivity {
         });
 
         // 리뷰 등록하기
-        btn_riviewupdate.setOnClickListener(new View.OnClickListener() {
+        btn_reviewUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String review = et_review_writebox.getText().toString();
 
                 Toast.makeText(getApplicationContext(), "리뷰 등록이 완료되었습니다.", Toast.LENGTH_SHORT).show();
-                postReview(review);
+                postReview(cafe_id, review);
             }
         });
 
@@ -177,7 +193,7 @@ public class reviewPage extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        img_picture = findViewById(R.id.img_picture);
+
 
         if (requestCode == 1) {
 
@@ -187,7 +203,7 @@ public class reviewPage extends AppCompatActivity {
                     cafeImage = BitmapFactory.decodeStream(in);
                     in.close();
 
-                    img_picture.setImageBitmap(cafeImage);
+                    img_reviewPicture.setImageBitmap(cafeImage);
 
                     Toast.makeText(reviewPage.this,
                             "사진이 등록되었습니다.", Toast.LENGTH_SHORT).show();
@@ -210,13 +226,8 @@ public class reviewPage extends AppCompatActivity {
         return bitString;
     }
 
-
-
-
-
-
     // Json 파일 생성 및 리뷰 웹서버 전송
-    public void postReview (String review) {
+    public void postReview (int cafe_id, String review) {
         String url = "http://172.30.1.8:3003/Review/ReviewPage";  //
         StringRequest request = new StringRequest(
                 Request.Method.POST,
@@ -245,7 +256,7 @@ public class reviewPage extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("cafe_id", "12"); // (확인용 가라정보)
+                params.put("cafe_id", String.valueOf(cafe_id)); // (확인용 가라정보)
                 params.put("mem_id", "test"); // (확인용 가라정보)
                 params.put("star", Double.toString(rate));
                 params.put("content", review);
@@ -258,10 +269,19 @@ public class reviewPage extends AppCompatActivity {
         requestQueue.add(request);
     }
 
-
-
-
-
+    public static Bitmap StringToBitmap(String encodedString) {
+        if(encodedString.equals("디폴트 이미지")) {
+            return null;
+        }
+        try {
+            byte[] encodeByte = Base64.decode(encodedString, Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+            return bitmap;
+        } catch (Exception e) {
+            e.getMessage();
+            return null;
+        }
+    }
 
 
     public boolean onOptionsItemSelected(MenuItem item) {

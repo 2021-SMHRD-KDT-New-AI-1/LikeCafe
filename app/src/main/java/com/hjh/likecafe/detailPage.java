@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -56,6 +57,7 @@ public class detailPage extends AppCompatActivity {
     TextView tv_space, tv_parking, tv_tableNum, tv_floor, tv_detailKeyword;
     ImageView img_detailZzim, img_cafeMainImage;
     TextView tv_detailZzimCnt;
+    Button btn_review;
 
     Context mContext;
 
@@ -112,10 +114,6 @@ public class detailPage extends AppCompatActivity {
         // 전역변수 초기화
         mContext = this;
 
-
-
-
-
         // 카페 상세 페이지 생성
         // 뷰 초기화
         tv_detailName = findViewById(R.id.tv_detailName);
@@ -134,6 +132,8 @@ public class detailPage extends AppCompatActivity {
         tv_tableNum = findViewById(R.id.tv_tableNum);
         tv_floor = findViewById(R.id.tv_floor);
         tv_detailKeyword = findViewById(R.id.tv_detailKeyword);
+
+        btn_review = findViewById(R.id.btn_review);
 
         int cafe_id = getIntent().getIntExtra("cafe_id",0);
         String cafe_name = getIntent().getStringExtra("cafe_name");
@@ -200,6 +200,19 @@ public class detailPage extends AppCompatActivity {
                     // 찜 목록에 추가하는 기능
                     zzimInsert("test", cafe_id);
                 }
+            }
+        });
+
+        // 리뷰 작성 버튼 클릭
+        btn_review.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(detailPage.this, reviewPage.class);
+                intent.putExtra("cafe_id", cafe_id);
+                intent.putExtra("cafe_image", cafe_image);
+                intent.putExtra("cafe_name", cafe_name);
+                intent.putExtra("cafe_address", address);
+                startActivity(intent);
             }
         });
 

@@ -56,34 +56,7 @@ public class list extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
         setSupportActionBar(toolbar);
 
-        adapter = new CafeAdapter(getApplicationContext(), R.layout.cafelist, data);
-        lv_cafe.setAdapter(adapter);
 
-        if (requestQueue == null) {
-            requestQueue = Volley.newRequestQueue(getApplicationContext());
-        }
-
-        tv_detailResult = findViewById(R.id.tv_detailResult);
-        ArrayList<String> detail = getIntent().getStringArrayListExtra("detail");
-        String theme = getIntent().getStringExtra("theme");
-        String region = getIntent().getStringExtra("region");
-        Log.d("지역을 리스트에 가져왔다  -> ", region);
-
-        String result = "";
-        if (detail != null) {
-            result = "";
-            for (String keyword : detail) {
-                result += "#" + keyword + " ";
-            }
-            searchByKeyword(detail, region);
-        } else if (theme != null) {
-            result = "";
-            Log.d("theme : ", theme);
-            result += "#" + theme;
-            searchByCategory(theme, region);
-        }
-        tv_detailResult.setText(result);
-        adapter.notifyDataSetChanged();
 
 //        tv_theme = findViewById(R.id.tv_theme);
 //        tv_theme.setText(result);
@@ -120,9 +93,39 @@ public class list extends AppCompatActivity {
             }
         });
 
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        adapter = new CafeAdapter(getApplicationContext(), R.layout.cafelist, data);
+        lv_cafe.setAdapter(adapter);
 
+        if (requestQueue == null) {
+            requestQueue = Volley.newRequestQueue(getApplicationContext());
+        }
 
+        tv_detailResult = findViewById(R.id.tv_detailResult);
+        ArrayList<String> detail = getIntent().getStringArrayListExtra("detail");
+        String theme = getIntent().getStringExtra("theme");
+        String region = getIntent().getStringExtra("region");
+        Log.d("지역을 리스트에 가져왔다  -> ", region);
+
+        String result = "";
+        if (detail != null) {
+            result = "";
+            for (String keyword : detail) {
+                result += "#" + keyword + " ";
+            }
+            searchByKeyword(detail, region);
+        } else if (theme != null) {
+            result = "";
+            Log.d("theme : ", theme);
+            result += "#" + theme;
+            searchByCategory(theme, region);
+        }
+        tv_detailResult.setText(result);
+        adapter.notifyDataSetChanged();
 
 
     }
