@@ -8,6 +8,7 @@ public class ReviewVO {
     private int cafe_id;
     private String cafe_name;
     private String mem_id;
+    private String nick;
     private double star;
     private String content;
     private Bitmap image;
@@ -50,4 +51,11 @@ public class ReviewVO {
         return image;
     }
 
+    public String getNick() {
+        return nick;
+    }
+
+    public void setNick(String nick) {
+        this.nick = nick;
+    }
 }

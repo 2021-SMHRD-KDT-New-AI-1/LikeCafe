@@ -110,10 +110,10 @@
             android:id="@+id/img_star5"
             android:layout_width="15dp"
             android:layout_height="15dp"
-            app:srcCompat="@drawable/star"
+            app:layout_constraintBottom_toBottomOf="@+id/img_star4"
             app:layout_constraintStart_toEndOf="@+id/img_star4"
             app:layout_constraintTop_toTopOf="@+id/img_star4"
-            app:layout_constraintBottom_toBottomOf="@+id/img_star4"/>
+            app:srcCompat="@drawable/star" />
 
         <Button
             android:id="@+id/btn_reviewDelete"
