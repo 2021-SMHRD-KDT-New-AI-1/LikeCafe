@@ -1,5 +1,7 @@
 package com.hjh.likecafe;
 
+import android.graphics.Bitmap;
+
 public class ReviewVO {
 
     private int id;
@@ -8,9 +10,9 @@ public class ReviewVO {
     private String mem_id;
     private double star;
     private String content;
-    private int image;
+    private Bitmap image;
 
-    public ReviewVO(int id, int cafe_id, String cafe_name, String mem_id, double star, String content, int image) {
+    public ReviewVO(int id, int cafe_id, String cafe_name, String mem_id, double star, String content, Bitmap image) {
         this.id = id;
         this.cafe_id = cafe_id;
         this.cafe_name = cafe_name;
@@ -44,7 +46,7 @@ public class ReviewVO {
         return content;
     }
 
-    public int getImage() {
+    public Bitmap getImage() {
         return image;
     }
 

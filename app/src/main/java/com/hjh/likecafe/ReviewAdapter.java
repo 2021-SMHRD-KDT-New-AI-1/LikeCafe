@@ -87,7 +87,7 @@ public class ReviewAdapter extends BaseAdapter {
         }
 
         viewHolder = (ReviewViewHolder) view.getTag();
-        viewHolder.img_reviewListImg.setImageResource(data.get(i).getImage());
+        viewHolder.img_reviewListImg.setImageBitmap(data.get(i).getImage());
         viewHolder.tv_reviewListName.setText(data.get(i).getCafe_name());
         viewHolder.tv_reviewListContent.setText(data.get(i).getContent());
         double star = data.get(i).getStar();
@@ -106,14 +106,15 @@ public class ReviewAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
                 Toast.makeText(context, "리뷰 삭제!", Toast.LENGTH_SHORT).show();
-                reviewDelete(1,"test");
+                reviewDelete(data.get(i).getId(), i);
+                notifyDataSetChanged();
             }
         });
 
         return view;
     }
     // (리뷰삭제)서버에 보내기
-    public void reviewDelete(int cafe_id, String mem_id) {
+    public void reviewDelete(int review_id, int i) {
         String url = "http://172.30.1.8:3003/Review/ReviewDele";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
@@ -123,6 +124,8 @@ public class ReviewAdapter extends BaseAdapter {
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonObject = (JSONObject) (new JSONArray(response).get(0));
+                            data.remove(i);
+                            notifyDataSetChanged();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -138,8 +141,7 @@ public class ReviewAdapter extends BaseAdapter {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("cafe_id", String.valueOf(cafe_id));
-                params.put("mem_id", mem_id);
+                params.put("review_id", String.valueOf(review_id));
 
                 return params;
             }
