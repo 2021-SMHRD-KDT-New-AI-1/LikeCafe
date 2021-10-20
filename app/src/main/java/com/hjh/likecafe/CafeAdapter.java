@@ -1,6 +1,8 @@
 package com.hjh.likecafe;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -106,6 +108,17 @@ public class CafeAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
                 Toast.makeText(context.getApplicationContext(), "카페 상세 정보로 이동!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, detailPage.class);
+                intent.putExtra("cafe_id", data.get(i).getId());
+                intent.putExtra("cafe_name", data.get(i).getName());
+                intent.putExtra("zzimCnt", data.get(i).getZzimCnt());
+                intent.putExtra("zzimSel", data.get(i).isZzimSel());
+                intent.putExtra("address", data.get(i).getAddress());
+                intent.putExtra("business_hour", data.get(i).getBusiness_hour());
+                intent.putExtra("holiday", data.get(i).getHoliday());
+                intent.putExtra("tel", data.get(i).getTel());
+                intent.putExtra("sns", data.get(i).getSns());
+                context.startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
             }
         });
 
