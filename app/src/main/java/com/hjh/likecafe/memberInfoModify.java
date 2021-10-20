@@ -16,6 +16,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
@@ -45,8 +46,11 @@ import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 
@@ -143,6 +147,7 @@ public class memberInfoModify extends AppCompatActivity {
         });
 
 
+
         // '사진수정'버튼 클릭 시 폰 갤러리 열기
         btn_picChange.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -150,7 +155,7 @@ public class memberInfoModify extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(intent, 1);
+                startActivityForResult(intent,1);
             }
         });
 
@@ -456,7 +461,10 @@ public class memberInfoModify extends AppCompatActivity {
                             tv_nick.setText(nick);
 
                             String birth = jsonObject.getString("birth"); // 생년월일 받아오기
-                            tv_birthDate.setText(birth);
+                            String birthdate = birth.substring(0,10); // 받아온 날짜중 년월일만 표시
+                            tv_birthDate.setText(birthdate);
+
+
 
                             String img = jsonObject.getString("mem_image"); // 기존프로필이미지가져오기
                             Bitmap bitmap = StringToBitmap(img);
@@ -507,6 +515,5 @@ public class memberInfoModify extends AppCompatActivity {
             return null;
         }
     }
-
 
 }
