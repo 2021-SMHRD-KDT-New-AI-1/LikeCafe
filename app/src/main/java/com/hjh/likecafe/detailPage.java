@@ -50,11 +50,11 @@ public class detailPage extends AppCompatActivity {
     List<ReviewVO> data;
     RequestQueue requestQueue;
 
-    ReviewAdapter adapter;
+    CafeReviewAdapter adapter;
 
     TextView tv_detailName, tv_detailAddress, tv_detailBusiness, tv_detailTel, tv_detailSns;
     TextView tv_space, tv_parking, tv_tableNum, tv_floor, tv_detailKeyword;
-    ImageView img_detailZzim;
+    ImageView img_detailZzim, img_cafeMainImage;
     TextView tv_detailZzimCnt;
 
     Context mContext;
@@ -104,20 +104,15 @@ public class detailPage extends AppCompatActivity {
             }
         });
 
-        // 전역변수 초기화
-        mContext = this;
-
-        lv_reviewList = findViewById(R.id.lv_reviewList);
-        data = new ArrayList<ReviewVO>();
-
-        adapter = new ReviewAdapter(getApplicationContext(), R.layout.review_list, data);
-        lv_reviewList.setAdapter(adapter);
-        //setListViewHeightBasedOnChildren(lv_reviewList);
-
         // 서버와 통신
         if (requestQueue == null) {
             requestQueue = Volley.newRequestQueue(getApplicationContext());
         }
+
+        // 전역변수 초기화
+        mContext = this;
+
+
 
 
 
@@ -128,6 +123,8 @@ public class detailPage extends AppCompatActivity {
         tv_detailBusiness = findViewById(R.id.tv_detailBusiness);
         tv_detailTel = findViewById(R.id.tv_detailTel);
         tv_detailSns = findViewById(R.id.tv_detailSns);
+
+        img_cafeMainImage = findViewById(R.id.img_cafeMainImage);
 
         img_detailZzim = findViewById(R.id.img_detailZzim);
         tv_detailZzimCnt = findViewById(R.id.tv_detailZzimCnt);
@@ -149,9 +146,22 @@ public class detailPage extends AppCompatActivity {
         String tel = getIntent().getStringExtra("tel");
         String sns = getIntent().getStringExtra("sns");
         String[] keywords = getIntent().getStringArrayExtra("keywords");
+        String cafe_image = getIntent().getStringExtra("cafe_image");
+        Bitmap cafe_image_bitmap = StringToBitmap(cafe_image);
+        cafe_image_bitmap = Bitmap.createScaledBitmap(cafe_image_bitmap, 413,276,true);
 
         PreferenceManager.setBoolean(mContext, "zzimSel", zzimSel);
         PreferenceManager.setInt(mContext, "zzimCnt", zzimCnt);
+
+        lv_reviewList = findViewById(R.id.lv_reviewList);
+        data = new ArrayList<ReviewVO>();
+
+        adapter = new CafeReviewAdapter(getApplicationContext(), R.layout.detailreview_list, data); //ReviewAdapter(getApplicationContext(), R.layout.review_list, data);
+        lv_reviewList.setAdapter(adapter);
+
+        getCafeReview(cafe_id);
+        adapter.notifyDataSetChanged();
+
 
         // 뷰에 받아온 값 설정하기
         tv_detailName.setText(cafe_name);
@@ -159,6 +169,8 @@ public class detailPage extends AppCompatActivity {
         tv_detailBusiness.setText(business_hour + holiday);
         tv_detailTel.setText(tel);
         tv_detailSns.setText(sns);
+
+        img_cafeMainImage.setImageBitmap(cafe_image_bitmap);
 
         String textKeyword = "";
         for (String keyword:keywords) {
@@ -191,8 +203,10 @@ public class detailPage extends AppCompatActivity {
             }
         });
 
-        getCafeReview(cafe_id);
-        adapter.notifyDataSetChanged();
+
+
+
+
 
     }
 
@@ -345,18 +359,37 @@ public class detailPage extends AppCompatActivity {
 
                                 int review_id = jsonObject.getInt("review_id");
                                 int cafe_id = jsonObject.getInt("cafe_id");
-                                String cafe_name = jsonObject.getString("cafe_name");
+                                String cafe_name = " ";
                                 String mem_id = jsonObject.getString("mem_id");
+                                String nick = jsonObject.getString("nick");
                                 Double star = jsonObject.getDouble("star");
                                 String content = jsonObject.getString("content");
                                 String review_image = jsonObject.getString("review_image");
                                 Bitmap imageBitmap = StringToBitmap(review_image);
 
                                 ReviewVO vo = new ReviewVO(review_id, cafe_id, cafe_name, mem_id, star, content, imageBitmap);
+                                vo.setNick(nick);
 
+                                Log.d("Review item"+i+">>", vo.toString());
                                 data.add(vo);
                                 adapter.notifyDataSetChanged();
                             }
+
+                            int totalHeight = 0;
+                            Log.d("adapter.getCount : ", String.valueOf(adapter.getCount()));
+                            for (int i = 0; i < adapter.getCount(); i++) {
+                                View listItem = adapter.getView(i, null, lv_reviewList);
+                                listItem.measure(0, 0);
+                                totalHeight += listItem.getMeasuredHeight();
+                                Log.d("totalHeight : ", String.valueOf(totalHeight));
+                            }
+                            ViewGroup.LayoutParams params = lv_reviewList.getLayoutParams();
+                            params.height = totalHeight + (lv_reviewList.getDividerHeight() * (adapter.getCount() - 1));
+                            lv_reviewList.setLayoutParams(params);
+                            lv_reviewList.requestLayout();
+
+
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -380,30 +413,10 @@ public class detailPage extends AppCompatActivity {
         requestQueue.add(request);
     }
 
-//    public static void setListViewHeightBasedOnChildren(ListView listView) {
-//        ListAdapter reviewAdapter = listView.getAdapter();
-//        if (reviewAdapter == null) {
-//            // pre-condition
-//            return;
-//        }
-//
-//        int totalHeight = 0;
-//        int desiredWidth = View.MeasureSpec.makeMeasureSpec(listView.getWidth(), View.MeasureSpec.AT_MOST);
-//
-//        for (int i = 0; i < reviewAdapter.getCount(); i++) {
-//            View listItem = reviewAdapter.getView(i, null, listView);
-//            listItem.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED);
-//            totalHeight += listItem.getMeasuredHeight();
-//        }
-//
-//        ViewGroup.LayoutParams params = listView.getLayoutParams();
-//        params.height = totalHeight + (listView.getDividerHeight() * (reviewAdapter.getCount() - 1));
-//        listView.setLayoutParams(params);
-//        listView.requestLayout();
-//    }
-
-
     public static Bitmap StringToBitmap(String encodedString) {
+        if(encodedString.equals("디폴트 이미지")) {
+            return null;
+        }
         try {
             byte[] encodeByte = Base64.decode(encodedString, Base64.DEFAULT);
             Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);

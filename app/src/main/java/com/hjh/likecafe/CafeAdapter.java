@@ -3,6 +3,8 @@ package com.hjh.likecafe;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +24,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -119,6 +122,8 @@ public class CafeAdapter extends BaseAdapter {
                 intent.putExtra("tel", data.get(i).getTel());
                 intent.putExtra("sns", data.get(i).getSns());
                 intent.putExtra("keywords", data.get(i).getKeywords());
+                intent.putExtra("cafe_image", BitmapToString(data.get(i).getImage()));
+
                 context.startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
             }
         });
@@ -206,6 +211,17 @@ public class CafeAdapter extends BaseAdapter {
             }
         };
         requestQueue.add(request);
+    }
+
+    public static String BitmapToString(Bitmap bitmap) {
+        if (bitmap == null) {
+            return "디폴트 이미지";
+        }
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 70, baos);
+        byte[] bytes = baos.toByteArray();
+        String bitString = Base64.encodeToString(bytes, Base64.DEFAULT);
+        return bitString;
     }
 
 }
