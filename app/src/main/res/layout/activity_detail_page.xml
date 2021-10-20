@@ -25,7 +25,6 @@
             tools:context=".detailPage">
 
 
-
             <ImageView
                 android:id="@+id/imageView5"
                 android:layout_width="0dp"
@@ -50,28 +49,6 @@
                 app:navigationIcon="@drawable/drawerlayout"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-            <ImageView
-                android:id="@+id/imageView14"
-                android:layout_width="26dp"
-                android:layout_height="28dp"
-                app:layout_constraintBottom_toTopOf="@+id/textView16"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.919"
-                app:layout_constraintStart_toEndOf="@+id/textView11"
-                app:layout_constraintTop_toBottomOf="@+id/imageView5"
-                app:layout_constraintVertical_bias="0.923"
-                app:srcCompat="@drawable/runheart" />
-
-            <TextView
-                android:id="@+id/textView16"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="89"
-                app:layout_constraintBottom_toTopOf="@+id/button4"
-                app:layout_constraintEnd_toEndOf="@+id/imageView14"
-                app:layout_constraintStart_toStartOf="@+id/imageView14"
-                app:layout_constraintTop_toBottomOf="@+id/imageView14" />
-
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline5"
                 android:layout_width="wrap_content"
@@ -93,16 +70,15 @@
                 app:layout_constraintTop_toTopOf="@+id/imageView5" />
 
             <TextView
-                android:id="@+id/textView11"
+                android:id="@+id/tv_detailName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
                 android:text="이이남스튜디오"
                 android:textColor="#000000"
                 android:textSize="27sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView5"
-                app:layout_constraintEnd_toEndOf="@+id/button4"
-                app:layout_constraintHorizontal_bias="0.092"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/button4"
                 app:layout_constraintVertical_bias="0.657" />
@@ -119,15 +95,13 @@
                 app:srcCompat="@drawable/runlocation" />
 
             <TextView
-                android:id="@+id/textView12"
+                android:id="@+id/tv_detailAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="132dp"
                 android:text="광주 남구 제중로47번길 10 이이남스튜디오 "
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView10"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageView10"
+                app:layout_constraintStart_toEndOf="@+id/guideline8"
                 app:layout_constraintTop_toTopOf="@+id/imageView10"
                 app:layout_constraintVertical_bias="0.437" />
 
@@ -142,15 +116,14 @@
                 app:srcCompat="@drawable/runtime" />
 
             <TextView
-                android:id="@+id/textView13"
+                android:id="@+id/tv_detailBusiness"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:text="평일 11:00 ~ 22:00 / 월요일 휴무"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView11"
-                app:layout_constraintStart_toEndOf="@+id/imageView11"
-                app:layout_constraintTop_toBottomOf="@+id/textView12"
+                app:layout_constraintStart_toEndOf="@+id/guideline8"
+                app:layout_constraintTop_toTopOf="@+id/imageView11"
                 app:layout_constraintVertical_bias="0.692" />
 
             <ImageView
@@ -165,16 +138,13 @@
                 app:srcCompat="@drawable/runcall" />
 
             <TextView
-                android:id="@+id/tv_detailResult"
+                android:id="@+id/tv_detailTel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
                 android:text="062-655-5030"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView12"
-                app:layout_constraintEnd_toEndOf="@+id/textView13"
-                app:layout_constraintHorizontal_bias="0.04"
-                app:layout_constraintStart_toEndOf="@+id/imageView12"
+                app:layout_constraintStart_toEndOf="@+id/guideline8"
                 app:layout_constraintTop_toTopOf="@+id/imageView12" />
 
             <ImageView
@@ -188,14 +158,13 @@
                 app:srcCompat="@drawable/runsns" />
 
             <TextView
-                android:id="@+id/textView15"
+                android:id="@+id/tv_detailSns"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:text="http://www.youtube.com/Leeleenam"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView13"
-                app:layout_constraintStart_toEndOf="@+id/imageView13"
+                app:layout_constraintStart_toEndOf="@+id/guideline8"
                 app:layout_constraintTop_toTopOf="@+id/imageView13"
                 app:layout_constraintVertical_bias="0.52" />
 
@@ -242,24 +211,17 @@
                 android:layout_marginStart="10dp"
                 android:text="좌석간 거리"
                 android:textSize="10sp"
-                app:layout_constraintBottom_toBottomOf="@+id/img_dist"
                 app:layout_constraintStart_toEndOf="@+id/img_dist"
-                app:layout_constraintTop_toTopOf="@+id/img_dist"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toTopOf="@+id/img_dist" />
 
             <TextView
-                android:id="@+id/textView22"
+                android:id="@+id/tv_space"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
                 android:text="1.2 ~ 1.5m"
                 android:textColor="#000000"
                 app:layout_constraintBottom_toBottomOf="@+id/img_dist"
-                app:layout_constraintEnd_toEndOf="@+id/textView18"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/img_dist"
-                app:layout_constraintTop_toBottomOf="@+id/textView18"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintStart_toStartOf="@+id/textView18" />
 
             <ImageView
                 android:id="@+id/img_parking"
@@ -273,16 +235,13 @@
                 app:srcCompat="@drawable/runparking" />
 
             <TextView
-                android:id="@+id/textView23"
+                android:id="@+id/tv_parking"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
                 android:text="14대(장애인 주차장)"
                 android:textColor="#000000"
                 app:layout_constraintBottom_toBottomOf="@+id/img_parking"
-                app:layout_constraintStart_toEndOf="@+id/img_parking"
-                app:layout_constraintTop_toTopOf="@+id/img_parking"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintStart_toStartOf="@+id/textView19" />
 
             <TextView
                 android:id="@+id/textView19"
@@ -301,9 +260,8 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="144dp"
-                app:layout_constraintBottom_toBottomOf="@+id/img_table"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/img_parking"
+                app:layout_constraintStart_toStartOf="@+id/img_parking"
                 app:layout_constraintTop_toBottomOf="@+id/img_parking"
                 app:srcCompat="@drawable/runfloor" />
 
@@ -311,7 +269,7 @@
                 android:id="@+id/textView21"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="10dp"
                 android:text="층 수"
                 android:textSize="10sp"
                 app:layout_constraintBottom_toBottomOf="@+id/img_stair"
@@ -320,16 +278,13 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/textView25"
+                android:id="@+id/tv_floor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:text="2층"
                 android:textColor="#000000"
                 app:layout_constraintBottom_toBottomOf="@+id/img_stair"
-                app:layout_constraintStart_toEndOf="@+id/img_stair"
-                app:layout_constraintTop_toTopOf="@+id/img_stair"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintStart_toStartOf="@+id/textView21" />
 
             <TextView
                 android:id="@+id/textView26"
@@ -349,11 +304,11 @@
                 android:id="@+id/imageView20"
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.055"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/img_table"
+                app:layout_constraintTop_toBottomOf="@+id/tv_detailKeyword"
                 app:srcCompat="@drawable/runbar" />
 
             <ImageView
@@ -361,9 +316,9 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="10dp"
-                app:layout_constraintEnd_toStartOf="@+id/img_stair"
+                app:layout_constraintEnd_toEndOf="@+id/img_dist"
                 app:layout_constraintHorizontal_bias="0.112"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/img_dist"
                 app:layout_constraintTop_toBottomOf="@+id/img_dist"
                 app:srcCompat="@drawable/runtable" />
 
@@ -380,18 +335,50 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/textView24"
+                android:id="@+id/tv_tableNum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
                 android:text="23개"
                 android:textColor="#000000"
                 app:layout_constraintBottom_toBottomOf="@+id/img_table"
-                app:layout_constraintEnd_toEndOf="@+id/textView20"
-                app:layout_constraintHorizontal_bias="0.052"
-                app:layout_constraintStart_toEndOf="@+id/img_table"
-                app:layout_constraintTop_toTopOf="@+id/img_table"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintStart_toStartOf="@+id/textView20" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.12" />
+
+            <TextView
+                android:id="@+id/tv_detailKeyword"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:text="#구분 화장실 #조용한"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/img_table"
+                app:layout_constraintTop_toBottomOf="@+id/img_table" />
+
+            <ImageView
+                android:id="@+id/img_detailZzim"
+                android:layout_width="26dp"
+                android:layout_height="28dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="35dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/button4"
+                app:srcCompat="@drawable/runheart" />
+
+            <TextView
+                android:id="@+id/tv_detailZzimCnt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10"
+                app:layout_constraintEnd_toEndOf="@+id/img_detailZzim"
+                app:layout_constraintStart_toStartOf="@+id/img_detailZzim"
+                app:layout_constraintTop_toBottomOf="@+id/img_detailZzim" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
