@@ -166,6 +166,7 @@ public class detailPage extends AppCompatActivity {
                     zzimInsert("test", cafe_id);
                 }
 
+
             }
         });
 
